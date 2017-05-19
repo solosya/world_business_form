@@ -23,6 +23,10 @@
     }
 }
 
+.home-page-content {
+    padding-bottom:50px;
+}
+
 .index-top {
     position:relative;
     margin-bottom:38px;
@@ -98,5 +102,23 @@
         > .sidebar-bottom {
             margin-top: 45px;
         }
+    }
+}
+
+section.sponsors {
+    padding-bottom:50px;
+
+    h2 {
+        margin-top:57px;
+        margin-bottom:14px;
+        font-size: rem(17);
+        font-weight: bold;
+        color:rgba(0, 0, 0, 0.52);
+    }
+
+    div.justify_children {
+        display:flex;
+        justify-content: space-between;
+        align-items:flex-start;
     }
 }

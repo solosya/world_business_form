@@ -7703,7 +7703,7 @@ span.leadsentence {
 
 .site-footer {
   width: 100%;
-  margin-top: 60px; }
+  margin-top: 0; }
   @media screen and (max-width: 768px) {
     .site-footer {
       margin-top: 55px; } }
@@ -7718,7 +7718,7 @@ span.leadsentence {
         color: #FFF;
         text-transform: uppercase; }
   .site-footer .footer-top {
-    background: #000;
+    background: #2b3744;
     position: relative; }
     .site-footer .footer-top .icon-wrapper {
       position: relative; }
@@ -7739,7 +7739,7 @@ span.leadsentence {
       display: inline-block;
       width: 64px;
       height: 71px;
-      margin: 40px 15px 60px 0; }
+      margin: 150px 15px 60px 0; }
       @media screen and (max-width: 768px) {
         .site-footer .footer-top .footer-brand {
           margin-bottom: 30px; } }
@@ -7814,19 +7814,14 @@ span.leadsentence {
           color: white;
           text-decoration: none; }
     .site-footer .footer-top .publish {
-      height: 80px;
+      margin-bottom: 30px;
       position: relative;
       vertical-align: bottom; }
-      .site-footer .footer-top .publish span {
-        position: absolute;
-        bottom: 0;
-        right: 15px;
+      .site-footer .footer-top .publish a {
         color: white;
         font-size: 1.1em;
-        font-family: "adelle-sans", Helvetica, Arial, sans-serif; }
-        .site-footer .footer-top .publish span a {
-          color: white;
-          text-decoration: none; }
+        font-family: "adelle-sans", Helvetica, Arial, sans-serif;
+        text-decoration: none; }
     .site-footer .footer-top .section-links-mobile {
       margin-bottom: 35px; }
       @media screen and (max-width: 768px) {
@@ -8395,8 +8390,8 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
   padding: 0;
   max-width: none; }
   .site-header .site-header-main {
-    background: #333333;
-    height: 70px; }
+    background: #2b3744;
+    height: 150px; }
     @media screen and (max-width: 620px) {
       .site-header .site-header-main {
         padding-top: 0;
@@ -8417,9 +8412,11 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
         .site-header .site-header-main .navbar-brand > img.text-logo {
           width: 140px; } }
       .site-header .site-header-main .navbar-brand > img.main-logo {
-        height: 70px; }
+        margin-top: 25px;
+        margin-left: 40px;
+        height: 86px; }
     .site-header .site-header-main .navbar-right {
-      margin-top: 25px; }
+      margin-top: 82px; }
       @media screen and (max-width: 620px) {
         .site-header .site-header-main .navbar-right {
           margin-top: 12px; } }
@@ -9158,6 +9155,9 @@ button.swiper-pagination-bullet {
     .main-content:before {
       display: none; } }
 
+.home-page-content {
+  padding-bottom: 50px; }
+
 .index-top {
   position: relative;
   margin-bottom: 38px; }
@@ -9198,6 +9198,19 @@ button.swiper-pagination-bullet {
           display: none; } }
   .sidebar > .sidebar-news > .sidebar-bottom {
     margin-top: 45px; }
+
+section.sponsors {
+  padding-bottom: 50px; }
+  section.sponsors h2 {
+    margin-top: 57px;
+    margin-bottom: 14px;
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.52); }
+  section.sponsors div.justify_children {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; }
 
 body.article {
   background: #fff; }
@@ -10198,7 +10211,7 @@ body.screen {
   border-width: 5px 0 5px 5px; }
 
 .banner-image {
-  height: 572px;
+  height: 490px;
   width: 100%;
   background-size: cover;
   background-position: center top;
@@ -10230,7 +10243,7 @@ body.screen {
   .featured-slider .featured {
     width: 100%; }
   .featured-slider a.card {
-    height: 572px; }
+    height: 490px; }
     @media screen and (max-width: 620px) {
       .featured-slider a.card {
         height: 290px; } }
@@ -10253,7 +10266,7 @@ body.screen {
       max-width: 600px;
       height: auto;
       max-height: 587px;
-      padding: 160px 15px 10px 31px;
+      padding: 130px 15px 10px 0;
       z-index: 2; }
       @media screen and (max-width: 1600px) {
         .featured-slider a.card .content {
@@ -10276,7 +10289,7 @@ body.screen {
         -moz-flex-shrink: 0;
         order: 1;
         font-size: 1.1rem;
-        margin-bottom: 5px;
+        margin-bottom: 55px;
         display: block;
         max-height: 20px;
         color: #39bcdc;
@@ -10325,6 +10338,7 @@ body.screen {
             font-size: 1.4rem;
             line-height: 1.3em; } }
       .featured-slider a.card .content time {
+        display: none;
         -ms-flex-negative: 0;
         -webkit-flex-shrink: 0;
         flex-shrink: 0;
