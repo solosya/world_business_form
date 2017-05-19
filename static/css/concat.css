@@ -7601,7 +7601,6 @@ span.leadsentence {
     .sidebar-news a.card > article > .content > .category {
       font-size: 1.1em;
       font-weight: bold;
-      color: #39bcdc;
       display: block;
       line-height: 1;
       margin-bottom: 5px; }
@@ -10042,7 +10041,7 @@ body.screen {
       .card article .content .category {
         font-size: 1.4em;
         font-weight: 600;
-        color: #8a8b93;
+        color: #ec825d;
         text-transform: uppercase;
         line-height: 1;
         display: block; }
@@ -10292,7 +10291,6 @@ body.screen {
         margin-bottom: 55px;
         display: block;
         max-height: 20px;
-        color: #39bcdc;
         text-transform: uppercase; }
         @media screen and (max-width: 620px) {
           .featured-slider a.card .content .category {
@@ -10465,7 +10463,6 @@ body.screen {
       .card-rec a.card > article > .content > .category {
         font-size: 1.1em;
         font-weight: bold;
-        color: #39bcdc;
         display: block;
         line-height: 1;
         margin-bottom: 15px; }
@@ -10657,7 +10654,6 @@ body.screen {
         .card-sm a.card > article > .content > .category {
           font-size: 1.1rem;
           font-weight: bold;
-          color: #39bcdc;
           display: block;
           line-height: 1;
           margin-bottom: 8px; }
