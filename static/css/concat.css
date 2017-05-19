@@ -10803,6 +10803,7 @@ body.screen {
   .card-sm-screen a.card {
     height: 100%; }
     .card-sm-screen a.card > article {
+      position: relative;
       height: 368px; }
       .card-sm-screen a.card > article > figure {
         width: auto;
@@ -10901,8 +10902,6 @@ body.screen {
           font-size: 1.8vw; }
     .card-sm-screen a.card.social.facebook.withImage__content figure, .card-sm-screen a.card.social.twitter.withImage__content figure, .card-sm-screen a.card.social.instagram.withImage__content figure {
       position: absolute;
-      left: 15px;
-      right: 15px;
       width: auto;
       height: 100%; }
       .card-sm-screen a.card.social.facebook.withImage__content figure:after, .card-sm-screen a.card.social.twitter.withImage__content figure:after, .card-sm-screen a.card.social.instagram.withImage__content figure:after {

@@ -13,7 +13,7 @@
 
 
         > article {
-
+            position:relative;
             height: 368px;
 
             > figure{
@@ -179,8 +179,8 @@
             &.instagram.withImage__content {
                 figure {
                     position: absolute;
-                    left: 15px;
-                    right: 15px;
+                    // left: 15px;
+                    // right: 15px;
                     width: auto;
                     height:100%;
 
