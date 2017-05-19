@@ -44,7 +44,7 @@
 
 
         {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?ver=24" type="text/css" media="all">
+            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?ver=25" type="text/css" media="all">
             {# <link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBox/assets/minimalist-basic/content-bootstrap.css" rel="stylesheet" type="text/css" /> #}
             <link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBox/box/box.css" rel="stylesheet" type="text/css" />
             <link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBox/contentbuilder/contentbuilder.css" rel="stylesheet" type="text/css" />
@@ -194,7 +194,16 @@
 
 </head>
 
-
+{# <form action="//submit.pagemasters.com.au/wobi/submit.php">
+    email:
+    <input type="text" name="email">
+    name:
+    <input type="text" name="name">
+    lastname:
+    <input type="text" name="lastname">
+    <input type="submit" name="submit">Submit</input>
+</form>
+ #}
 
 <body class="{{ pageTypeClass }} {{ blogName | lower }} {{ pageClass }}">
 {{ this.beginBody() }}
@@ -206,7 +215,6 @@
         networkData: networkData, 
         pageClass: blogName,
         submenu: submenu,
-        roomInfo: roomInfo,
         rooms:rooms 
     }) | raw }}
 
@@ -218,7 +226,6 @@
         blog : blogData, 
         networkData: networkData, 
         pageClass: blogName,
-        roomInfo: roomInfo,
         submenu: submenu,
         rooms:rooms 
     }) | raw }}

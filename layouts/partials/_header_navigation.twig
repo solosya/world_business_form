@@ -51,19 +51,16 @@
 
                     <ul id="menu-primary-menu" class="menu">
                         {% set menuItems = blog.blogHeaderMenu %}
-
                         {% for parentItem in menuItems  %}
 
                             {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                             {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
 
-                            {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
-                                <li>
-                                    <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                        {{parentItem.blogTitle | upper}}
-                                    </a>
-                                </li>
-                            {% endif  %}
+                            <li>
+                                <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                    {{parentItem.blogTitle | upper}}
+                                </a>
+                            </li>
 
                         {% endfor %}
 

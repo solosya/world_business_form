@@ -10302,7 +10302,8 @@ body.screen {
         font-size: 4.6rem;
         color: white;
         margin-bottom: 8px;
-        line-height: 1.04;
+        padding-bottom: 8px;
+        line-height: 1.1;
         padding: 0;
         max-height: 150px; }
         @media screen and (max-width: 1200px) {
