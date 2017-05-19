@@ -133,9 +133,10 @@
                 font-size: rem(46);
                 color:white;
                 margin-bottom: 8px;
-                padding-bottom: 8px;
                 line-height: 1.1;
                 padding:0;
+                padding-bottom: 8px;
+
                 max-height: 150px;
 
                 @media screen and (max-width: $md-break){
