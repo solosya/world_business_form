@@ -1,0 +1,127 @@
+.sidebar-news{
+    // margin-bottom: 100px;
+    
+    @media screen and (max-width: $mobile-break) {
+        margin-left:-15px;
+        margin-right:-15px;
+    }
+
+
+    header {
+        margin-bottom: 15px;
+        display: inline-block;
+        width: 100%;
+
+        > h3 {
+            font-size: rem(17);
+            font-family: $font-family-sans-serif;
+            font-weight: bold;
+            margin-top:0;
+            margin-bottom:0;
+            margin-left:15px;
+
+
+            @media screen and (max-width: $mobile-break) {
+                font-size: rem(17);
+                margin-left:18px;
+            }
+        }
+
+        > img{
+            float: right;
+        }
+    }
+
+    a.card {
+        margin-bottom: 5px;
+        height: 110px;
+        // width: 100%;
+       
+        @media screen and (max-width: $mobile-break){
+            height: 115px;
+            margin-bottom: 8px;
+            margin-left:-15px;
+            margin-right:-15px;
+        }
+
+
+        > article {
+
+            > figure {
+                width: 100px;
+                height:110px;
+                overflow: hidden;
+                float: left;
+
+                @media screen and (max-width: $mobile-break) {
+                    width: 115px;
+                    height:115px;
+                }
+
+                > img{
+                    max-width: 100%;
+                }
+            }
+
+            > .content{
+                height:110px;
+                padding: 7px 0 0 10px;
+                width: auto;
+                background:white;
+                
+                @media screen and (max-width: $mobile-break){
+                    height:115px;
+                }
+
+
+
+                > .category{
+                    font-size: em(11);
+                    font-weight: bold;
+                    color: #39bcdc;
+                    display: block;
+                    line-height: 1;
+                    margin-bottom: 5px;
+                    
+                    @media screen and (max-width: $mobile-break){
+                        font-size: em(10);
+                    }
+                }
+
+                > h2{
+                    font-weight:normal;
+                    font-size: em(16);
+                    height: 64px;
+                    line-height:1.3em;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    
+                    @media screen and (max-width: $mobile-break){
+                        height: 60px;
+                    }
+
+
+
+                }
+
+                > p {
+                    display:none;
+                }
+
+                > .author{
+                    display: none;
+                }
+
+                > time{
+                    font-style:italic;
+                    font-size: rem(12);
+                    font-family:$font-family-serif;
+                    color: #333333;
+                    padding: 0;
+                    border: 0;
+                    line-height: 1;
+                }
+            }
+        }
+    }
+}

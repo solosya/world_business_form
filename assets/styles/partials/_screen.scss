@@ -1,0 +1,49 @@
+html {
+    height:100%
+}
+
+body.screen {
+    height:100%;
+    background: #282c36;
+
+
+  .site-footer{
+    display:none;
+  }
+  .site-header {
+    display:none;
+  }
+  .top-bar {
+    display:none;
+  }
+
+  .main-screen {
+    padding:25px;
+  }
+
+  a.card {
+    margin:0;
+  }
+
+
+
+}
+.top-row{
+  padding-bottom:13px;
+
+}
+.bottom-row {
+  padding-top:12px;
+}
+.screen-card {
+  height:100%;
+  margin:0 !important;
+}
+
+.full-height {
+  height:100%;
+}
+.half-height {
+  height:50%;
+}
+

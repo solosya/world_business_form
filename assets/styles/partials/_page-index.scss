@@ -1,0 +1,102 @@
+.main-content{
+    // border-right:2px solid black;
+    // padding-right:44px;
+    &:before {
+        content: "";
+        position:absolute;
+        top:0;
+        bottom: 46px;
+        right: -31px;;
+        width:1px;
+        background:#979797;
+
+
+        @media (max-width: 1200px) {
+            right:0;
+        }
+
+        @media (max-width: $mmd-break-down) {
+            display:none;
+        }
+
+
+    }
+}
+
+.index-top {
+    position:relative;
+    margin-bottom:38px;
+
+    &:after {
+        content: "";
+        position:absolute;
+        bottom:0;
+        right: 15px;
+        left: 15px;
+        height:1px;
+        width:97%;
+        background:#979797;
+        @media (max-width: $mmd-break-down) {
+            display:none;
+        }
+
+
+    }
+}
+
+
+.index-bottom {
+
+    h3 {
+        font-size: rem(17);
+        margin: 0 0 16px 15px;
+    }
+    // .card-sm {
+    //     &:first-child {
+    //         margin-left:15px;
+    //     }
+    //     &:last-child {
+    //         margin-right:15px;
+    //     }
+
+    //     margin: 0 30px;
+    // }
+}
+
+
+.sidebar{
+
+    padding-left: 75px;
+    @media screen and (max-width: $md-break){
+        padding-left: 15px;
+    }
+
+    > .sidebar-news {
+
+        > .sidebar-top {
+            padding-bottom: 41px;
+            // border-bottom: 1px solid #979797;
+            // @media screen and (max-width: $md-break){
+            //     border: none;
+            // }
+
+            &:after {
+                content: "";
+                position:absolute;
+                bottom:0;
+                right: 15px;
+                left: 15px;
+                height:1px;
+                background:#979797;
+
+                @media screen and (max-width: $mmd-break){
+                    display: none;
+                }
+            }
+
+        }
+        > .sidebar-bottom {
+            margin-top: 45px;
+        }
+    }
+}

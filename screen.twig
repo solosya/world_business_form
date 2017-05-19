@@ -1,0 +1,52 @@
+{% set networkData = _Network.getNetworkData() %}
+
+{% set blogInfo = _Blog.getBlog() %}
+{{ set(this, 'title', blogInfo.title) }}
+
+
+{{this.registerJs("HomeController.listing();")}}
+{{this.registerJs("HomeController.blog();")}}
+
+{% set limit = 20 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+
+
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+    <!--placeholder temp -->
+
+<main id="main" class="full-height" role="main">
+    <div class="main-screen full-height">
+
+        <div class="row full-height">
+            <div class="col-sm-12 full-height">
+                <div class="row half-height top-row">
+                    {{this.render('partials/_single-article.twig', {article: articles[0], position: (i+1), containerClass: 'screen-card card-lg-screen col-sm-6', network:networkData}) | raw}}
+                    
+                    {% for i in 1..2 %}
+                        {% if articles[i] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[i], position: (i+1), containerClass: 'screen-card card-sm-screen col-sm-3', network:networkData}) | raw}}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="row half-height bottom-row">
+                   
+                    {% for i in 3..6 %}
+                        {% if articles[i] %}                                                                
+                            {{this.render('partials/_single-article.twig', {article: articles[i], position: (i+1), containerClass: 'screen-card card-sm-screen col-sm-3', network:networkData}) | raw}}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</main>

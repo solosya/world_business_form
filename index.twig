@@ -1,0 +1,120 @@
+{{ set(this, 'title', _Blog.getBlogTitle()) }}
+{% set networkData = _Network.getNetworkData() %}
+{% set blogData      = _Blog.getBlog() %}
+{% set blogName      = blogData.title %}
+
+{% macro smartquotes(text) %}
+    {{text|replace({'/[^"]/': '&ldquo;', "/[^'']/": '&lsquo;', "'": '&rsquo;', '"': '&rdquo;'})}}
+{% endmacro %}
+
+
+{{this.registerJs("HomeController.listing();")}}
+{% set limit = 12 %}
+
+{% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
+{% set articles = articlesArr.articles %}
+
+
+<!-- used to index each article as we loop over throughout the template -->
+{% set articleCount = 0 %}
+
+{# {% set recentArticles = _Article.getRecentArticles({'limit': 5}) %} #}
+{% set popularArticles = _Article.getPopularArticles({ limit: 4, sortBy: 'VIEWS' }) %}
+
+
+
+
+    <main id="main" class="site-main" role="main">
+        
+
+        {% if articles|length > 0 %}
+
+        {% if articles[0].articleId > 0 %}
+            {% set articleImg = _Media.getMediaUrl(articles[0].featuredMedia,imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
+        {% elseif articles[0].socialId == "1" %}
+            {% set articleImg = articles[0].social.media['path'] %}
+        {% endif %}
+        <div class="banner-image image-wrapper tintGradient" style="background-image:url('{{articleImg}}');"></div>
+
+        <section class="featured-slider container-fluid">
+            <div class="">
+                {% if articles[0] %}                                                                
+                    {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'swiper-slide s1168x587', imageSuppress: 'true'}) | raw}}
+                    {% set articleCount = articleCount + 1 %}
+                {% endif %}
+            </div><!-- .swiper-container-->
+        </section><!-- .featured-slider-->
+        {% endif %}
+
+
+        <section class="home-page-content">
+            <div class="container">
+                
+
+                <div class="row index-top">
+
+                    <div class="col-sm-12 col-md-8 main-content">
+                        <div class="card-group">
+                            {% for i in 0..4 %}
+                                {% if articles[articleCount] %}                                                                
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'card-rec'}) | raw}}
+                                    {% set articleCount = articleCount + 1 %}
+                                {% endif %}
+                            {% endfor %}
+                         </div><!--card-group-->
+                    </div><!-- .col-sm-8-->
+
+
+                    <div class="col-sm-12 col-md-4 sidebar">
+
+                        <section class="row sidebar-news">
+                            <div class="col-sm-12 sidebar-top">
+                                <div class="row">
+                                    <header>
+                                        <h3>Popular Stories</h3>
+                                    </header>
+                                    {% if popularArticles|length > 0 %}
+                                        {% for i in 0..4 %}
+                                            {% if popularArticles[i] %}
+                                                {{this.render('partials/_single-article.twig', {article: popularArticles[i], containerClass: 'col-sm-12 s100x110', swap: 'false', isArticle: 'true'}) | raw}}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 sidebar-bottom">
+                                <div class="row">
+                                    {% for i in 0..1 %}
+                                        {% if articles[articleCount] %}                                                                
+                                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-12 card-sm'}) | raw}}
+                                            {% set articleCount = articleCount + 1 %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </section><!-- .sidebar-news -->
+                    </div><!-- .col-sm-4-->
+                    <div style="clear:both"></div>
+                </div><!-- .row-->
+
+                <div class="row index-bottom">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <h3>The Solutions</h3>
+
+                            {% for i in 0..3 %}
+                                {% if articles[articleCount] %}                                                                
+                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 col-md-3 card-sm'}) | raw}}
+                                    {% set articleCount = articleCount + 1 %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+
+
+        </section><!-- .home-page-content-->
+
+    </main><!-- .site-main -->
