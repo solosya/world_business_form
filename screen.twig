@@ -22,9 +22,9 @@
     <!--placeholder temp -->
 
 <main id="main" class="full-height" role="main">
-    <div class="main-screen full-height">
+    <div class="main-screen full-height flex_col">
 
-        <div class="row full-height">
+        <div class="row flex1">
             <div class="col-sm-12 full-height">
                 <div class="row half-height top-row">
                     {{this.render('partials/_single-article.twig', {article: articles[0], position: (i+1), containerClass: 'screen-card card-lg-screen col-sm-6', network:networkData}) | raw}}
@@ -44,9 +44,12 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-
-
             </div>
         </div>
+
+        <div class="row flex-shrink0" style="max-height:70px;margin-top:20px;">
+            <img src="{{networkData.templatePath}}/static/images/logo-reverse-small.png" style="float:right;margin-right:15px;">
+        </div>
+
     </div>
 </main>
