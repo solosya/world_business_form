@@ -9139,6 +9139,9 @@ button.swiper-pagination-bullet {
     display: block;
     height: 48px; }
 
+#main {
+  position: relative; }
+
 .main-content:before {
   content: "";
   position: absolute;
