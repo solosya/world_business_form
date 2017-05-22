@@ -39,7 +39,7 @@
         <section class="featured-slider container">
             <div class="">
                 {% if articles[0] %}                                                                
-                    {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, containerClass: 'swiper-slide s1168x587', imageSuppress: 'true'}) | raw}}
+                    {{this.render('partials/_single-article.twig', {article: articles[0], position: 1, swap: 'false', containerClass: 'swiper-slide s1168x587', imageSuppress: 'true'}) | raw}}
                     {% set articleCount = articleCount + 1 %}
                 {% endif %}
             </div><!-- .swiper-container-->
@@ -128,7 +128,7 @@
                             <img src="{{networkData.templatePath}}/static/images/sponsor_logos/chartered.png">
                         </div>
                         <div class="row">
-                            <div class="col-sm-9">
+                            <div class="col-sm-12 col-md-9">
                                 <h2>Supporting Sponsors</h2>
                                 <div class="justify_children">
                                     <img src="{{networkData.templatePath}}/static/images/sponsor_logos/bupa.png">
@@ -137,7 +137,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-offset-1 col-sm-2">
+                            <div class="col-md-offset-1 col-sm-12 col-md-2">
                                 <h2>Academic Partner</h2>
                                 <img src="{{networkData.templatePath}}/static/images/sponsor_logos/unimelb.png">
                             </div>
@@ -146,13 +146,17 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <h2>Supporting Sponsors</h2>
-                                <div class="justify_children">
-                                    <img src="{{networkData.templatePath}}/static/images/sponsor_logos/huffington-post.png">
-                                    <img src="{{networkData.templatePath}}/static/images/sponsor_logos/smh.png">
-                                    <img src="{{networkData.templatePath}}/static/images/sponsor_logos/ceo.png">
-                                    <img src="{{networkData.templatePath}}/static/images/sponsor_logos/wall-street.png">
-                                    <img src="{{networkData.templatePath}}/static/images/sponsor_logos/barrons.png">
-                                    <img src="{{networkData.templatePath}}/static/images/sponsor_logos/china.png">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 justify_children">
+                                        <img src="{{networkData.templatePath}}/static/images/sponsor_logos/huffington-post.png">
+                                        <img src="{{networkData.templatePath}}/static/images/sponsor_logos/smh.png">
+                                        <img src="{{networkData.templatePath}}/static/images/sponsor_logos/ceo.png">
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 justify_children">
+                                        <img src="{{networkData.templatePath}}/static/images/sponsor_logos/wall-street.png">
+                                        <img src="{{networkData.templatePath}}/static/images/sponsor_logos/barrons.png">
+                                        <img src="{{networkData.templatePath}}/static/images/sponsor_logos/china.png">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -163,15 +167,19 @@
                                 <img src="{{networkData.templatePath}}/static/images/sponsor_logos/the-star.png">
                             </div>
 
-                            <div class="col-sm-10">
+                            <div class="cold-sm-12 col-md-10">
                                 <h2>Supporting Partners</h2>
-                                <div class="justify_children">
-                                    <img src="{{networkData.templatePath}}/static/images/sponsor_logos/am-cham.png">
-                                    <img src="{{networkData.templatePath}}/static/images/sponsor_logos/newsmodo.png">
-                                    <img src="{{networkData.templatePath}}/static/images/sponsor_logos/bca.png">
-                                    <img src="{{networkData.templatePath}}/static/images/sponsor_logos/ausmarketing.png">
-                                    <img src="{{networkData.templatePath}}/static/images/sponsor_logos/aap.png">
-                                    <img src="{{networkData.templatePath}}/static/images/sponsor_logos/robb.png">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 justify_children">
+                                        <img src="{{networkData.templatePath}}/static/images/sponsor_logos/am-cham.png">
+                                        <img src="{{networkData.templatePath}}/static/images/sponsor_logos/newsmodo.png">
+                                        <img src="{{networkData.templatePath}}/static/images/sponsor_logos/bca.png">
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 justify_children">
+                                        <img src="{{networkData.templatePath}}/static/images/sponsor_logos/ausmarketing.png">
+                                        <img src="{{networkData.templatePath}}/static/images/sponsor_logos/aap.png">
+                                        <img src="{{networkData.templatePath}}/static/images/sponsor_logos/robb.png">
+                                    </div>
                                 </div>
                             </div>
                         </div>
