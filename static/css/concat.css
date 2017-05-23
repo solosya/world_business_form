@@ -2654,7 +2654,7 @@ select[multiple].input-lg,
 
 .navbar-brand {
   float: left;
-  padding: 12px;
+  padding: 28px 15px;
   font-size: 13px;
   line-height: 14px;
   height: 70px; }
@@ -2662,8 +2662,6 @@ select[multiple].input-lg,
     text-decoration: none; }
   .navbar-brand > img {
     display: block; }
-  .navbar-brand > img.text-logo {
-    margin-top: 12px; }
   @media (min-width: 768px) {
     .navbar > .container .navbar-brand, .login-page .navbar > .container .navbar-brand, .navbar > .profile__container .navbar-brand,
     .navbar > .container-fluid .navbar-brand {
@@ -10610,6 +10608,58 @@ body.screen {
 .page.page-speakers2 .diversity-head > p {
   font-size: 2.4rem;
   line-height: 48px; }
+
+.page-livestream h1 {
+  font-family: "adelle-sans", Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal; }
+
+.page-livestream h2 {
+  font-family: "adelle-sans", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal; }
+
+.page-livestream p {
+  font-family: "adelle-sans", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal; }
+  .page-livestream p span {
+    margin-top: 10px;
+    display: block; }
+
+.page-livestream #streamform .forminput {
+  width: 553.7px;
+  height: 36.2px;
+  opacity: 0.3;
+  border: solid 1px #4a4a4a;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding-left: 10px; }
+
+.page-livestream #submitlivestreamform {
+  width: 553.7px;
+  height: 36.2px;
+  border: solid 1px #ffb366;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #ffb366;
+  margin-bottom: 5px;
+  margin-top: 5px; }
 
 .card {
   display: block; }
