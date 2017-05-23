@@ -1,5 +1,5 @@
 $('document').ready(function() {
-    console.log('loaded document');
+
     var isMenuBroken, isMobile;
     var sbCustomMenuBreakPoint = 1120;
     var mobileView = 620;
@@ -65,36 +65,36 @@ $('document').ready(function() {
     };   
 
 
-    var scrollUpMenu = function() {
-        if ( scrollMetric[1] === 'up' && isScolledPast(400) && isDesktop() ){
-            foldawayPanel.addClass('showMenuPanel');
-            menuContainer.show();
-        } else {
-            menu_top_foldaway.addClass('hide');
-            menu_bottom_foldaway.addClass('hide');
-            foldawayPanel.removeClass('showMenuPanel');
-            menuContainer.show();
-        }
-    }
+    // var scrollUpMenu = function() {
+    //     if ( scrollMetric[1] === 'up' && isScolledPast(400) && isDesktop() ){
+    //         foldawayPanel.addClass('showMenuPanel');
+    //         menuContainer.show();
+    //     } else {
+    //         menu_top_foldaway.addClass('hide');
+    //         menu_bottom_foldaway.addClass('hide');
+    //         foldawayPanel.removeClass('showMenuPanel');
+    //         menuContainer.show();
+    //     }
+    // }
 
 
     //Onload and resize events
-    $(window).on("resize", function () {
-        stickHeader();
-        scrollUpMenu();
-    }).resize();
+    // $(window).on("resize", function () {
+    //     stickHeader();
+    //     scrollUpMenu();
+    // }).resize();
 
     //On Scroll
-    $(window).scroll(function() {
-        var direction = 'down';
-        var scroll = $(window).scrollTop();
-        if (scroll < scrollMetric[0]) {
-            direction = 'up';
-        }
-        scrollMetric = [scroll, direction];
-        stickHeader();
-        scrollUpMenu();
-    });
+    // $(window).scroll(function() {
+    //     var direction = 'down';
+    //     var scroll = $(window).scrollTop();
+    //     if (scroll < scrollMetric[0]) {
+    //         direction = 'up';
+    //     }
+    //     scrollMetric = [scroll, direction];
+    //     stickHeader();
+    //     scrollUpMenu();
+    // });
 
 
 
@@ -117,10 +117,10 @@ $('document').ready(function() {
     });
 
     $("ul > li.menu-item-search").on("click", function (e) {
-        console.log('hovering');
         if (window.innerWidth > sbCustomMenuBreakPoint) {
             console.log('slide toggling');
-            $("#searchpanel").stop(true, false).slideToggle(225);
+            // $("#searchpanel").stop(true, false).css({'height': '90px'});
+            $("#searchpanel").toggleClass('active');
 
             e.preventDefault();
         }

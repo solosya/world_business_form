@@ -44,7 +44,7 @@
 
 
         {% if _AppHelper.getApplicationEnv() == 'PROD'%}
-            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?ver=28" type="text/css" media="all">
+            <link rel="stylesheet" href="{{networkData.templatePath}}/static/css/concat.min.css?ver=29" type="text/css" media="all">
             {# <link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBox/assets/minimalist-basic/content-bootstrap.css" rel="stylesheet" type="text/css" /> #}
             <link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBox/box/box.css" rel="stylesheet" type="text/css" />
             <link href="{{_AppHelper.getAssetsStaticPath()}}/dist/vendors/ContentBox/contentbuilder/contentbuilder.css" rel="stylesheet" type="text/css" />
@@ -220,6 +220,15 @@
 
 
     {{ content | raw}}
+
+
+
+    <div class="modal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content social-modal">
+            </div>
+        </div>
+    </div>
 
 
     {{ this.render('partials/footer.twig', {

@@ -11,10 +11,22 @@
 	}
 }
 
+@mixin tablet-lg {
+  @media (min-width:992px) {
+    @content;
+  }
+}
+
 @mixin desktop {
 	@media (min-width:$screen-desktop) {
 		@content;
 	}
+}
+
+@mixin desktop-lg {
+  @media (min-width:$screen-lg) {
+    @content;
+  }
 }
 
 @mixin screen-lg-desktop {
@@ -273,7 +285,6 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-
 
 // Image Cover Size
 @mixin background-size($background-size) {

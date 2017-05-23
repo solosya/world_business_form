@@ -122,5 +122,14 @@
                 }
             }
         }
+        &.social {
+            article {
+                .content {
+                    >p {
+                        display:block;
+                    }
+                }
+            }
+        }
     }
 }

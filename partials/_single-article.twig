@@ -140,7 +140,9 @@
             target="_blank"
             class="swap card social {{ social.source }} {{hasArticleContentClass}} {{hasArticleMediaClass}}" 
             data-id="{{article.socialId}}" 
-            data-position="{{position}}" 
+            data-position="{{position}}"
+            data-blog-guid="{{social.blog['guid']}}" 
+            data-guid="{{social.guid}}" 
             data-social="1" 
             data-article-image="{{social.media['path']}}" 
             data-article-text="{{Helper.htmlToText(social.content, -1) | raw | escape('html')}}">

@@ -83,11 +83,82 @@ HomeController.Listing = (function ($) {
         });
     };
     
+
+
+    var renderReadingTime = function (time) {
+        if (time <= '59') {
+            return ((time <= 0) ? 1 : time) + ' min read';
+        } else {
+            var hr = Math.round(parseInt(time) / 100);
+            return hr + ' hour read';
+        }
+    };
+
+
+
+
     var attachEvents = function () {
         if(_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
             initSwap();
         }
+
+        var bindSocialPostPopup = function(){
+            var isScialRequestSent = false;
+            $(document).on('click', 'a.social.card', function (e) {
+                e.preventDefault();
+                console.log($(this));
+                var blogGuid = $(this).data('blog-guid');
+                var postGuid = $(this).data('guid');
+
+                if (!isScialRequestSent) {
+                    var csrfToken = $('meta[name="csrf-token"]').attr("content");
+                    console.log(_appJsConfig.appHostName + '/api/social/get-social-post');
+                    console.log({blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken});
+                    $.ajax({
+                        type: 'POST',
+                        url: _appJsConfig.appHostName + '/api/social/get-social-post',
+                        dataType: 'json',
+                        data: {blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken},
+                        success: function (data, textStatus, jqXHR) {
+                            console.log(data);
+                            data.hasMediaVideo = false;
+                            if (data.media['type'] === 'video') {
+                                data.hasMediaVideo = true;
+                            }
+                            
+                            if (data.source == 'youtube') {
+                                var watch = data.media.videoUrl.split("=");
+                                data.media.videoUrl = "https://www.youtube.com/embed/" + watch[1];
+                            }
+                            
+                            data.templatePath = _appJsConfig.templatePath;
+
+                            var articleTemplate = Handlebars.compile(socialPostPopupTemplate);
+                            var article = articleTemplate(data);
+                            $('.modal .modal-content').html(article);
+                            //$('body').modalmanager('loading');
+                            setTimeout(function () {
+                                $('.modal').modal('show');
+                            }, 500);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus);
+                            isScialRequestSent = false;
+                        },
+                        beforeSend: function (jqXHR, settings) {
+                            isScialRequestSent = true;
+                        },
+                        complete: function (jqXHR, textStatus) {
+                            isScialRequestSent = false;
+                        }
+                    });
+                }
+            });
+        };
         
+        bindSocialPostPopup();
+
+
         function initSwap() {
             initDroppable();
             initDraggable();
@@ -247,11 +318,17 @@ HomeController.Listing = (function ($) {
             e.preventDefault();
 
             var btnObj = $(this);
-            
+            var stij = '#'+ btnObj.data('container');
+            console.log(stij);
+            var container = $(stij);
+            console.log(btnObj.data('container'));
+            console.log(container);
+
+
             $.fn.Ajax_LoadBlogArticles({
                 onSuccess: function(data, textStatus, jqXHR){
                     if (data.success == 1) {
-                        var container = $('.ajaxArticles');
+                        // var container = $('.ajaxArticles');
                         container.data('existing-nonpinned-count', data.existingNonPinnedCount);
                         var templateClass = container.data('containerclass');
 
@@ -265,6 +342,7 @@ HomeController.Listing = (function ($) {
                             data.articles[i]['pinText'] = (data.articles[i].isPinned == 1) ? 'Un-Pin' : 'Pin';
                             data.articles[i]['promotedClass'] = (data.articles[i].isPromoted == 1)? 'ad_icon' : '';
                             data.articles[i]['hasArticleMediaClass'] = (data.articles[i].hasMedia == 1)? 'withImage__content' : 'without__image';
+                            data.articles[i]['readingTime']= renderReadingTime(data.articles[i].readingTime);
                             data.articles[i]['blogClass']= '';
                             if(data.articles[i].blog['id'] !== null) {
                                data.articles[i]['blogClass']= 'card--blog_'+data.articles[i].blog['id'];

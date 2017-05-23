@@ -19,9 +19,34 @@
 {% set articleCount = 0 %}
 
 {# {% set recentArticles = _Article.getRecentArticles({'limit': 5}) %} #}
-{% set popularArticles = _Article.getPopularArticles({ limit: 4, sortBy: 'VIEWS' }) %}
+{# {% set popularArticles = _Article.getPopularArticles({ limit: 4, sortBy: 'VIEWS' }) %} #}
 
+    {% set sections =  {
+            "social": {
+                "feed": "",
+                "link": "",
+                "limit": 10
+            }, 
+            "gallery": {
+                "feed": "",
+                "link": "",
+                "limit": 8
+            }
+        }
+    %}
 
+    {% for key, value in sections %}
+        {% for blog in networkData.networkBlogs %}
+            {% if blog.title | lower == key %}
+                {% set sections = sections | merge({
+                    (key) : {
+                        'feed': _Blog.getBlogFeed({'limit': value['limit'], 'offset': 0, 'blogid':blog.guid}),
+                        'link' : blog.link
+                        }
+                    }) %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
 
 
     <main id="main" class="site-main" role="main">
@@ -62,6 +87,16 @@
                                 {% endif %}
                             {% endfor %}
                          </div><!--card-group-->
+                    
+
+                        {{ this.render('partials/ajaxarticles.twig', {
+                            limit: limit, 
+                            non_pinned: articlesArr.existingNonPinnedCount, 
+                            articles: sections['social'].feed,
+                            card_style: "col-sm-4 card-sm",
+                            container:"mainAjaxArticles"
+                        }) | raw }}
+
                     </div><!-- .col-sm-8-->
 
 
@@ -71,12 +106,12 @@
                             <div class="col-sm-12 sidebar-top">
                                 <div class="row">
                                     <header>
-                                        <h3>Popular Stories</h3>
+                                        <h3>Social</h3>
                                     </header>
-                                    {% if popularArticles|length > 0 %}
+                                    {% if sections['social'].feed.articles|length > 0 %}
                                         {% for i in 0..4 %}
-                                            {% if popularArticles[i] %}
-                                                {{this.render('partials/_single-article.twig', {article: popularArticles[i], containerClass: 'col-sm-12 s100x110', swap: 'false', isArticle: 'true'}) | raw}}
+                                            {% if sections['social'].feed.articles[i] %}
+                                                {{this.render('partials/_single-article.twig', {article: sections['social'].feed.articles[i], containerClass: 'col-sm-12 s100x110', swap: 'false'}) | raw}}
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
@@ -92,26 +127,60 @@
                                         {% endif %}
                                     {% endfor %}
                                 </div>
-                            </div>
+                            </div> 
                         </section><!-- .sidebar-news -->
+
+
+
+
+
                     </div><!-- .col-sm-4-->
+
                     <div style="clear:both"></div>
+
+
+
+
                 </div><!-- .row-->
 
+
+                {% if sections['gallery'].feed.articles|length > 0 %}
                 <div class="row index-bottom">
                     <div class="col-sm-12">
                         <div class="row">
-                            <h3>The Solutions</h3>
+                            <h3>The Gallery</h3>
 
                             {% for i in 0..3 %}
-                                {% if articles[articleCount] %}                                                                
-                                    {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-6 col-md-3 card-sm'}) | raw}}
-                                    {% set articleCount = articleCount + 1 %}
+                                {% if sections['gallery'].feed.articles[i] %}                                                                
+                                    {{this.render('partials/_single-article.twig', {article: sections['gallery'].feed.articles[i], swap: 'false', containerClass: 'col-sm-6 col-md-3 card-sm'}) | raw}}
                                 {% endif %}
                             {% endfor %}
                         </div>
+
+                        {% if sections['gallery'].feed.articles|length > 4 %}
+                            <div class="row">
+                                {% for i in 4..7 %}
+                                    {% if sections['gallery'].feed.articles[i] %}                                                                
+                                        {{this.render('partials/_single-article.twig', {article: sections['gallery'].feed.articles[i], swap: 'false', containerClass: 'col-sm-6 col-md-3 card-sm'}) | raw}}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
+
+
+
+
+                {{ this.render('partials/ajaxarticles.twig', {
+                    limit: sections['gallery'].limit,
+                    non_pinned: articlesArr.existingNonPinnedCount, 
+                    articles: sections['gallery'].feed,
+                    card_style: "col-sm-3 card-sm",
+                    container:"galleryAjaxArticles"
+                }) | raw }}
+
+                {% endif %}
 
         </section><!-- .home-page-content-->
 
