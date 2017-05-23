@@ -10559,6 +10559,58 @@ body.screen {
   font-size: inherit !important; }
 
 /* //End Content box breakup css */
+.page.page-speakers2 p, .page.page-speakers2 li {
+  font-size: 1.7rem;
+  font-weight: 300;
+  line-height: 34px; }
+
+.page.page-speakers2 p {
+  margin-bottom: 20px; }
+
+.page.page-speakers2 h3.mainhead {
+  font-size: 5.6rem;
+  text-align: center;
+  border-bottom: 1px solid #d2d2d2;
+  padding-bottom: 100px;
+  margin: 100px 0; }
+
+.page.page-speakers2 .speaker-photo {
+  text-align: center; }
+
+.page.page-speakers2 .speaker, .page.page-speakers2 .diversity {
+  margin-top: 60px;
+  border-bottom: 1px solid #d2d2d2;
+  padding-bottom: 60px; }
+  .page.page-speakers2 .speaker h1, .page.page-speakers2 .diversity h1 {
+    font-weight: 300;
+    font-size: 3.7rem;
+    color: #006699;
+    margin-bottom: 15px; }
+  .page.page-speakers2 .speaker h3, .page.page-speakers2 .diversity h3 {
+    font-weight: 300;
+    color: #111111;
+    font-size: 2.7rem; }
+  .page.page-speakers2 .speaker h4, .page.page-speakers2 .diversity h4 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 34px; }
+
+.page.page-speakers2 .diversity {
+  border: none; }
+  .page.page-speakers2 .diversity h1 {
+    color: black; }
+
+.page.page-speakers2 .diversity-head > h1 {
+  margin-top: 60px;
+  font-weight: 700;
+  font-size: 3.6rem;
+  margin-bottom: 24px; }
+
+.page.page-speakers2 .diversity-head > p {
+  font-size: 2.4rem;
+  line-height: 48px; }
+
 .card {
   display: block; }
   .card:hover {
@@ -11731,7 +11783,7 @@ body.screen {
         order: 1;
         font-size: 1.1rem;
         font-weight: bold;
-        color: #39bcdc;
+        color: #fff;
         display: block;
         line-height: 1;
         margin-bottom: 4px; }
@@ -11782,7 +11834,7 @@ body.screen {
             padding-top: 0; } }
         .card-lg a.card > article > .content > .author p {
           font-size: 1.2rem;
-          color: #979797; }
+          color: #fff; }
       .card-lg a.card > article > .content > time {
         padding: 0;
         font-style: italic;
