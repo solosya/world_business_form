@@ -191,10 +191,33 @@
             &.twitter,
             &.instagram {
                 .content {
-                    padding-top:87px;
+                    padding-top:40px;
                 }
             }
+            &.instagram {
+                .content {
+                    height: 100%;
 
+                    .category {
+                        visibility:hidden;
+                    }
+                    >p {
+                        display:none;
+                    }
+                    >time {
+                        display:none;
+                    }
+                    .author {
+                        position:absolute;
+                        bottom:20px;
+                        display:block;
+                        >p {
+                            color:#dadada;
+                            display:block;
+                        }
+                    }
+                }
+            }
 
             &.facebook.withImage__content,
             &.twitter.withImage__content,
@@ -223,7 +246,7 @@
                     }
                 }
                 .content {
-                    padding-top:87px;
+                    padding-top:40px;
                     background:transparent;
                     z-index:1;
                     @media screen and (max-width: $mobile-break){
@@ -239,6 +262,14 @@
                         }
 
 
+                    }
+                }
+            }
+
+            &.instagram.withImage__content {
+                figure {
+                    &:after{
+                        display:none;
                     }
                 }
             }
@@ -259,6 +290,7 @@
                     > p {   
                         min-height:85px;
                         color:white;
+                        margin-top: 30px;
                     }
                 }
             }
@@ -270,6 +302,7 @@
         &.facebook{
             .category {
                 &:before {
+                    visibility: visible;
                     content: '';
                     width:25px;
                     height:25px;
@@ -292,6 +325,7 @@
         &.twitter{
             .category {
                 &:before {
+                    visibility: visible;
                     content: '';
                     width:25px;
                     height:25px;
@@ -312,6 +346,7 @@
         &.instagram{
             .category {
                 &:before {
+                    visibility: visible;
                     content: '';
                     width:25px;
                     height:25px;

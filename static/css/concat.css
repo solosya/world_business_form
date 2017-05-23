@@ -11255,7 +11255,22 @@ body.screen {
         display: block;
         font-size: 1.8em; }
       .card-sm a.card.social.facebook .content, .card-sm a.card.social.twitter .content, .card-sm a.card.social.instagram .content {
-        padding-top: 87px; }
+        padding-top: 40px; }
+      .card-sm a.card.social.instagram .content {
+        height: 100%; }
+        .card-sm a.card.social.instagram .content .category {
+          visibility: hidden; }
+        .card-sm a.card.social.instagram .content > p {
+          display: none; }
+        .card-sm a.card.social.instagram .content > time {
+          display: none; }
+        .card-sm a.card.social.instagram .content .author {
+          position: absolute;
+          bottom: 20px;
+          display: block; }
+          .card-sm a.card.social.instagram .content .author > p {
+            color: #dadada;
+            display: block; }
       .card-sm a.card.social.facebook.withImage__content figure, .card-sm a.card.social.twitter.withImage__content figure, .card-sm a.card.social.instagram.withImage__content figure {
         position: absolute;
         left: 0;
@@ -11275,7 +11290,7 @@ body.screen {
           top: 0;
           left: 0; }
       .card-sm a.card.social.facebook.withImage__content .content, .card-sm a.card.social.twitter.withImage__content .content, .card-sm a.card.social.instagram.withImage__content .content {
-        padding-top: 87px;
+        padding-top: 40px;
         background: transparent;
         z-index: 1; }
         @media screen and (max-width: 620px) {
@@ -11287,6 +11302,8 @@ body.screen {
           @media screen and (max-width: 620px) {
             .card-sm a.card.social.facebook.withImage__content .content > p, .card-sm a.card.social.twitter.withImage__content .content > p, .card-sm a.card.social.instagram.withImage__content .content > p {
               min-height: 60px; } }
+      .card-sm a.card.social.instagram.withImage__content figure:after {
+        display: none; }
       .card-sm a.card.social.without__image .content {
         height: 333px;
         background: transparent; }
@@ -11296,8 +11313,10 @@ body.screen {
             padding-top: 20px; } }
         .card-sm a.card.social.without__image .content > p {
           min-height: 85px;
-          color: white; }
+          color: white;
+          margin-top: 30px; }
     .card-sm a.card.facebook .category:before {
+      visibility: visible;
       content: '';
       width: 25px;
       height: 25px;
@@ -11311,6 +11330,7 @@ body.screen {
         .card-sm a.card.facebook .category:before {
           display: none; } }
     .card-sm a.card.twitter .category:before {
+      visibility: visible;
       content: '';
       width: 25px;
       height: 25px;
@@ -11324,6 +11344,7 @@ body.screen {
         .card-sm a.card.twitter .category:before {
           display: none; } }
     .card-sm a.card.instagram .category:before {
+      visibility: visible;
       content: '';
       width: 25px;
       height: 25px;
