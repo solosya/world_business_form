@@ -10518,55 +10518,55 @@ body.screen {
   border-bottom: 1px solid #dadada;
   padding-bottom: 60px; }
 
-.page.page-speakers2 p, .page.page-speakers2 li {
+.page.page-speakers p, .page.page-speakers li {
   font-size: 1.7rem;
   font-weight: 300;
   line-height: 34px; }
 
-.page.page-speakers2 p {
+.page.page-speakers p {
   margin-bottom: 20px; }
 
-.page.page-speakers2 h3.mainhead {
+.page.page-speakers h3.mainhead {
   font-size: 5.6rem;
   text-align: center;
   border-bottom: 1px solid #d2d2d2;
   padding-bottom: 100px; }
 
-.page.page-speakers2 .speaker-photo {
+.page.page-speakers .speaker-photo {
   text-align: center; }
 
-.page.page-speakers2 .speaker, .page.page-speakers2 .diversity {
+.page.page-speakers .speaker, .page.page-speakers .diversity {
   margin-top: 60px;
   border-bottom: 1px solid #d2d2d2;
   padding-bottom: 60px; }
-  .page.page-speakers2 .speaker h1, .page.page-speakers2 .diversity h1 {
+  .page.page-speakers .speaker h1, .page.page-speakers .diversity h1 {
     font-weight: 300;
     font-size: 3.7rem;
     color: #006699;
     margin-bottom: 15px; }
-  .page.page-speakers2 .speaker h3, .page.page-speakers2 .diversity h3 {
+  .page.page-speakers .speaker h3, .page.page-speakers .diversity h3 {
     font-weight: 300;
     color: #111111;
     font-size: 2.7rem; }
-  .page.page-speakers2 .speaker h4, .page.page-speakers2 .diversity h4 {
+  .page.page-speakers .speaker h4, .page.page-speakers .diversity h4 {
     margin-bottom: 20px;
     font-size: 2.5rem;
     font-weight: 300;
     line-height: 34px; }
 
-.page.page-speakers2 .diversity {
+.page.page-speakers .diversity {
   border: none; }
-  .page.page-speakers2 .diversity h1 {
+  .page.page-speakers .diversity h1 {
     color: black; }
 
-.page.page-speakers2 .diversity-head > h1 {
+.page.page-speakers .diversity-head > h1 {
   color: black;
   margin-top: 60px;
   font-weight: 700;
   font-size: 3.6rem;
   margin-bottom: 24px; }
 
-.page.page-speakers2 .diversity-head > p {
+.page.page-speakers .diversity-head > p {
   font-size: 2.4rem;
   line-height: 48px; }
 
