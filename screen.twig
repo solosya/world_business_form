@@ -7,7 +7,7 @@
 {{this.registerJs("HomeController.listing();")}}
 {{this.registerJs("HomeController.blog();")}}
 
-{% set limit = 20 %}
+{% set limit = 5 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -23,10 +23,21 @@
 
 <main id="main" class="full-height" role="main">
     <div class="main-screen full-height flex_col">
-
         <div class="row flex1">
             <div class="col-sm-12 full-height">
-                <div class="row half-height top-row">
+
+                {{ this.render('partials/ajaxarticles.twig', {
+                    limit: limit, 
+                    non_pinned: articlesArr.existingNonPinnedCount, 
+                    articles: articlesArr.articles,
+                    card_style: "col-sm-4 card-sm",
+                    container:"screenArticles",
+                    layout:"screenArticles_1"
+                }) | raw }}
+
+
+
+{#                 <div class="row half-height top-row">
                     {{this.render('partials/_single-article.twig', {article: articles[0], position: (i+1), containerClass: 'screen-card card-lg-screen col-sm-6', network:networkData}) | raw}}
                     
                     {% for i in 1..2 %}
@@ -43,7 +54,7 @@
                             {{this.render('partials/_single-article.twig', {article: articles[i], position: (i+1), containerClass: 'screen-card card-sm-screen col-sm-3', network:networkData}) | raw}}
                         {% endif %}
                     {% endfor %}
-                </div>
+                </div> #}
             </div>
         </div>
 
@@ -53,3 +64,7 @@
 
     </div>
 </main>
+
+<script>
+    {{this.registerJs("HomeController.screen();")}}
+</script>

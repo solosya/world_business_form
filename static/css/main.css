@@ -10445,6 +10445,8 @@ body.screen {
     padding: 25px; }
   body.screen a.card {
     margin: 0; }
+  body.screen a.loadMoreArticles {
+    display: none; }
 
 .top-row {
   padding-bottom: 13px; }

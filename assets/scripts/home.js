@@ -5,6 +5,9 @@ var HomeController = (function ($) {
         },
         blog: function() {
             HomeController.Blog.init();
+        },
+        screen: function() {
+            $('.loadMoreArticles').trigger('click');
         }
     };
 }(jQuery));
@@ -106,21 +109,19 @@ HomeController.Listing = (function ($) {
             var isScialRequestSent = false;
             $(document).on('click', 'a.social.card', function (e) {
                 e.preventDefault();
-                console.log($(this));
+
                 var blogGuid = $(this).data('blog-guid');
                 var postGuid = $(this).data('guid');
 
                 if (!isScialRequestSent) {
                     var csrfToken = $('meta[name="csrf-token"]').attr("content");
-                    console.log(_appJsConfig.appHostName + '/api/social/get-social-post');
-                    console.log({blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken});
+
                     $.ajax({
                         type: 'POST',
                         url: _appJsConfig.appHostName + '/api/social/get-social-post',
                         dataType: 'json',
                         data: {blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken},
                         success: function (data, textStatus, jqXHR) {
-                            console.log(data);
                             data.hasMediaVideo = false;
                             if (data.media['type'] === 'video') {
                                 data.hasMediaVideo = true;
@@ -142,7 +143,6 @@ HomeController.Listing = (function ($) {
                             }, 500);
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
-                            console.log(textStatus);
                             isScialRequestSent = false;
                         },
                         beforeSend: function (jqXHR, settings) {
@@ -319,34 +319,52 @@ HomeController.Listing = (function ($) {
 
             var btnObj = $(this);
             var stij = '#'+ btnObj.data('container');
-            console.log(stij);
             var container = $(stij);
-            console.log(btnObj.data('container'));
-            console.log(container);
+            var layout = btnObj.data('layout') || null;
 
-
-            $.fn.Ajax_LoadBlogArticles({
+            var options = {
                 onSuccess: function(data, textStatus, jqXHR){
                     if (data.success == 1) {
                         // var container = $('.ajaxArticles');
                         container.data('existing-nonpinned-count', data.existingNonPinnedCount);
                         var templateClass = container.data('containerclass');
 
-                        if (data.articles.length < 20) {
-                            $(btnObj).css('display', 'none');
+                        // if (data.articles.length < 20) {
+                        //     $(btnObj).css('display', 'none');
+                        // }
+                        var html = '';
+
+                        if (layout) {
+                            html += Handlebars.compile(window[layout])();
+                            var myRe = /{¡{content:([0-9]+-[0-9]+)}¡}/g;
+                            console.log(html);
+                            var slots = myRe.exec(html);
+                            console.log(slots);
                         }
 
+
+
+
                         for (var i in data.articles) {
+
+
+                            // data.articles[i]['containerClass'] = 'col-sm-4 card-sm';
+                            // if ((i%5 === 0 || i%5 === 1 ) && i%2 == 1) {
+                            //     data.articles[i]['containerClass'] = 'col-sm-8 card-md';
+                            // }
+
+
+
                             data.articles[i]['containerClass'] = templateClass;
                             data.articles[i]['pinTitle'] = (data.articles[i].isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
                             data.articles[i]['pinText'] = (data.articles[i].isPinned == 1) ? 'Un-Pin' : 'Pin';
-                            data.articles[i]['promotedClass'] = (data.articles[i].isPromoted == 1)? 'ad_icon' : '';
+                            // data.articles[i]['promotedClass'] = (data.articles[i].isPromoted == 1)? 'ad_icon' : '';
                             data.articles[i]['hasArticleMediaClass'] = (data.articles[i].hasMedia == 1)? 'withImage__content' : 'without__image';
                             data.articles[i]['readingTime']= renderReadingTime(data.articles[i].readingTime);
                             data.articles[i]['blogClass']= '';
-                            if(data.articles[i].blog['id'] !== null) {
-                               data.articles[i]['blogClass']= 'card--blog_'+data.articles[i].blog['id'];
-                            } 
+                            // if(data.articles[i].blog['id'] !== null) {
+                            //    data.articles[i]['blogClass']= 'card--blog_'+data.articles[i].blog['id'];
+                            // } 
                             
                                                         
                             var ImageUrl = $.image({media:data.articles[i]['featuredMedia'], mediaOptions:{width: 500 ,height:350, crop: 'limit'} });
@@ -362,9 +380,10 @@ HomeController.Listing = (function ($) {
                             } else {
                                 articleTemplate = Handlebars.compile(systemCardTemplate);
                             }
-                            var article = articleTemplate(data.articles[i]);
-                            container.append(article);
+                            html +=  articleTemplate(data.articles[i]);
                         }
+
+                        container.append(html);
 
                         $(".card p, .card h1").dotdotdot();
                         
@@ -388,7 +407,20 @@ HomeController.Listing = (function ($) {
                 onComplete: function(jqXHR, textStatus) {
                     $(btnObj).html("Load more");
                 }
-            });
+            };
+
+
+            console.log(btnObj.data('limit'));
+            if ( btnObj.data('limit') ) {
+                options['limit'] = btnObj.data('limit');
+            }
+            if ( btnObj.data('container') ) {
+                options['containerClass'] = btnObj.data('container');
+            }
+
+            console.log(options);
+
+            $.fn.Ajax_LoadBlogArticles(options);
         });
     };
     return {
