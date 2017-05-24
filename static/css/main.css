@@ -10612,7 +10612,7 @@ body.screen {
 
 .page-livestream #streamform {
   min-height: 360px;
-  margin-bottom: 20px; }
+  margin-bottom: 40px; }
   .page-livestream #streamform :first-child {
     margin-top: 40px; }
   .page-livestream #streamform .forminput {
