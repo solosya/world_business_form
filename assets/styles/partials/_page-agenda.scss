@@ -1,0 +1,85 @@
+.page {
+    &.page-agenda {
+        h1 {
+            font-size: rem(48);
+            // margin-bottom:70px;
+
+        }
+
+        h1.dayheader {
+            margin:70px 0;
+            font-size:rem(32);
+        }
+
+        h1.timeheader {
+            font-size:rem(18);
+            font-weight:300;
+            margin:0;
+            letter-spacing:3px;
+        }
+
+
+        .speaker {
+            margin-bottom: 80px;
+            padding-bottom:80px;
+            margin-top: 80px;
+            padding-top:60px;
+            border-bottom: 1px solid #dadada;
+            border-top: 1px solid #dadada;
+
+            h1 {
+                font-size:rem(24);
+                font-weight:300;
+                margin-bottom:20px;
+            }
+
+            p {
+                margin-bottom:20px;
+                font-size:rem(17);
+            }
+        }
+
+        .diversity {
+            h1 {
+                font-size:rem(24);
+                font-weight:300;
+                margin-bottom:20px;
+            }
+        }
+
+        .panel {
+
+            margin:80px 0;
+            padding-bottom:60px;
+            border-bottom:1px solid #dadada;
+
+            h1 {
+                font-size:rem(24);
+                font-weight:300;
+                margin-bottom:20px;
+            }
+            p {
+                margin-bottom:20px;
+                font-size:rem(17);
+            }
+
+        }
+
+        .disclaimer {
+            margin:80px 0;
+
+            h1 {
+                font-size:rem(16);
+                letter-spacing:3px;
+                word-spacing:5px;
+            }
+        }
+
+        .border-bottom{
+            border-bottom:1px solid #dadada;
+            padding-bottom:60px;
+        }
+
+    }
+}
+
