@@ -365,6 +365,29 @@
 
 
 .sidebar-news {
+
+
+    @media screen and (max-width: $sm-break){
+        .card-sm{
+            a.card {
+                &.without__image {
+                    > article {
+                        > .content{
+                            > p {   
+                                min-height:185px;
+                                font-size:rem(30);
+                                margin-top: 0;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+
+
     @media screen and (max-width: $mobile-break){
         .card-sm{
             a.card {

@@ -11497,6 +11497,12 @@ body.screen {
         .card-sm a.card.instagram .category:before {
           display: none; } }
 
+@media screen and (max-width: 768px) {
+  .sidebar-news .card-sm a.card.without__image > article > .content > p {
+    min-height: 185px;
+    font-size: 3rem;
+    margin-top: 0; } }
+
 @media screen and (max-width: 620px) {
   .sidebar-news .card-sm a.card.without__image > article > .content > p {
     min-height: 50px;
