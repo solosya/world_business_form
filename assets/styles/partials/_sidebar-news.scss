@@ -127,9 +127,28 @@
                 .content {
                     >p {
                         display:block;
+
+                        font-weight:normal;
+                        font-size: em(16);
+                        height: 64px;
+                        line-height:1.3em;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        
+                        @media screen and (max-width: $mobile-break){
+                            height: 60px;
+                        }
                     }
                 }
             }
+            
         }
+        // &.without__image {
+
+        //     > p {   
+        //         min-height:50px;
+        //         margin-top: 0;
+        //     }
+        // }
     }
 }

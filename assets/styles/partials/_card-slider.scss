@@ -95,8 +95,8 @@
             }
 
                             // Not under:                     Not over:
-            @media screen and (min-width:$mobile-break) and (max-width:$mmd-break){
-                padding: 100px 15px 15px 15px;
+            @media screen and (min-width:$mobile-break) and (max-width:$sm-break){
+                padding: 170px 15px 15px 15px;
             }
 
 
@@ -123,7 +123,7 @@
                 @media screen and (max-width: $mobile-break){
                     font-family: $font-family-sans-serif;
                     font-size: em(10);
-                    margin-bottom: 0;
+                    margin-bottom: 35px;
 
                 }
             }
@@ -140,7 +140,7 @@
                 max-height: 150px;
 
                 @media screen and (max-width: $md-break){
-                   font-size: em(24);
+                   font-size: em(40);
                 }
 
                 @media screen and (max-width: $sm-break){
@@ -148,10 +148,17 @@
                      border: 0;
                 }
 
+                // @media screen and (max-width: $sm-break-down){
+                //      font-size: em(35);
+                //      border: 0;
+                // }
+
+                
+
                 @media screen and (max-width: $mobile-break){
                     min-height:66px;
                     max-height:90px;
-                    font-size: rem(24);
+                    font-size: rem(30);
                     margin-bottom:0;
                 }
 

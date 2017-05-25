@@ -7209,9 +7209,13 @@ div.fancybox-title {
   text-align: center;
   line-height: 35px;
   color: #39bddc; }
-  @media screen and (max-width: 768px) {
+  @media screen and (min-width: 992px) {
     .loadMoreArticles {
-      margin-top: 40px; } }
+      position: relative;
+      top: -20px; } }
+  @media screen and (max-width: 992px) {
+    .loadMoreArticles {
+      margin: 0 auto 40px auto; } }
 
 button.bootbox-close-button {
   float: right;
@@ -7270,6 +7274,38 @@ span.leadsentence {
   font-family: "adelle-sans", Helvetica, Arial, sans-serif;
   font-size: 1.2em;
   color: #6c6c6c; }
+
+.gutter-60.row {
+  margin-right: -30px;
+  margin-left: -30px; }
+
+.gutter-60 > [class^="col-"], .gutter-20 > [class^=" col-"] {
+  padding-right: 30px;
+  padding-left: 30px; }
+
+.gutter-20.row {
+  margin-right: -10px;
+  margin-left: -10px; }
+
+.gutter-20 > [class^="col-"], .gutter-20 > [class^=" col-"] {
+  padding-right: 10px;
+  padding-left: 10px; }
+
+.gutter-10.row {
+  margin-right: -5px;
+  margin-left: -5px; }
+
+.gutter-10 > [class^="col-"], .gutter-10 > [class^=" col-"] {
+  padding-right: 5px;
+  padding-left: 5px; }
+
+.gutter-0.row {
+  margin-right: 0;
+  margin-left: 0; }
+
+.gutter-0 > [class^="col-"], .gutter-0 > [class^=" col-"] {
+  padding-right: 0;
+  padding-left: 0; }
 
 .flex_col {
   -webkit-flex-direction: column;
@@ -7640,7 +7676,16 @@ span.leadsentence {
       border: 0;
       line-height: 1; }
   .sidebar-news a.card.social article .content > p {
-    display: block; }
+    display: block;
+    font-weight: normal;
+    font-size: 1.6em;
+    height: 64px;
+    line-height: 1.3em;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+    @media screen and (max-width: 620px) {
+      .sidebar-news a.card.social article .content > p {
+        height: 60px; } }
 
 .most-popular > h2 {
   font-size: 3em;
@@ -9166,7 +9211,7 @@ button.swiper-pagination-bullet {
   content: "";
   position: absolute;
   top: 0;
-  bottom: 46px;
+  bottom: 80px;
   right: -31px;
   width: 1px;
   background: #979797; }
@@ -10640,7 +10685,8 @@ body.screen {
   background-color: #fda040;
   margin-bottom: 5px;
   margin-top: 40px;
-  line-height: 40px; }
+  line-height: 40px;
+  cursor: pointer; }
 
 .card {
   display: block; }
@@ -10906,9 +10952,9 @@ body.screen {
       @media screen and (max-width: 1600px) {
         .featured-slider a.card .content {
           padding: 165px 15px 5px 15px; } }
-      @media screen and (min-width: 620px) and (max-width: 992px) {
+      @media screen and (min-width: 620px) and (max-width: 768px) {
         .featured-slider a.card .content {
-          padding: 100px 15px 15px 15px; } }
+          padding: 170px 15px 15px 15px; } }
       @media screen and (max-width: 620px) {
         .featured-slider a.card .content {
           width: 100%;
@@ -10932,7 +10978,7 @@ body.screen {
           .featured-slider a.card .content .category {
             font-family: "adelle-sans", Helvetica, Arial, sans-serif;
             font-size: 1em;
-            margin-bottom: 0; } }
+            margin-bottom: 35px; } }
       .featured-slider a.card .content h2 {
         order: 3;
         font-size: 4.6rem;
@@ -10944,7 +10990,7 @@ body.screen {
         max-height: 150px; }
         @media screen and (max-width: 1200px) {
           .featured-slider a.card .content h2 {
-            font-size: 2.4em; } }
+            font-size: 4em; } }
         @media screen and (max-width: 768px) {
           .featured-slider a.card .content h2 {
             font-size: 3.5em;
@@ -10953,7 +10999,7 @@ body.screen {
           .featured-slider a.card .content h2 {
             min-height: 66px;
             max-height: 90px;
-            font-size: 2.4rem;
+            font-size: 3rem;
             margin-bottom: 0; } }
       .featured-slider a.card .content > p {
         order: 4;
@@ -11085,7 +11131,7 @@ body.screen {
       background: white; }
       @media screen and (max-width: 620px) {
         .card-rec a.card > article > .content {
-          padding: 14px 28px 0 14px; } }
+          padding: 11px 28px 10px 14px; } }
       .card-rec a.card > article > .content > .category {
         font-size: 1.1em;
         font-weight: bold;
@@ -11147,8 +11193,13 @@ body.screen {
       .card-rec a.card.social .content > p {
         display: block;
         border: none;
-        height: 80px;
-        padding: 0; } }
+        font-size: 1.8rem;
+        font-weight: normal;
+        height: 48px;
+        line-height: 1.3;
+        padding: 0;
+        margin-bottom: 10px;
+        margin-top: 10px; } }
   .card-rec a.card.social.without__image .content {
     background: transparent; }
     .card-rec a.card.social.without__image .content .author p {
@@ -11176,9 +11227,20 @@ body.screen {
       color: #979797; }
   .card-rec a.card.social.without__content .content {
     z-index: 1; }
+  @media screen and (max-width: 620px) {
+    .card-rec a.card.youtube .content .category, .card-rec a.card.vimeo .content .category {
+      font-size: 1rem;
+      margin-bottom: 5px; } }
   .card-rec a.card.youtube .content > p, .card-rec a.card.vimeo .content > p {
     color: black;
     height: 127px; }
+    @media screen and (max-width: 620px) {
+      .card-rec a.card.youtube .content > p, .card-rec a.card.vimeo .content > p {
+        height: 65px;
+        font-size: 1.6rem;
+        font-weight: bold;
+        margin-bottom: 0;
+        margin-top: 0; } }
   .card-rec a.card.facebook .category:before {
     content: '';
     width: 25px;
@@ -11440,6 +11502,33 @@ body.screen {
       @media screen and (max-width: 620px) {
         .card-sm a.card.instagram .category:before {
           display: none; } }
+
+@media screen and (max-width: 768px) {
+  .sidebar-news .card-sm a.card.without__image > article > .content > p {
+    min-height: 185px;
+    font-size: 3rem;
+    margin-top: 0; } }
+
+@media screen and (max-width: 620px) {
+  .sidebar-news .card-sm a.card.without__image > article > .content > p {
+    font-size: 1.8rem;
+    min-height: 50px;
+    margin-top: 0; } }
+
+@media screen and (max-width: 620px) {
+  .index-bottom .card-sm {
+    margin-bottom: 20px; }
+    .index-bottom .card-sm a.card {
+      margin-left: 0;
+      margin-right: 0;
+      height: 240px; }
+      .index-bottom .card-sm a.card > article > figure {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 100%; } }
 
 .card-sm-screen {
   position: relative;
