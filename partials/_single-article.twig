@@ -2,6 +2,7 @@
 
 
 {% set imageSuppress = imageSuppress is defined and imageSuppress == 'true' ? 'true' : 'false'  %}
+{% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
 
 {% if article.articleId > 0 or (isArticle is defined and isArticle == 'true') %}
     {% set articleImg = '' %}
@@ -47,7 +48,6 @@
     
     {% set articleTitle =  quotes.smarten(titleTruncateLength is defined ? article.title | truncate(titleTruncateLength) : article.title)  %}
 
-    {% set swap = swap is defined and swap == 'false' ? '' : 'swap'  %}
     {% set figureClass =  article.featuredMedia['type'] == 'video' ? 'video' : '' %}
 
 
@@ -103,7 +103,7 @@
                 </div>
             </article>
 
-            {% if article.userHasBlogAccess == '1' %}
+            {% if article.userHasBlogAccess == '1' and swap != '' %}
             <div class="btn_overlay articleMenu">
                 <button title="Hide" 
                         data-guid="{{article.guid}}" 
@@ -195,7 +195,7 @@
                 </div>
             </article>
 
-            {% if article.userHasBlogAccess == '1' %}
+            {% if article.userHasBlogAccess == '1' and swap != '' %}
             <div class="btn_overlay articleMenu">
                 <button title="Hide" data-guid="{{social.guid}}" class="btnhide social-tooltip HideBlogArticle" type="button" data-social="1">
                     <i class="fa fa-eye-slash"></i><span class="hide">Hide</span>

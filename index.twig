@@ -113,7 +113,7 @@
                                     {% if sections['social'].feed.articles|length > 0 %}
                                         {% for i in 0..3 %}
                                             {% if sections['social'].feed.articles[i] %}
-                                                {{this.render('partials/_single-article.twig', {article: sections['social'].feed.articles[i], containerClass: 'col-xs-12 col-sm-6 col-md-12 s100x110', swap: 'false'}) | raw}}
+                                                {{this.render('partials/_single-article.twig', {article: sections['social'].feed.articles[i], swap: 'false', containerClass: 'col-xs-12 col-sm-6 col-md-12 s100x110', swap: 'false'}) | raw}}
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
@@ -177,7 +177,7 @@
                     non_pinned: articlesArr.existingNonPinnedCount, 
                     articles: sections['gallery'].feed,
                     card_style: "col-sm-3 card-sm",
-                    container:"galleryAjaxArticles"
+                    container:"galleryAjaxArticles",
                 }) | raw }}
 
                 {% endif %}
