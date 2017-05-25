@@ -25,7 +25,7 @@
             "social": {
                 "feed": "",
                 "link": "",
-                "limit": 10
+                "limit": 4
             }, 
             "gallery": {
                 "feed": "",
@@ -111,7 +111,7 @@
                                         <h3>Social</h3>
                                     </header>
                                     {% if sections['social'].feed.articles|length > 0 %}
-                                        {% for i in 0..4 %}
+                                        {% for i in 0..3 %}
                                             {% if sections['social'].feed.articles[i] %}
                                                 {{this.render('partials/_single-article.twig', {article: sections['social'].feed.articles[i], containerClass: 'col-xs-12 col-sm-6 col-md-12 s100x110', swap: 'false'}) | raw}}
                                             {% endif %}

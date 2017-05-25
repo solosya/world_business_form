@@ -7209,9 +7209,13 @@ div.fancybox-title {
   text-align: center;
   line-height: 35px;
   color: #39bddc; }
-  @media screen and (max-width: 768px) {
+  @media screen and (min-width: 992px) {
     .loadMoreArticles {
-      margin-top: 40px; } }
+      position: relative;
+      top: -20px; } }
+  @media screen and (max-width: 992px) {
+    .loadMoreArticles {
+      margin: 0 auto 40px auto; } }
 
 button.bootbox-close-button {
   float: right;
@@ -9207,7 +9211,7 @@ button.swiper-pagination-bullet {
   content: "";
   position: absolute;
   top: 0;
-  bottom: 110px;
+  bottom: 80px;
   right: -31px;
   width: 1px;
   background: #979797; }
@@ -11505,6 +11509,7 @@ body.screen {
 
 @media screen and (max-width: 620px) {
   .sidebar-news .card-sm a.card.without__image > article > .content > p {
+    font-size: 1.8rem;
     min-height: 50px;
     margin-top: 0; } }
 

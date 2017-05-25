@@ -52,9 +52,22 @@ div.fancybox-title {
     line-height: 35px;
     color: #39bddc;
 
-    @media screen and (max-width: $sm-break){
-        margin-top:40px;
+    @media screen and (min-width: $mmd-break){
+        position: relative;
+        top: -20px;
     }
+
+    @media screen and (max-width: $mmd-break){
+        margin: 0 auto 40px auto;
+    }
+
+    // @media screen and (max-width: $sm-break){
+    //     margin: 40px auto 40px auto;
+    // }
+
+    // @media screen and (max-width: $mobile-break){
+    //     margin: 0 auto 40px auto;
+    // }
 }
 
 
