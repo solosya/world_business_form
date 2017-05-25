@@ -5,9 +5,6 @@
         margin-bottom: 8px;
     }
 
-
-
-
     a.card {
 
         height:366px;
@@ -363,7 +360,38 @@
                 }
             }
         }      
+    }
+}
 
-        
+.index-bottom {
+    @media screen and (max-width: $mobile-break){
+
+        .card-sm{
+            
+            margin-bottom:20px;
+
+            a.card {
+
+                margin-left:0;
+                margin-right:0;
+                height:240px;
+
+
+                > article {
+
+                    > figure {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        height:100%;
+                        width: 100%;
+
+                    }
+                    > .content{
+                    }
+                }
+            }
+        }
     }
 }

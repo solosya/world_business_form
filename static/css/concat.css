@@ -7271,6 +7271,38 @@ span.leadsentence {
   font-size: 1.2em;
   color: #6c6c6c; }
 
+.gutter-60.row {
+  margin-right: -30px;
+  margin-left: -30px; }
+
+.gutter-60 > [class^="col-"], .gutter-20 > [class^=" col-"] {
+  padding-right: 30px;
+  padding-left: 30px; }
+
+.gutter-20.row {
+  margin-right: -10px;
+  margin-left: -10px; }
+
+.gutter-20 > [class^="col-"], .gutter-20 > [class^=" col-"] {
+  padding-right: 10px;
+  padding-left: 10px; }
+
+.gutter-10.row {
+  margin-right: -5px;
+  margin-left: -5px; }
+
+.gutter-10 > [class^="col-"], .gutter-10 > [class^=" col-"] {
+  padding-right: 5px;
+  padding-left: 5px; }
+
+.gutter-0.row {
+  margin-right: 0;
+  margin-left: 0; }
+
+.gutter-0 > [class^="col-"], .gutter-0 > [class^=" col-"] {
+  padding-right: 0;
+  padding-left: 0; }
+
 .flex_col {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -7640,7 +7672,16 @@ span.leadsentence {
       border: 0;
       line-height: 1; }
   .sidebar-news a.card.social article .content > p {
-    display: block; }
+    display: block;
+    font-weight: normal;
+    font-size: 1.6em;
+    height: 64px;
+    line-height: 1.3em;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+    @media screen and (max-width: 620px) {
+      .sidebar-news a.card.social article .content > p {
+        height: 60px; } }
 
 .most-popular > h2 {
   font-size: 3em;
@@ -10638,7 +10679,8 @@ body.screen {
   background-color: #fda040;
   margin-bottom: 5px;
   margin-top: 40px;
-  line-height: 40px; }
+  line-height: 40px;
+  cursor: pointer; }
 
 .card {
   display: block; }
@@ -11454,6 +11496,21 @@ body.screen {
       @media screen and (max-width: 620px) {
         .card-sm a.card.instagram .category:before {
           display: none; } }
+
+@media screen and (max-width: 620px) {
+  .index-bottom .card-sm {
+    margin-bottom: 20px; }
+    .index-bottom .card-sm a.card {
+      margin-left: 0;
+      margin-right: 0;
+      height: 240px; }
+      .index-bottom .card-sm a.card > article > figure {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 100%; } }
 
 .card-sm-screen {
   position: relative;

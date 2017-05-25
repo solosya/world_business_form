@@ -111,7 +111,7 @@
                                     {% if sections['social'].feed.articles|length > 0 %}
                                         {% for i in 0..4 %}
                                             {% if sections['social'].feed.articles[i] %}
-                                                {{this.render('partials/_single-article.twig', {article: sections['social'].feed.articles[i], containerClass: 'col-sm-12 s100x110', swap: 'false'}) | raw}}
+                                                {{this.render('partials/_single-article.twig', {article: sections['social'].feed.articles[i], containerClass: 'col-xs-12 col-sm-6 col-md-12 s100x110', swap: 'false'}) | raw}}
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
@@ -122,7 +122,7 @@
                                 <div class="row">
                                     {% for i in 0..1 %}
                                         {% if articles[articleCount] %}                                                                
-                                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-sm-12 card-sm'}) | raw}}
+                                            {{this.render('partials/_single-article.twig', {article: articles[articleCount], position: (articleCount+1), containerClass: 'col-xs-12 col-sm-6 col-md-12 card-sm'}) | raw}}
                                             {% set articleCount = articleCount + 1 %}
                                         {% endif %}
                                     {% endfor %}
@@ -139,29 +139,27 @@
                     <div style="clear:both"></div>
 
 
-
-
                 </div><!-- .row-->
 
 
                 {% if sections['gallery'].feed.articles|length > 0 %}
                 <div class="row index-bottom">
                     <div class="col-sm-12">
-                        <div class="row">
+                        <div class="row gutter-20">
                             <h3>The Gallery</h3>
 
                             {% for i in 0..3 %}
                                 {% if sections['gallery'].feed.articles[i] %}                                                                
-                                    {{this.render('partials/_single-article.twig', {article: sections['gallery'].feed.articles[i], swap: 'false', containerClass: 'col-sm-6 col-md-3 card-sm'}) | raw}}
+                                    {{this.render('partials/_single-article.twig', {article: sections['gallery'].feed.articles[i], swap: 'false', containerClass: 'col-xs-6 col-md-3 card-sm'}) | raw}}
                                 {% endif %}
                             {% endfor %}
                         </div>
 
                         {% if sections['gallery'].feed.articles|length > 4 %}
-                            <div class="row">
+                            <div class="row gutter-20">
                                 {% for i in 4..7 %}
                                     {% if sections['gallery'].feed.articles[i] %}                                                                
-                                        {{this.render('partials/_single-article.twig', {article: sections['gallery'].feed.articles[i], swap: 'false', containerClass: 'col-sm-6 col-md-3 card-sm'}) | raw}}
+                                        {{this.render('partials/_single-article.twig', {article: sections['gallery'].feed.articles[i], swap: 'false', containerClass: 'col-xs-6 col-md-3 card-sm'}) | raw}}
                                     {% endif %}
                                 {% endfor %}
                             </div>
