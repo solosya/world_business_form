@@ -27283,6 +27283,8 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             return;
         }
 
+        console.log(articleGuid, isSocial);
+
         var csrfToken = $('meta[name="csrf-token"]').attr("content");
         $.ajax({
             type: 'POST',
@@ -27290,6 +27292,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             dataType: 'json',
             data: {guid: articleGuid, social: isSocial, _csrf: csrfToken},
             success: function (data, textStatus, jqXHR) {
+                console.log(data);
                 var msg = (isSocial == 1) ? "Article deleted successfully" : "Article hidden successfully";
                 $.fn.General_ShowNotification({message: msg});
                 if (onSuccess && typeof onSuccess === 'function') {
@@ -27297,6 +27300,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus);
                 $.fn.General_ShowErrorMessage({message: jqXHR.responseText});
             },
             beforeSend: function (jqXHR, settings) {
