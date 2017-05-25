@@ -10946,9 +10946,9 @@ body.screen {
       @media screen and (max-width: 1600px) {
         .featured-slider a.card .content {
           padding: 165px 15px 5px 15px; } }
-      @media screen and (min-width: 620px) and (max-width: 992px) {
+      @media screen and (min-width: 620px) and (max-width: 768px) {
         .featured-slider a.card .content {
-          padding: 100px 15px 15px 15px; } }
+          padding: 170px 15px 15px 15px; } }
       @media screen and (max-width: 620px) {
         .featured-slider a.card .content {
           width: 100%;
@@ -10972,7 +10972,7 @@ body.screen {
           .featured-slider a.card .content .category {
             font-family: "adelle-sans", Helvetica, Arial, sans-serif;
             font-size: 1em;
-            margin-bottom: 0; } }
+            margin-bottom: 35px; } }
       .featured-slider a.card .content h2 {
         order: 3;
         font-size: 4.6rem;
@@ -10984,7 +10984,7 @@ body.screen {
         max-height: 150px; }
         @media screen and (max-width: 1200px) {
           .featured-slider a.card .content h2 {
-            font-size: 2.4em; } }
+            font-size: 4em; } }
         @media screen and (max-width: 768px) {
           .featured-slider a.card .content h2 {
             font-size: 3.5em;
@@ -10993,7 +10993,7 @@ body.screen {
           .featured-slider a.card .content h2 {
             min-height: 66px;
             max-height: 90px;
-            font-size: 2.4rem;
+            font-size: 3rem;
             margin-bottom: 0; } }
       .featured-slider a.card .content > p {
         order: 4;
