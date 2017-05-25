@@ -76,7 +76,10 @@ body.article {
 					margin-top: 0;
 					margin-bottom: 26px;
 					@media screen and (max-width: $sm-break) {
-						font-size: em(30);
+						font-size: rem(30);
+					}
+					@media screen and (max-width: $mobile-break) {
+						font-size: rem(24);
 					}
 				}
 				
@@ -90,8 +93,15 @@ body.article {
 
 
 				p.bio {
-					height:60px;
 					margin-bottom:20px;
+					font-size: rem(16);
+					font-style:italic;
+					line-height:1.29;
+
+					@media screen and (max-width: $mobile-break) {
+						font-size: rem(14);
+					}
+
 				}
 				
 				div.time_to_read {
