@@ -103,7 +103,7 @@
                 </div>
             </article>
 
-            {# {% if article.userHasBlogAccess == '1' %} #}
+            {% if article.userHasBlogAccess == '1' %}
             <div class="btn_overlay articleMenu">
                 <button title="Hide" 
                         data-guid="{{article.guid}}" 
@@ -135,7 +135,7 @@
                     <i class="fa fa-thumb-tack"></i><span class="hide">{{pinTxt}}</span>
                 </button>
             </div>
-            {# {% endif %} #}
+            {% endif %}
         </a>
     </div><!--swiper slide-->
 
@@ -195,7 +195,7 @@
                 </div>
             </article>
 
-            {# {% if article.userHasBlogAccess == '1' %} #}
+            {% if article.userHasBlogAccess == '1' %}
             <div class="btn_overlay articleMenu">
                 <button title="Hide" data-guid="{{social.guid}}" class="btnhide social-tooltip HideBlogArticle" type="button" data-social="1">
                     <i class="fa fa-eye-slash"></i><span class="hide">Hide</span>
@@ -215,7 +215,7 @@
                     <i class="fa fa-thumb-tack"></i><span class="hide">{{pinTxt}}</span>
                 </button>
             </div>
-            {# {% endif %} #}
+            {% endif %}
         </a>
     </div><!--swiper slide-->
 
