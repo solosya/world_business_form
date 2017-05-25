@@ -27328,11 +27328,14 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
                 var articleGuid = $(elem).data('guid');
                 
                 if (typeof bootbox === 'undefined') {
+                    console.log('bootbox undefined');
                     var result = confirm(msgStr);
                     if (result === true) {
                         deleteArticle(articleGuid, isSocial, elem, opts.onSuccess);
                     }
                 } else {
+                    console.log('bootbox used');
+
                     bootbox.confirm({
                         title: "Confirm",
                         message: msgStr,
