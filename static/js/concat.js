@@ -27098,6 +27098,260 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
 
 
 
+(function ($) {
+
+    //Noty Message
+    $.fn.General_ShowNotification = function (options) {
+        var defaults = {
+            message: '',
+            type: 'success',
+            timeout: 2000
+        };
+
+        var opts = $.extend({}, defaults, options);
+
+        $.noty.closeAll();  //close all before displaying
+
+        if ($('#noty_topRight_layout_container').length > 0) {
+            $('#noty_topRight_layout_container').remove();
+        }
+
+        var n = noty({
+            type: opts.type,
+            text: opts.message,
+            layout: 'topRight',
+            timeout: opts.timeout,
+            dismissQueue: true,
+            animation: {
+                open: 'animated bounceInRight', // jQuery animate function property object
+                close: 'animated bounceOutRight', // jQuery animate function property object
+                easing: 'swing', // easing
+                speed: 500 // opening & closing animation speed
+            }
+        });
+    };
+
+    //Show Error Message
+    $.fn.General_ShowErrorMessage = function (options) {
+        var defaults = {
+            message: '',
+            type: 'error',
+            timeout: 2000,
+            title: 'Error'
+        };
+
+        var opts = $.extend({}, defaults, options);
+
+        bootbox.alert({
+            title: opts.title,
+            message: opts.message
+        });
+    };
+
+}(jQuery));
+    $.fn.Ajax_LoadBlogArticles = function(options){
+        var defaults = {
+            'limit': 20,
+            'containerClass': 'ajaxArticles',
+            'onSuccess' : function(){},
+            'onError' : function(){},
+            'beforeSend' : function(){},
+            'onComplete' : function(){}
+        };
+        
+        var opts = $.extend( {}, defaults, options );
+
+        console.log( $('#'+opts.containerClass) );
+        var offset = parseInt($('#'+opts.containerClass).data('offset'));
+        console.log(offset);
+        if(isNaN(offset) || offset < 0) {
+            offset = opts.limit;
+        }
+        
+        var existingNonPinnedCount = parseInt($('.'+opts.containerClass).data('existing-nonpinned-count'));
+        if(isNaN(existingNonPinnedCount)) {
+            existingNonPinnedCount = -1;
+        }
+        
+        $('.'+opts.containerClass).data('offset', (offset + opts.limit));
+        
+        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+        
+        var dateFormat = 'SHORT';
+        console.log({offset: offset, limit: opts.limit, existingNonPinnedCount: existingNonPinnedCount, _csrf: csrfToken, dateFormat: dateFormat});
+        return $.ajax({
+            type: 'post',
+            url: _appJsConfig.baseHttpPath + '/home/load-articles',
+            dataType: 'json',
+            data: {offset: offset, limit: opts.limit, existingNonPinnedCount: existingNonPinnedCount, _csrf: csrfToken, dateFormat: dateFormat},
+            success: function (data, textStatus, jqXHR) {
+                console.log(data);
+                if (opts.onSuccess && typeof opts.onSuccess === 'function') {
+                    opts.onSuccess(data, textStatus, jqXHR);
+                }                
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR.responseText);
+                if (opts.onError && typeof opts.onError === 'function') {
+                    opts.onError(jqXHR, textStatus, errorThrown);
+                }
+            },
+            beforeSend: function (jqXHR, settings) {
+                if (opts.beforeSend && typeof opts.beforeSend === 'function') {
+                    opts.beforeSend(jqXHR, settings);
+                }
+            },
+            complete: function (jqXHR, textStatus) {
+                if (opts.onComplete && typeof opts.onComplete === 'function') {
+                    opts.onComplete(jqXHR, textStatus);
+                }
+            }
+        });        
+    };
+(function($) {
+
+    $.fn.Ajax_pinUnpinArticle = function(options){
+
+        var defaults = {
+            'onSuccess' : function(){},
+            'onError' : function(){},
+            'beforeSend' : function(){},
+            'onComplete' : function(){}
+        };
+        var opts = $.extend( {}, defaults, options );
+
+        return this.each (function(){
+            var elem  = $(this);
+            $(elem).off('click');
+            $(elem).on('click', function(e){
+                e.preventDefault();
+
+                var articleId = parseInt($(elem).data('id'));
+                var position = parseInt($(elem).data('position'));
+                var existingStatus = $(elem).data('status');
+                var isSocial = $(elem).data('social');
+
+                if(isNaN(articleId) || articleId <= 0 || isNaN(position) || position <= 0) {
+                    return;
+                }
+
+
+                var csrfToken = $('meta[name="csrf-token"]').attr("content");
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: _appJsConfig.baseHttpPath + '/home/pin-article',
+                    dataType: 'json',
+                    data: {id: articleId, status: existingStatus, social: isSocial, position: position, _csrf: csrfToken},
+                    success: function(data, textStatus, jqXHR) {
+                        $(elem).data('status', ((existingStatus == 1) ? 0 : 1));
+                        var msg = (existingStatus == 1) ? "Article un-pinned successfully" : "Article pinned successfully";
+                        (existingStatus == 1) ? $(elem).removeClass('selected') : $(elem).addClass('selected');
+                        $.fn.General_ShowNotification({message: msg});
+                        if (opts.onSuccess && typeof opts.onSuccess === 'function') {
+                            opts.onSuccess(data, elem);
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        if (opts.onError && typeof opts.onError === 'function') {
+                            opts.onError(elem, jqXHR.responseText);
+                        }
+                    },
+                    beforeSend: function(jqXHR, settings) { 
+                        if (opts.beforeSend && typeof opts.beforeSend === 'function') {
+                            opts.beforeSend(elem);
+                        }
+                    },
+                    complete: function(jqXHR, textStatus) {
+                        if (opts.onComplete && typeof opts.onComplete === 'function') {
+                            opts.onComplete(elem);
+                        }
+                    }
+                });
+
+                
+
+            });
+        });
+    };
+    
+    
+ var deleteArticle = function (articleGuid, isSocial, elem, onSuccess) {
+
+        if (typeof articleGuid === 'undefined' || articleGuid === "") {
+            return;
+        }
+
+        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+        $.ajax({
+            type: 'POST',
+            url: _appJsConfig.baseHttpPath + '/home/delete-article',
+            dataType: 'json',
+            data: {guid: articleGuid, social: isSocial, _csrf: csrfToken},
+            success: function (data, textStatus, jqXHR) {
+                var msg = (isSocial == 1) ? "Article deleted successfully" : "Article hidden successfully";
+                $.fn.General_ShowNotification({message: msg});
+                if (onSuccess && typeof onSuccess === 'function') {
+                    onSuccess(data, elem);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $.fn.General_ShowErrorMessage({message: jqXHR.responseText});
+            },
+            beforeSend: function (jqXHR, settings) {
+            },
+            complete: function (jqXHR, textStatus) {
+            }
+        });
+    };
+    
+    
+    $.fn.Ajax_deleteArticle = function(options){
+
+        var defaults = {
+            'onSuccess' : function(){},
+            'onError' : function(){},
+            'beforeSend' : function(){},
+            'onComplete' : function(){}
+        };
+        var opts = $.extend( {}, defaults, options );
+
+        return this.each (function(){
+            var elem  = $(this);
+            $(elem).off('click');
+            $(elem).on('click', function(e){
+                e.preventDefault();
+             
+                var isSocial = $(elem).data('social');
+                var msgStr = (isSocial == 1) ? "Do you really want to delete this article?" : "Do you really want to hide this article?";
+                var articleGuid = $(elem).data('guid');
+                
+                if (typeof bootbox === 'undefined') {
+                    var result = confirm(msgStr);
+                    if (result === true) {
+                        deleteArticle(articleGuid, isSocial, elem, opts.onSuccess);
+                    }
+                } else {
+                    bootbox.confirm({
+                        title: "Confirm",
+                        message: msgStr,
+                        callback: function (result) {
+                            if (result === true) {
+                                deleteArticle(articleGuid, isSocial, elem, opts.onSuccess);
+                            }
+                        }
+                    });
+                }
+
+
+            });
+        });
+    };    
+
+
+
+}(jQuery));
     $.fn.Ajax_LoadSearchArticles = function(options){
         var defaults = {
             search: '',
@@ -27147,6 +27401,71 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
             }
         });        
     };
+(function ($) {
+
+    $.fn.Disqus = function (options) {
+        var defaults = {
+            params: '',
+            //updateCountClass: $('.disqusComment').find('.total')
+        };
+
+        var opts = $.extend({}, defaults, options);
+
+        var disqus_identifier = opts.params.articleId;
+        var disqus_shortname = opts.params.shortName;
+        
+         disqus_config = function () { 
+            var token = opts.params.token;
+            var apiKey = opts.params.apiKey;
+            var networkName = opts.params.networkName;
+            var userId = opts.params.userId;
+            var currentUrl = opts.params.url;
+            this.page.identifier = disqus_identifier;
+            this.page.remote_auth_s3 = token;
+            this.page.api_key = apiKey;
+            this.sso = {
+                name: networkName,
+                url: _appJsConfig.baseHttpPath + '/auth/login',
+                logout: _appJsConfig.baseHttpPath + '/auth/logoff'
+            };
+            this.callbacks.onNewComment = [function (comment) {  //alert();
+                    var text = comment.text;
+                    var post_url = currentUrl;
+                    var authorId = userId;
+                    var articleId = opts.params.articleId;
+                    $.ajax({
+                        url: _appJsConfig.baseHttpPath + '/article/disqus-comment',
+                        type: 'post',
+                        data: {articleId: articleId, authorId: authorId, text: text, post_url: post_url, _csrf: yii.getCsrfToken()},
+                        dataType: 'json',
+                        success: function (data) {
+                            if(data.success == '1') {
+                            }
+                        }
+                    });
+                }];
+        };
+
+
+        (function () {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.id = 'dsq-count-scr';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+
+    };
+}(jQuery));
 
 (function ($) {
 
@@ -28637,6 +28956,35 @@ var socialPostPopupTemplate =
                             '</div>'+
                     '</div>'+
     '{{/if}}';   
+// var ArticleController = (function ($) {
+//     return {
+//         view: function () {
+//             ArticleController.View.init();
+//         }
+//     };
+// }(jQuery));
+
+// ArticleController.View = (function ($) {
+
+//     var attachEvents = function () {
+
+//         var fullExcerptHeight = $('.article_main .news__main').height();
+//         $($('.news__sidebar a.card').get().reverse()).each(function () {
+//             var sidebarHeight = $('.article_main .news__sidebar').height();
+//             if (fullExcerptHeight < sidebarHeight) {
+//                 $(this).addClass('hide');
+//             }
+//         });
+//     };
+
+//     return {
+//         init: function () {
+//             attachEvents();
+//         }
+//     };
+
+// }(jQuery));
+
 var AuthController = (function ($) {
     return {
         loginOrSignup: function () {
@@ -28751,6 +29099,169 @@ AuthController.ResetPassword = (function ($) {
     };
 
 }(jQuery));
+(function ($) {
+    
+    $('.video-player').videoPlayer();
+    
+    $("div.lazyload").lazyload({
+        effect : "fadeIn"
+    });
+    
+    // $(window).resize(function() {
+    //     if ($('.side-navigation').is(':visible')) {
+    //         var currentWidth = $('.side-navigation').width();
+    //         var windowWidth = $(window).width();
+    //         if (currentWidth > windowWidth && windowWidth > 300) {
+    //             var newWidth = windowWidth - 20;
+    //             $('.side-navigation').css('width', newWidth + 'px');
+    //         }
+    //     }
+    // });
+  
+    // $('.forceLoginModal').loginModal({
+    //     onLoad: function () {
+    //         $("#loginForm").validateLoginForm();
+    //         $("#signupForm").validateSignupForm();
+    //     }
+    // });
+    
+
+    /************************************************************************************
+     *              FOLLOW AND UNFOLLOW ARTICLE PAGE JS
+     ************************************************************************************/
+    // $('.followArticleBtn').followBlog({
+    //     onSuccess: function (data, obj) {
+    //        ($(obj).data('status') === 'follow') ? $(obj).html("Follow +") : $(obj).html("Following -");
+    //         var message = ($(obj).data('status') === 'follow') ? 'Unfollow' : 'Follow';
+    //         $.fn.General_ShowNotification({message: message + " blog successfully."});                 
+    //     },
+    //     beforeSend: function (obj) {
+    //         $(obj).html('please wait...');
+    //     },
+    //     onError: function (obj, errorMessage) {
+    //         $().General_ShowErrorMessage({message: errorMessage});
+    //     }
+    // });
+    
+    /************************************************************************************
+     *              FOLLOW AND UNFOLLOW USER PROFILE PAGE JS
+     ************************************************************************************/
+    
+    // $('.FollowProfileBlog').followBlog({
+    //     onSuccess: function (data, obj) {
+    //         var status = $(obj).data('status');
+    //         if($(obj).hasClass('hasStar')) {
+    //             (status == 'unfollow') ? $(obj).addClass('selected') : $(obj).removeClass('selected');
+    //         }  
+    //     },
+    //     beforeSend: function (obj) {
+    //         $(obj).find('.fa').addClass('fa-spin fa-spinner');
+    //     },
+    //     onError: function (obj, errorMessage) {
+    //         $().General_ShowErrorMessage({message: errorMessage});
+    //     },
+    //     onComplete: function (obj) {
+    //         $(obj).find('.fa').removeClass('fa-spin fa-spinner');
+    //     }
+    // });
+    
+    
+    // $("#owl-thumbnails").owlCarousel({
+    //     items: 2,
+    //     itemsDesktop: [1199, 2],
+    //     itemsDesktopSmall: [980, 1],
+    //     itemsTablet: [768, 1],
+    //     itemsMobile: [600, 1],
+    //     pagination: true,
+    //     navigation: true,
+    //     loop: true,
+    //     autoplay: true,
+    //     autoplayTimeout: 1000,
+    //     navigationText: [
+    //         "<i class='fa fa-angle-left fa-2x'></i>",
+    //         "<i class='fa fa-angle-right fa-2x'></i>"
+    //     ]
+    // });     
+    
+    // $('.shareIcons').SocialShare({
+    //     onLoad: function (obj) {
+    //         var title = obj.parents('div.article').find('.card__news-category').text();
+    //         var url = obj.parents('div.article').find('a').attr('href');
+    //         var content = obj.parents('div.article').find('.card__news-description').text();
+    //         $('.rrssb-buttons').rrssb({
+    //             title: title,
+    //             url: url,
+    //             description: content
+    //         });
+    //         setTimeout(function () {
+    //             rrssbInit();
+    //         }, 10);
+    //     }
+    // });
+    
+    //Contact form validation
+    // $('#contactForm').validate({
+    //     rules: {
+    //         name: "required",
+    //         email: "required",
+    //         message: "required"
+    //     },
+    //     errorElement: "span",
+    //     messages: {
+    //         name: "Name cannot be blank.",
+    //         email: "Email cannot be blank.",
+    //         message: "Message cannot be blank."
+    //     }
+    // });
+    
+    /************************************************************************************
+     *                  USER EDIT PROFILE PAGE JS
+     ************************************************************************************/
+    
+    // $('.uploadFileBtn').uploadFile({
+    //        onSuccess: function(data, obj){
+    //             var resultJsonStr = JSON.stringify(data);
+                
+    //             var imgClass = $(obj).data('imgcls');
+    //             $('.' + imgClass).css('background-image', 'url(' + data.url + ')');
+                
+    //             var fieldId = $(obj).data('id');
+    //             $('#' + fieldId).val(resultJsonStr);
+                
+    //             $().General_ShowNotification({message: 'Image added successfully' });
+    //         }
+    // });
+    
+     /**
+     * Update Social Post From Listing
+     */
+    // $('.editSocialPost').on('click', function (e) {
+    //     e.preventDefault();
+    //     var elem = $(this);
+    //     var url = elem.data('url');
+    //     var popup = window.open(url, '_blank', 'toolbar=no,scrollbars=yes,resizable=false,width=360,height=450');
+    //     popup.focus();
+
+    //     var intervalId = setInterval(function () {
+    //         if (popup.closed) {
+    //             clearInterval(intervalId);
+    //             var socialId = elem.parents('a').data('id');
+    //             if($('#updateSocial'+socialId).data('update') == '1') {
+    //                 $().General_ShowNotification({message: 'Social Post(s) updated successfully.'});
+    //             }  
+    //         }
+    //     }, 50);
+
+    //     return;
+    // });
+    
+}(jQuery));
+
+
+    
+
+
+
 var HomeController = (function ($) {
     return {
         listing: function () {
@@ -28764,7 +29275,9 @@ var HomeController = (function ($) {
 
 HomeController.Listing = (function ($) {
 
+
     var bindPinUnpinArticle = function(){
+
         $('button.PinArticleBtn').Ajax_pinUnpinArticle({
             onSuccess: function(data, obj){
                 var status = $(obj).data('status');
@@ -28859,21 +29372,17 @@ HomeController.Listing = (function ($) {
             var isScialRequestSent = false;
             $(document).on('click', 'a.social.card', function (e) {
                 e.preventDefault();
-                console.log($(this));
                 var blogGuid = $(this).data('blog-guid');
                 var postGuid = $(this).data('guid');
 
                 if (!isScialRequestSent) {
                     var csrfToken = $('meta[name="csrf-token"]').attr("content");
-                    console.log(_appJsConfig.appHostName + '/api/social/get-social-post');
-                    console.log({blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken});
                     $.ajax({
                         type: 'POST',
                         url: _appJsConfig.appHostName + '/api/social/get-social-post',
                         dataType: 'json',
                         data: {blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken},
                         success: function (data, textStatus, jqXHR) {
-                            console.log(data);
                             data.hasMediaVideo = false;
                             if (data.media['type'] === 'video') {
                                 data.hasMediaVideo = true;
@@ -28895,7 +29404,6 @@ HomeController.Listing = (function ($) {
                             }, 500);
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
-                            console.log(textStatus);
                             isScialRequestSent = false;
                         },
                         beforeSend: function (jqXHR, settings) {
@@ -28909,7 +29417,7 @@ HomeController.Listing = (function ($) {
             });
         };
         
-        bindSocialPostPopup();
+        // bindSocialPostPopup();
 
 
         function initSwap() {
@@ -29072,10 +29580,9 @@ HomeController.Listing = (function ($) {
 
             var btnObj = $(this);
             var stij = '#'+ btnObj.data('container');
-            console.log(stij);
+
             var container = $(stij);
-            console.log(btnObj.data('container'));
-            console.log(container);
+
 
 
             $.fn.Ajax_LoadBlogArticles({

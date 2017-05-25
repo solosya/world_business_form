@@ -11,7 +11,9 @@ var HomeController = (function ($) {
 
 HomeController.Listing = (function ($) {
 
+
     var bindPinUnpinArticle = function(){
+
         $('button.PinArticleBtn').Ajax_pinUnpinArticle({
             onSuccess: function(data, obj){
                 var status = $(obj).data('status');
@@ -106,21 +108,17 @@ HomeController.Listing = (function ($) {
             var isScialRequestSent = false;
             $(document).on('click', 'a.social.card', function (e) {
                 e.preventDefault();
-                console.log($(this));
                 var blogGuid = $(this).data('blog-guid');
                 var postGuid = $(this).data('guid');
 
                 if (!isScialRequestSent) {
                     var csrfToken = $('meta[name="csrf-token"]').attr("content");
-                    console.log(_appJsConfig.appHostName + '/api/social/get-social-post');
-                    console.log({blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken});
                     $.ajax({
                         type: 'POST',
                         url: _appJsConfig.appHostName + '/api/social/get-social-post',
                         dataType: 'json',
                         data: {blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken},
                         success: function (data, textStatus, jqXHR) {
-                            console.log(data);
                             data.hasMediaVideo = false;
                             if (data.media['type'] === 'video') {
                                 data.hasMediaVideo = true;
@@ -142,7 +140,6 @@ HomeController.Listing = (function ($) {
                             }, 500);
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
-                            console.log(textStatus);
                             isScialRequestSent = false;
                         },
                         beforeSend: function (jqXHR, settings) {
@@ -156,7 +153,7 @@ HomeController.Listing = (function ($) {
             });
         };
         
-        bindSocialPostPopup();
+        // bindSocialPostPopup();
 
 
         function initSwap() {
@@ -319,10 +316,9 @@ HomeController.Listing = (function ($) {
 
             var btnObj = $(this);
             var stij = '#'+ btnObj.data('container');
-            console.log(stij);
+
             var container = $(stij);
-            console.log(btnObj.data('container'));
-            console.log(container);
+
 
 
             $.fn.Ajax_LoadBlogArticles({
