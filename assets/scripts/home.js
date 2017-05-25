@@ -335,11 +335,26 @@ HomeController.Listing = (function ($) {
                         var html = '';
 
                         if (layout) {
+                            var layoutArr = [];
                             html += Handlebars.compile(window[layout])();
                             var myRe = /{¡{content:([0-9]+-[0-9]+)}¡}/g;
-                            console.log(html);
-                            var slots = myRe.exec(html);
-                            console.log(slots);
+                            var results = [];
+                            while (match = myRe.exec(html)) {
+                                results.push(match);
+                            }
+
+                            for (var i=0;i<results.length;i++) {
+                                var range = results[i][1].split('-');
+                                var start = parseInt(range[0]);
+                                var finish = parseInt(range[1]);
+                                for(var j=start-1;j<finish;j++) {
+                                    layoutArr.push(results[i][0]);
+                                
+                                }
+                                console.log(results[i][1]);
+                            }
+                            // var slots = myRe.exec(html);
+                            console.log(layoutArr);
                         }
 
 
@@ -348,14 +363,15 @@ HomeController.Listing = (function ($) {
                         for (var i in data.articles) {
 
 
-                            // data.articles[i]['containerClass'] = 'col-sm-4 card-sm';
-                            // if ((i%5 === 0 || i%5 === 1 ) && i%2 == 1) {
-                            //     data.articles[i]['containerClass'] = 'col-sm-8 card-md';
-                            // }
+                            if (i%5 === 0 ) {
+                                data.articles[i]['containerClass'] = 'screen-card card-lg-screen col-sm-6';
+                            } else {
+                                data.articles[i]['containerClass'] = 'screen-card card-sm-screen col-sm-3';
+                            }
 
+                            console.log(data.articles[i]['containerClass']);
 
-
-                            data.articles[i]['containerClass'] = templateClass;
+                            // data.articles[i]['containerClass'] = templateClass;
                             data.articles[i]['pinTitle'] = (data.articles[i].isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
                             data.articles[i]['pinText'] = (data.articles[i].isPinned == 1) ? 'Un-Pin' : 'Pin';
                             // data.articles[i]['promotedClass'] = (data.articles[i].isPromoted == 1)? 'ad_icon' : '';
@@ -381,6 +397,10 @@ HomeController.Listing = (function ($) {
                                 articleTemplate = Handlebars.compile(systemCardTemplate);
                             }
                             html +=  articleTemplate(data.articles[i]);
+
+                            if (layout) {
+                                
+                            }
                         }
 
                         container.append(html);
