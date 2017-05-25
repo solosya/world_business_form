@@ -9207,7 +9207,7 @@ button.swiper-pagination-bullet {
   content: "";
   position: absolute;
   top: 0;
-  bottom: 46px;
+  bottom: 110px;
   right: -31px;
   width: 1px;
   background: #979797; }
@@ -11496,6 +11496,11 @@ body.screen {
       @media screen and (max-width: 620px) {
         .card-sm a.card.instagram .category:before {
           display: none; } }
+
+@media screen and (max-width: 620px) {
+  .sidebar-news .card-sm a.card.without__image > article > .content > p {
+    min-height: 50px;
+    margin-top: 0; } }
 
 @media screen and (max-width: 620px) {
   .index-bottom .card-sm {

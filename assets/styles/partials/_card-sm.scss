@@ -363,6 +363,27 @@
     }
 }
 
+
+.sidebar-news {
+    @media screen and (max-width: $mobile-break){
+        .card-sm{
+            a.card {
+                &.without__image {
+                    > article {
+                        > .content{
+                            > p {   
+                                min-height:50px;
+                                margin-top: 0;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
 .index-bottom {
     @media screen and (max-width: $mobile-break){
 
