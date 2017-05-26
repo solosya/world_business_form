@@ -418,8 +418,7 @@ HomeController.Listing = (function ($) {
                         if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
                             initSwap();
                         }
-                    }
-                 
+                    }    
                 },
                 beforeSend: function(jqXHR, settings){
                     $(btnObj).html("Please wait...");
@@ -429,16 +428,15 @@ HomeController.Listing = (function ($) {
                 }
             };
 
-
-            console.log(btnObj.data('limit'));
             if ( btnObj.data('limit') ) {
                 options['limit'] = btnObj.data('limit');
             }
             if ( btnObj.data('container') ) {
                 options['containerClass'] = btnObj.data('container');
             }
-
-            console.log(options);
+            if ( btnObj.data('blogid') ) {
+                options['blogid'] = btnObj.data('blogid');
+            }
 
             $.fn.Ajax_LoadBlogArticles(options);
         });
