@@ -26,7 +26,11 @@
                                 {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
                                     <li>
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            {{parentItem.blogTitle | upper}}
+                                            {% if parentItem.label != "" %}
+                                              {{parentItem.label | upper}}
+                                            {% else %}
+                                               {{parentItem.blogTitle | upper}}
+                                            {% endif %}
                                         </a>
                                     </li>
                                 {% endif %}
