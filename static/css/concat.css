@@ -8456,7 +8456,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
   position: relative;
   padding: 0;
   max-width: none;
-  z-index: 2; }
+  z-index: 11; }
   .site-header .site-header-main {
     background: #2b3744;
     height: 150px; }
@@ -10590,7 +10590,8 @@ body.screen {
       -webkit-flex: 0 0 330px;
       flex: 0 0 330px;
       overflow: hidden;
-      float: left; }
+      float: left;
+      height: 100%; }
       @media screen and (max-width: 620px) {
         .card-rec a.card > article > figure {
           width: 116px;
