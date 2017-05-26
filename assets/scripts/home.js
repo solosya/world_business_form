@@ -315,16 +315,14 @@ HomeController.Listing = (function ($) {
         
         $('.loadMoreArticles').on('click', function(e){
             e.preventDefault();
-
+            console.log('loading articles');
             var btnObj = $(this);
             var stij = '#'+ btnObj.data('container');
-
             var container = $(stij);
-
-
 
             $.fn.Ajax_LoadBlogArticles({
                 onSuccess: function(data, textStatus, jqXHR){
+                    console.log(data);
                     if (data.success == 1) {
                         // var container = $('.ajaxArticles');
                         container.data('existing-nonpinned-count', data.existingNonPinnedCount);
