@@ -20,8 +20,8 @@ HomeController.Listing = (function ($) {
                 (status == 1) 
                     ? $(obj).attr('title', 'Un-Pin Article') 
                     : $(obj).attr('title', 'Pin Article');
-               (status == 1) 
-                    ? $(obj).find('span').first().html('Un-Pin') 
+                (status == 1) 
+                    ? $(obj).find('span').first().html('Un-Pin')
                     : $(obj).find('span').first().html('Pin');        
             }
         });
