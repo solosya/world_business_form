@@ -4,11 +4,28 @@
         <div class="container">        
             <div class="row">
                 <div class="col-sm-6 col-md-6 icon-wrapper">
-                    <a class="footer-brand" href="https://wbfsydney.com" rel="Home" tabindex="-1" title="Home">
+                    <a class="footer-brand" href="https://wobi.com" rel="Home" tabindex="-1" title="Home">
                         <img src="{{networkData.templatePath}}/static/images/wobi_white.svg" alt="logo" class="main-logo">
                     </a>
-
                 </div><!-- .col-sm-3-->
+
+
+                <div class="col-sm-offset-3 col-sm-3">
+                     <div class="footer-livestream">
+                        <h2>Subscribe to WOBI news and updates</h2>
+                        <div id="streamformfooter" class="streamform">
+                            <input class="forminput" id="submitlivestreamformname" name="name" type="text" placeholder="First name" >
+                            <input class="forminput" id="submitlivestreamformlastname" name="lastname" type="text" placeholder="Surname">
+                            <input class="forminput" id="submitlivestreamformemail" name="email" type="text" placeholder="email address">
+                            <input id="submitlivestreamformgetmail" type="checkbox" name="updates" checked="checked" style="display:none">
+
+                            <div class="livestreamsubmit" id="submitlivestreamform" name="submit" type="">SUBMIT</div>
+                        </div>
+                    </div><!--content-block-top-->
+                </div><!-- .col-md-8-->
+
+
+
 
 
             </div><!--row-->
@@ -18,18 +35,22 @@
                 <div class="col-sm-12 contact visible-xs-block">
                     <div class="section-links-mobile">
                         <ul>
-                            {% set menuItems = blog.blogHeaderMenu %}
+                            {% set menuItems = blog.blogFooterMenu %}
                             {% for i, parentItem in menuItems %}
                                 {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
                                 
-                                {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
-                                    <li>
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            {{parentItem.blogTitle | upper}}
-                                        </a>
-                                    </li>
-                                {% endif %}
+                                <li>
+                                    <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                        {% if parentItem.label != "" %}
+                                          {{parentItem.label | upper}}
+                                        {% elseif parentItem.blogTitle != "" %}
+                                           {{parentItem.blogTitle | upper}}
+                                        {% elseif parentItem.pageTitle != "" %}
+                                           {{parentItem.pageTitle | upper}}
+                                        {% endif %}
+                                    </a>
+                                </li>
 
                             {% endfor %}
 
@@ -38,18 +59,10 @@
 
                 </div><!-- .col-sm-12-->
 
-{#                 <div class="col-sm-4 contact">
-                    <h2>Contact us</h2>
-                    <p>1500 342 958</p>
-                    <a mailto="info@globalspotlight.com">info@globalspotlight.com</a>
-                </div><!-- .col-sm-12-->
 
- #}
 
-{#                 <div class="col-sm-12 publish hidden-xs">
-                    <span><a href="https://publish.aap.com.au">POWERED BY AAP PUBLISH</a></span>
-                </div><!-- .col-sm-12-->
- #}            </div><!-- .row-->
+
+            </div><!-- .row-->
 
             <div class="row">
                 <div class="col-sm-3 publish">
@@ -60,22 +73,22 @@
                 <div class="col-sm-9 hidden-xs">
                     <div class="section-links">
                         <ul>
-                            {% set menuItems = blog.blogHeaderMenu %}
+                            {% set menuItems = blog.blogFooterMenu %}
                             {% for i, parentItem in menuItems %}
                                 {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
                                 
-                                {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
-                                    <li>
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            {% if parentItem.label != "" %}
-                                              {{parentItem.label | upper}}
-                                            {% else %}
-                                               {{parentItem.blogTitle | upper}}
-                                            {% endif %}
-                                        </a>
-                                    </li>
-                                {% endif %}
+                                <li>
+                                    <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                        {% if parentItem.label != "" %}
+                                          {{parentItem.label | upper}}
+                                        {% elseif parentItem.blogTitle != "" %}
+                                           {{parentItem.blogTitle | upper}}
+                                        {% elseif parentItem.pageTitle != "" %}
+                                           {{parentItem.pageTitle | upper}}
+                                        {% endif %}
+                                    </a>
+                                </li>
 
                             {% endfor %}
 

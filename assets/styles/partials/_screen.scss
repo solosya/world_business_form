@@ -3,10 +3,10 @@ html {
 }
 
 body.screen {
-    height:50%;
+    height:100%;
     background: #282c36;
 
-  
+
   .site-footer{
     display:none;
   }
@@ -24,10 +24,12 @@ body.screen {
   a.card {
     margin:0;
   }
-  a.loadMoreArticles {
-    display:none;
-  }
 
+  .two-card-logo {
+    position:absolute;
+    bottom:15px;
+    right:20px;
+  }
 
 }
 .top-row{

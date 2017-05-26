@@ -5,24 +5,23 @@ var HomeController = (function ($) {
         },
         blog: function() {
             HomeController.Blog.init();
-        },
-        screen: function() {
-            $('.loadMoreArticles').trigger('click');
         }
     };
 }(jQuery));
 
 HomeController.Listing = (function ($) {
 
+
     var bindPinUnpinArticle = function(){
+
         $('button.PinArticleBtn').Ajax_pinUnpinArticle({
             onSuccess: function(data, obj){
                 var status = $(obj).data('status');
                 (status == 1) 
                     ? $(obj).attr('title', 'Un-Pin Article') 
                     : $(obj).attr('title', 'Pin Article');
-               (status == 1) 
-                    ? $(obj).find('span').first().html('Un-Pin') 
+                (status == 1) 
+                    ? $(obj).find('span').first().html('Un-Pin')
                     : $(obj).find('span').first().html('Pin');        
             }
         });
@@ -109,13 +108,13 @@ HomeController.Listing = (function ($) {
             var isScialRequestSent = false;
             $(document).on('click', 'a.social.card', function (e) {
                 e.preventDefault();
-
+                e.stopPropogation();
+                
                 var blogGuid = $(this).data('blog-guid');
                 var postGuid = $(this).data('guid');
 
                 if (!isScialRequestSent) {
                     var csrfToken = $('meta[name="csrf-token"]').attr("content");
-
                     $.ajax({
                         type: 'POST',
                         url: _appJsConfig.appHostName + '/api/social/get-social-post',
@@ -156,7 +155,7 @@ HomeController.Listing = (function ($) {
             });
         };
         
-        bindSocialPostPopup();
+        // bindSocialPostPopup();
 
 
         function initSwap() {
@@ -319,68 +318,33 @@ HomeController.Listing = (function ($) {
 
             var btnObj = $(this);
             var stij = '#'+ btnObj.data('container');
-            var container = $(stij);
-            var layout = btnObj.data('layout') || null;
 
-            var options = {
+            var container = $(stij);
+
+
+
+            $.fn.Ajax_LoadBlogArticles({
                 onSuccess: function(data, textStatus, jqXHR){
                     if (data.success == 1) {
                         // var container = $('.ajaxArticles');
                         container.data('existing-nonpinned-count', data.existingNonPinnedCount);
                         var templateClass = container.data('containerclass');
 
-                        // if (data.articles.length < 20) {
-                        //     $(btnObj).css('display', 'none');
-                        // }
-                        var html = '';
-
-                        if (layout) {
-                            var layoutArr = [];
-                            html += Handlebars.compile(window[layout])();
-                            var myRe = /{¡{content:([0-9]+-[0-9]+)}¡}/g;
-                            var results = [];
-                            while (match = myRe.exec(html)) {
-                                results.push(match);
-                            }
-
-                            for (var i=0;i<results.length;i++) {
-                                var range = results[i][1].split('-');
-                                var start = parseInt(range[0]);
-                                var finish = parseInt(range[1]);
-                                for(var j=start-1;j<finish;j++) {
-                                    layoutArr.push(results[i][0]);
-                                
-                                }
-                                console.log(results[i][1]);
-                            }
-                            // var slots = myRe.exec(html);
-                            console.log(layoutArr);
+                        if (data.articles.length < 20) {
+                            $(btnObj).css('display', 'none');
                         }
 
-
-
-
                         for (var i in data.articles) {
-
-
-                            if (i%5 === 0 ) {
-                                data.articles[i]['containerClass'] = 'screen-card card-lg-screen col-sm-6';
-                            } else {
-                                data.articles[i]['containerClass'] = 'screen-card card-sm-screen col-sm-3';
-                            }
-
-                            console.log(data.articles[i]['containerClass']);
-
-                            // data.articles[i]['containerClass'] = templateClass;
+                            data.articles[i]['containerClass'] = templateClass;
                             data.articles[i]['pinTitle'] = (data.articles[i].isPinned == 1) ? 'Un-Pin Article' : 'Pin Article';
                             data.articles[i]['pinText'] = (data.articles[i].isPinned == 1) ? 'Un-Pin' : 'Pin';
-                            // data.articles[i]['promotedClass'] = (data.articles[i].isPromoted == 1)? 'ad_icon' : '';
+                            data.articles[i]['promotedClass'] = (data.articles[i].isPromoted == 1)? 'ad_icon' : '';
                             data.articles[i]['hasArticleMediaClass'] = (data.articles[i].hasMedia == 1)? 'withImage__content' : 'without__image';
                             data.articles[i]['readingTime']= renderReadingTime(data.articles[i].readingTime);
                             data.articles[i]['blogClass']= '';
-                            // if(data.articles[i].blog['id'] !== null) {
-                            //    data.articles[i]['blogClass']= 'card--blog_'+data.articles[i].blog['id'];
-                            // } 
+                            if(data.articles[i].blog['id'] !== null) {
+                               data.articles[i]['blogClass']= 'card--blog_'+data.articles[i].blog['id'];
+                            } 
                             
                                                         
                             var ImageUrl = $.image({media:data.articles[i]['featuredMedia'], mediaOptions:{width: 500 ,height:350, crop: 'limit'} });
@@ -396,14 +360,9 @@ HomeController.Listing = (function ($) {
                             } else {
                                 articleTemplate = Handlebars.compile(systemCardTemplate);
                             }
-                            html +=  articleTemplate(data.articles[i]);
-
-                            if (layout) {
-                                
-                            }
+                            var article = articleTemplate(data.articles[i]);
+                            container.append(article);
                         }
-
-                        container.append(html);
 
                         $(".card p, .card h1").dotdotdot();
                         
@@ -418,7 +377,8 @@ HomeController.Listing = (function ($) {
                         if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
                             initSwap();
                         }
-                    }    
+                    }
+                 
                 },
                 beforeSend: function(jqXHR, settings){
                     $(btnObj).html("Please wait...");
@@ -426,19 +386,7 @@ HomeController.Listing = (function ($) {
                 onComplete: function(jqXHR, textStatus) {
                     $(btnObj).html("Load more");
                 }
-            };
-
-            if ( btnObj.data('limit') ) {
-                options['limit'] = btnObj.data('limit');
-            }
-            if ( btnObj.data('container') ) {
-                options['containerClass'] = btnObj.data('container');
-            }
-            if ( btnObj.data('blogid') ) {
-                options['blogid'] = btnObj.data('blogid');
-            }
-
-            $.fn.Ajax_LoadBlogArticles(options);
+            });
         });
     };
     return {

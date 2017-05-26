@@ -7,7 +7,7 @@
 {{this.registerJs("HomeController.listing();")}}
 {{this.registerJs("HomeController.blog();")}}
 
-{% set limit = 5 %}
+{% set limit = 20 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -22,48 +22,24 @@
     <!--placeholder temp -->
 
 <main id="main" class="full-height" role="main">
+    {# <img class="two-card-logo" src="{{networkData.templatePath}}/static/images/logo-reverse-small.png"> #}
+    <img class="two-card-logo" src="{{networkData.templatePath}}/static/images/logo-reverse-medium.png">
+
     <div class="main-screen full-height flex_col">
+
         <div class="row flex1">
             <div class="col-sm-12 full-height">
-
-                {{ this.render('partials/ajaxarticles.twig', {
-                    limit: limit, 
-                    non_pinned: articlesArr.existingNonPinnedCount, 
-                    articles: articlesArr.articles,
-                    card_style: "col-sm-4 card-sm",
-                    container:"screenArticles",
-                }) | raw }}
-
-
-
-{#                 <div class="row half-height top-row">
-                    {{this.render('partials/_single-article.twig', {article: articles[0], position: (i+1), containerClass: 'screen-card card-lg-screen col-sm-6', network:networkData}) | raw}}
-                    
-                    {% for i in 1..2 %}
-                        {% if articles[i] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[i], position: (i+1), containerClass: 'screen-card card-sm-screen col-sm-3', network:networkData}) | raw}}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-
-                <div class="row half-height bottom-row">
-                   
-                    {% for i in 3..6 %}
-                        {% if articles[i] %}                                                                
-                            {{this.render('partials/_single-article.twig', {article: articles[i], position: (i+1), containerClass: 'screen-card card-sm-screen col-sm-3', network:networkData}) | raw}}
-                        {% endif %}
-                    {% endfor %}
-                </div> #}
+                {{this.render('partials/_single-article.twig', {article: articles[0], containerClass: 'screen-card card-lg-screen col-sm-12', network:networkData}) | raw}}
+{#                 {{this.render('partials/_single-article.twig', {article: articles[0], containerClass: 'screen-card card-sm-screen col-sm-6', network:networkData}) | raw}}
+                {{this.render('partials/_single-article.twig', {article: articles[1], containerClass: 'screen-card card-sm-screen col-sm-6', network:networkData}) | raw}}
+ #}                
             </div>
+
         </div>
 
-        <div class="row flex-shrink0" style="max-height:70px;margin-top:20px;">
+{#         <div class="row flex-shrink0" style="max-height:85px;margin-top:20px;">
             <img src="{{networkData.templatePath}}/static/images/logo-reverse-small.png" style="float:right;margin-right:15px;">
         </div>
-
+ #}
     </div>
 </main>
-
-<script>
-    {{this.registerJs("HomeController.screen();")}}
-</script>

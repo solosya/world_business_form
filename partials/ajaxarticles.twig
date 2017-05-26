@@ -1,18 +1,16 @@
-<div class="row full-height">
-     <section class="col-sm-12 full-height">
-        <div class="row full-height ">
+<div class="row">
+     <section class="col-sm-12">
+        <div class="row">
             <div id="{{container}}" 
-                 class="clearfix full-height"
-                 data-offset="0"
-                 {# data-articlecount="10" #}
+                 class="clearfix"
+                 data-offset="{{limit}}"
+                 data-blogid="{{blogid}}"
+                 data-articlecount="10"
                  data-containerclass="{{card_style}}"
                  data-existing-nonpinned-count="{{non_pinned}}">
              </div>
-            <a  class="loadMoreArticles" 
-                data-container="{{container}}" 
-                data-limit="{{limit}}"
-                data-layout="{{layout}}"
-                data-blogid="{{blogid}}"
+            <a class="loadMoreArticles" 
+                data-container="{{container}}"
                 href="#">Load more articles</a>
         </div>
 
