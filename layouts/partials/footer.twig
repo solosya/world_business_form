@@ -18,24 +18,22 @@
                 <div class="col-sm-12 contact visible-xs-block">
                     <div class="section-links-mobile">
                         <ul>
-                            {% set menuItems = blog.blogHeaderMenu %}
+                            {% set menuItems = blog.blogFooterMenu %}
                             {% for i, parentItem in menuItems %}
                                 {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
                                 
-                                {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
-                                    <li>
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            {% if parentItem.label != "" %}
-                                              {{parentItem.label | upper}}
-                                            {% elseif parentItem.blogTitle != "" %}
-                                               {{parentItem.blogTitle | upper}}
-                                            {% elseif parentItem.pageTitle != "" %}
-                                               {{parentItem.pageTitle | upper}}
-                                            {% endif %}
-                                        </a>
-                                    </li>
-                                {% endif %}
+                                <li>
+                                    <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                        {% if parentItem.label != "" %}
+                                          {{parentItem.label | upper}}
+                                        {% elseif parentItem.blogTitle != "" %}
+                                           {{parentItem.blogTitle | upper}}
+                                        {% elseif parentItem.pageTitle != "" %}
+                                           {{parentItem.pageTitle | upper}}
+                                        {% endif %}
+                                    </a>
+                                </li>
 
                             {% endfor %}
 
@@ -66,24 +64,22 @@
                 <div class="col-sm-9 hidden-xs">
                     <div class="section-links">
                         <ul>
-                            {% set menuItems = blog.blogHeaderMenu %}
+                            {% set menuItems = blog.blogFooterMenu %}
                             {% for i, parentItem in menuItems %}
                                 {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
                                 
-                                {% if (parentItem.blogTitle | lower != roomInfo[0] | lower ) %}
-                                    <li>
-                                        <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
-                                            {% if parentItem.label != "" %}
-                                              {{parentItem.label | upper}}
-                                            {% elseif parentItem.blogTitle != "" %}
-                                               {{parentItem.blogTitle | upper}}
-                                            {% elseif parentItem.pageTitle != "" %}
-                                               {{parentItem.pageTitle | upper}}
-                                            {% endif %}
-                                        </a>
-                                    </li>
-                                {% endif %}
+                                <li>
+                                    <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
+                                        {% if parentItem.label != "" %}
+                                          {{parentItem.label | upper}}
+                                        {% elseif parentItem.blogTitle != "" %}
+                                           {{parentItem.blogTitle | upper}}
+                                        {% elseif parentItem.pageTitle != "" %}
+                                           {{parentItem.pageTitle | upper}}
+                                        {% endif %}
+                                    </a>
+                                </li>
 
                             {% endfor %}
 
