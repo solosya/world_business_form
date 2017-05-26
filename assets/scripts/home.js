@@ -108,6 +108,8 @@ HomeController.Listing = (function ($) {
             var isScialRequestSent = false;
             $(document).on('click', 'a.social.card', function (e) {
                 e.preventDefault();
+                e.stopPropogation();
+                
                 var blogGuid = $(this).data('blog-guid');
                 var postGuid = $(this).data('guid');
 

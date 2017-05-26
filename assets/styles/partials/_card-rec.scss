@@ -39,6 +39,7 @@
                 overflow: hidden;
                 float: left;
                 height:100%;
+                min-height:100%;
 
                 @media screen and (max-width: $mobile-break){
                     width: 116px;
