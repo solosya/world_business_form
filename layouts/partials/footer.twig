@@ -76,8 +76,10 @@
                                         <a href="{{parentItem.link |raw}}" class="{{activeClass}} {{externalClass}}" {% if parentItem.target != "" %}target="{{parentItem.target}}"{% endif %}>
                                             {% if parentItem.label != "" %}
                                               {{parentItem.label | upper}}
-                                            {% else %}
+                                            {% elseif parentItem.blogTitle != "" %}
                                                {{parentItem.blogTitle | upper}}
+                                            {% elseif parentItem.pageTitle != "" %}
+                                               {{parentItem.pageTitle | upper}}
                                             {% endif %}
                                         </a>
                                     </li>
