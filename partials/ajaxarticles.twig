@@ -4,11 +4,14 @@
             <div id="{{container}}" 
                  class="clearfix"
                  data-offset="{{limit}}"
+                 data-blogid="{{blogid}}"
                  data-articlecount="10"
                  data-containerclass="{{card_style}}"
                  data-existing-nonpinned-count="{{non_pinned}}">
              </div>
-            <a class="loadMoreArticles" data-container="{{container}}" href="#">Load more articles</a>
+            <a class="loadMoreArticles" 
+                data-container="{{container}}"
+                href="#">Load more articles</a>
         </div>
 
         {% set noDataCls = 'hide' %}

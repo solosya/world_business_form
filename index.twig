@@ -25,12 +25,14 @@
             "social": {
                 "feed": "",
                 "link": "",
-                "limit": 4
+                "limit": 4,
+                "id" : ""
             }, 
             "gallery": {
                 "feed": "",
                 "link": "",
-                "limit": 8
+                "limit": 8,
+                "id" : ""
             }
         }
     %}
@@ -41,13 +43,15 @@
                 {% set sections = sections | merge({
                     (key) : {
                         'feed': _Blog.getBlogFeed({'limit': value['limit'], 'offset': 0, 'blogid':blog.guid}),
-                        'link' : blog.link
+                        'link' : blog.link,
+                        'id' : blog.id
                         }
                     }) %}
             {% endif %}
         {% endfor %}
     {% endfor %}
 
+    {{dump(sections['gallery']['id'])}}
 
     <main id="main" class="site-main" role="main">
         
@@ -178,13 +182,14 @@
                     articles: sections['gallery'].feed,
                     card_style: "col-sm-3 card-sm",
                     container:"galleryAjaxArticles",
+                    blogid: sections['gallery'].id
                 }) | raw }}
 
                 {% endif %}
 
         </section><!-- .home-page-content-->
 
-{#         <article class="livestreamform-main">
+        <article class="livestreamform-main">
             <div class="container">
                 <div class="page-content">
                     <div class="row">
@@ -212,7 +217,7 @@
 
             </div><!--container-->
         </article>
- #}
+
         <section class="sponsors" style="background:white">
 
             <div class="container hidden-md hidden-lg">
