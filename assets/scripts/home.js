@@ -5,6 +5,10 @@ var HomeController = (function ($) {
         },
         blog: function() {
             HomeController.Blog.init();
+        },
+        screen: function() {
+            console.log('clicking load more');
+            $('.loadMoreArticles').trigger('click');
         }
     };
 }(jQuery));
@@ -319,7 +323,7 @@ HomeController.Listing = (function ($) {
             var btnObj = $(this);
             var stij = '#'+ btnObj.data('container');
             var container = $(stij);
-
+            console.log(container);
             $.fn.Ajax_LoadBlogArticles({
                 onSuccess: function(data, textStatus, jqXHR){
                     console.log(data);

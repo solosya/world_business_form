@@ -28,7 +28,7 @@
     <div class="main-screen full-height flex_col">
 
         <div class="row flex1">
-            <div class="col-sm-12 full-height">
+            <div id="ajaxArticles" class="col-sm-12 full-height">
                 {# {{this.render('partials/_single-article.twig', {article: articles[0], containerClass: 'screen-card card-lg-screen col-sm-12', network:networkData}) | raw}} #}
 {#                 {{this.render('partials/_single-article.twig', {article: articles[0], containerClass: 'screen-card card-sm-screen col-sm-6', network:networkData}) | raw}}
                 {{this.render('partials/_single-article.twig', {article: articles[1], containerClass: 'screen-card card-sm-screen col-sm-6', network:networkData}) | raw}}
@@ -39,3 +39,6 @@
 
     </div>
 </main>
+<script>
+    {{this.registerJs("HomeController.screen();")}}
+</script>
