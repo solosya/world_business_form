@@ -29198,8 +29198,9 @@ Card.prototype.screen = function()
             articleCount = 0;
         }
 
-        options.nonpinned = articleCount;
-        options.offset = articleCount -1;
+        options.offset = articleCount;
+        options.nonpinned = articleCount -1;
+
         console.log(options);
         $.fn.Ajax_LoadBlogArticles(options).done(function(data) {
             console.log(data);
