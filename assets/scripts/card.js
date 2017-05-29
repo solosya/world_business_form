@@ -63,6 +63,7 @@ Card.prototype.screen = function()
     };
 
     var run = function() {
+        console.log('running');
         var numberOfScreens = options.screens.length;
         currentScreen++;
         if (currentScreen > numberOfScreens) {
@@ -85,6 +86,7 @@ Card.prototype.screen = function()
         $.fn.Ajax_LoadBlogArticles(options).done(function(data) {
             console.log(data);
             if (data.articles.length == 0 ) {
+                console.log('setting article count to zero');
                 articleCount = 0;
                 return;
             }
