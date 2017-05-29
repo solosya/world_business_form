@@ -8,8 +8,9 @@
 {% endmacro %}
 
 
-{{this.registerJs("HomeController.listing();")}}
-{% set limit = 12 %}
+{{this.registerJs("CardController();")}}
+
+{% set limit = 8 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -25,12 +26,14 @@
             "social": {
                 "feed": "",
                 "link": "",
-                "limit": 4
+                "limit": 4,
+                "id" : ""
             }, 
             "gallery": {
                 "feed": "",
                 "link": "",
-                "limit": 8
+                "limit": 8,
+                "id" : ""
             }
         }
     %}
@@ -41,13 +44,13 @@
                 {% set sections = sections | merge({
                     (key) : {
                         'feed': _Blog.getBlogFeed({'limit': value['limit'], 'offset': 0, 'blogid':blog.guid}),
-                        'link' : blog.link
+                        'link' : blog.link,
+                        'id' : blog.id
                         }
                     }) %}
             {% endif %}
         {% endfor %}
     {% endfor %}
-
 
     <main id="main" class="site-main" role="main">
         
@@ -71,6 +74,21 @@
         </section><!-- .featured-slider-->
         {% endif %}
 
+        <section class="sponsors">
+            <div class="container justify_children">
+                <div class="row">
+                    <div class="hidden-xs hidden-sm">
+                     <a href="http://wbfsydney.com"><img width="728" height="90" src="{{networkData.templatePath}}/static/images/banners/human_728x90.gif?ver=1"></a>
+                    </div>
+                    <div class="hidden-md hidden-lg hidden-xs">
+                        <a href="http://wbfsydney.com"><img width="468" height="60" src="{{networkData.templatePath}}/static/images/banners/human_468x60.gif?ver=1"></a>
+                    </div>
+                    <div class="hidden-md hidden-lg hidden-sm">
+                        <a href="http://wbfsydney.com"><img width="320" height="50" src="{{networkData.templatePath}}/static/images/banners/human_320x50.gif?ver=1"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section class="home-page-content">
             <div class="container">
@@ -169,50 +187,37 @@
                     </div>
                 </div>
 
+                <section class="sponsors">
+                    <div class="container justify_children">
+                        <div class="row">
+                            <div class="hidden-xs hidden-sm">
+                             <a href="http://publish.aap.com.au"><img width="728" height="90" src="{{networkData.templatePath}}/static/images/banners/publish_728x90.gif?ver=1"></a>
+                            </div>
+                            <div class="hidden-md hidden-lg hidden-xs">
+                                <a href="http://publish.aap.com.au"><img width="468" height="60" src="{{networkData.templatePath}}/static/images/banners/publish_468x60.gif?ver=1"></a>
+                            </div>
+                            <div class="hidden-md hidden-lg hidden-sm">
+                                <a href="hhttp://publish.aap.com.au"><img width="320" height="50" src="{{networkData.templatePath}}/static/images/banners/publish_320x50.gif?ver=1"></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
 
-
-                {{ this.render('partials/ajaxarticles.twig', {
+{#                 {{ this.render('partials/ajaxarticles.twig', {
                     limit: sections['gallery'].limit,
                     non_pinned: articlesArr.existingNonPinnedCount, 
                     articles: sections['gallery'].feed,
                     card_style: "col-sm-3 card-sm",
                     container:"galleryAjaxArticles",
+                    blogid: sections['gallery'].id
                 }) | raw }}
-
+ #}
                 {% endif %}
 
         </section><!-- .home-page-content-->
 
-{#         <article class="livestreamform-main">
-            <div class="container">
-                <div class="page-content">
-                    <div class="row">
-                        <div class="col-md-offset-2 col-md-8">
-                            <div class="content-wrapper">
-                                 <div class="page-livestream">
-                                    <h2>Subscribe to WOBI news and updates</h2>
-                                    <div id="streamform">
-                                        <input class="forminput" id="submitlivestreamformname" name="name" type="text" placeholder="First name" >
-                                        <input class="forminput" id="submitlivestreamformlastname" name="lastname" type="text" placeholder="Surname">
-                                        <input class="forminput" id="submitlivestreamformemail" name="email" type="text" placeholder="email address">
 
-                                        <div class="livestreamsubmit" id="submitlivestreamform" name="submit" type="">SUBMIT</div>
-                                    </div>
-
-
-                                </div><!--content-block-top-->
-
-                            </div><!-- .content-->
-
-
-                        </div><!-- .col-md-8-->
-                    </div>
-                </div><!-- .page-content-->
-
-            </div><!--container-->
-        </article>
- #}
         <section class="sponsors" style="background:white">
 
             <div class="container hidden-md hidden-lg">
@@ -251,7 +256,7 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <h2>Supporting Partners</h2>
+                                <h2>Media Partners</h2>
                                 <div class="row">
                                      <div class="col-xs-5 col-sm-4">
                                         <img width="131" height="25" vspace="10" hspace="5" src="{{networkData.templatePath}}/static/images/sponsor_logos/huffington-post.png?ver=1">
@@ -281,6 +286,7 @@
                             </div>
                         </div>
                         <div class="cold-sm-12">
+                            <h2>Supporting Partners</h2>
                             <div class="row">
                                 <div class="col-xs-5 col-sm-4  justify_children">
                                     <img width="131" height="38" vspace="5" hspace="5" src="{{networkData.templatePath}}/static/images/sponsor_logos/am-cham.png?ver=1">
@@ -354,7 +360,7 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <h2>Supporting Partners</h2>
+                                <h2>Media Partners</h2>
                                 <div class="row">
                                      <div class="col-md-12 col-lg-12 justify_children">
                                         <img width="131" height="25" vspace="10" hspace="5" src="{{networkData.templatePath}}/static/images/sponsor_logos/huffington-post.png?ver=1">
@@ -370,6 +376,7 @@
 
                         <div class="row">
                             <div class="cold-sm-12 col-md-12">
+                                <h2>Supporting Partners</h2>
                                 <div class="row">
                                     <div class="col-md-12 col-lg-12 justify_children">
                                         <img width="131" height="38" vspace="10" src="{{networkData.templatePath}}/static/images/sponsor_logos/am-cham.png?ver=1">

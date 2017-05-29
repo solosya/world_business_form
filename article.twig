@@ -25,7 +25,7 @@
 
 {% set articleImg = false %}
 {% if article.media|length > 0 %}
-    {% set articleImg = _Media.getMediaUrl(article.media[0],imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'auto'} ) %}
+    {% set articleImg = _Media.getMediaUrl(article.media[0],imgWidth, imgHeight, {'crop': 'fill', 'gravity': 'faces'} ) %}
 {% endif %}
 
 {% set profileImg = _Media.getMediaUrl(article.createdBy['media'], 100, 100, {radius: 'max', gravity: 'face', 'crop': 'thumb', type: 'user'}) %}
@@ -70,9 +70,7 @@
                  <div class="social-share">
                      <div class="links">
                          <a href="https://www.facebook.com/sharer/sharer.php?u={{article.url}}&title={{ article.title|url_encode }}" class="btn btn-post"></a
-                         ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="btn btn-tweet"></a
-                         ><a href="https://www.linkedin.com/shareArticle?mini=true&url={{article.url}}&title={{article.title|url_encode}}" class="btn btn-instagram"></a
-                         ><a href="mailto:?subject=Check%20out%20this%20article&body={{article.url}}" class="btn btn-vimeo"></a>
+                         ><a href="https://twitter.com/share?text={{ article.title|url_encode }}&url={{article.url}}" class="btn btn-tweet"></a>
                      </div>
                  </div>
 
@@ -111,8 +109,19 @@
                                     {% endif %}
 
                                     <div class="time_to_read">
-                                        <img src="{{networkData.templatePath}}/static/images/ten_min.svg" />
-                                        <p>10 min read</p>
+                                        {% set readtime = 3 %}
+                                        {% if article.readingTime > 3 %}
+                                            {% set readtime = 4 %}
+                                        {% endif %}
+                                        {% if article.readingTime > 4 %}
+                                            {% set readtime = 7 %}
+                                        {% endif %}
+                                        {% if article.readingTime > 7 %}
+                                            {% set readtime = 10 %}
+                                        {% endif %}
+
+                                        <img src="{{networkData.templatePath}}/static/images/reading_time/{{readtime}}_min.svg" />
+                                        <p>{{article.readingTime}} minute read</p>
                                     </div>
 
 
