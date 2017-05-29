@@ -204,7 +204,7 @@
                 </section>
 
 
-                {{ this.render('partials/ajaxarticles.twig', {
+{#                 {{ this.render('partials/ajaxarticles.twig', {
                     limit: sections['gallery'].limit,
                     non_pinned: articlesArr.existingNonPinnedCount, 
                     articles: sections['gallery'].feed,
@@ -212,7 +212,7 @@
                     container:"galleryAjaxArticles",
                     blogid: sections['gallery'].id
                 }) | raw }}
-
+ #}
                 {% endif %}
 
         </section><!-- .home-page-content-->
