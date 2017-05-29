@@ -73,7 +73,7 @@
             </div><!-- .swiper-container-->
         </section><!-- .featured-slider-->
         {% endif %}
-
+{# 
         <section class="sponsors">
             <div class="container justify_children">
                 <div class="row">
@@ -89,7 +89,7 @@
                 </div>
             </div>
         </section>
-
+ #}
         <section class="home-page-content">
             <div class="container">
                 
@@ -178,6 +178,16 @@
                         {% if sections['gallery'].feed.articles|length > 4 %}
                             <div class="row gutter-20">
                                 {% for i in 4..7 %}
+                                    {% if sections['gallery'].feed.articles[i] %}                                                                
+                                        {{this.render('partials/_single-article.twig', {article: sections['gallery'].feed.articles[i], swap: 'false', containerClass: 'col-xs-6 col-md-3 card-sm'}) | raw}}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        {% if sections['gallery'].feed.articles|length > 4 %}
+                            <div class="row gutter-20">
+                                {% for i in 8..11 %}
                                     {% if sections['gallery'].feed.articles[i] %}                                                                
                                         {{this.render('partials/_single-article.twig', {article: sections['gallery'].feed.articles[i], swap: 'false', containerClass: 'col-xs-6 col-md-3 card-sm'}) | raw}}
                                     {% endif %}
