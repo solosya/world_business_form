@@ -4,8 +4,7 @@
 {{ set(this, 'title', blogInfo.title) }}
 
 
-{{this.registerJs("HomeController.listing();")}}
-{{this.registerJs("HomeController.blog();")}}
+{{this.registerJs("CardController().screen();")}}
 
 {% set limit = 20 %}
 
@@ -22,24 +21,40 @@
     <!--placeholder temp -->
 
 <main id="main" class="full-height" role="main">
-    {# <img class="two-card-logo" src="{{networkData.templatePath}}/static/images/logo-reverse-small.png"> #}
-    <img class="two-card-logo" src="{{networkData.templatePath}}/static/images/logo-reverse-medium.png">
+    <img id="small-logo" class="two-card-logo" src="{{networkData.templatePath}}/static/images/logo-reverse-small.png" style="display:none">
+    <img id="large-logo" class="two-card-logo" src="{{networkData.templatePath}}/static/images/logo-reverse-medium.png">
 
     <div class="main-screen full-height flex_col">
 
         <div class="row flex1">
-            <div class="col-sm-12 full-height">
-                {{this.render('partials/_single-article.twig', {article: articles[0], containerClass: 'screen-card card-lg-screen col-sm-12', network:networkData}) | raw}}
+
+            <div id="ajaxArticles" 
+                 data-offset="0"
+                 data-blogid="{{blogid}}"
+                 data-articlecount="1"
+                 data-containerclass="screen-card card-sm-screen col-sm-6"
+                 data-existing-nonpinned-count=""
+                 class="col-sm-12 full-height">
+
+
+
+
+                {# {{this.render('partials/_single-article.twig', {article: articles[0], containerClass: 'screen-card card-lg-screen col-sm-12', network:networkData}) | raw}} #}
 {#                 {{this.render('partials/_single-article.twig', {article: articles[0], containerClass: 'screen-card card-sm-screen col-sm-6', network:networkData}) | raw}}
                 {{this.render('partials/_single-article.twig', {article: articles[1], containerClass: 'screen-card card-sm-screen col-sm-6', network:networkData}) | raw}}
  #}                
             </div>
 
+            <a  class="loadMoreArticles" 
+                style="display:none;"
+                data-container="ajaxArticles"
+                data-limit="2"
+                href="#">Load more articles</a>
+
+
         </div>
 
-{#         <div class="row flex-shrink0" style="max-height:85px;margin-top:20px;">
-            <img src="{{networkData.templatePath}}/static/images/logo-reverse-small.png" style="float:right;margin-right:15px;">
-        </div>
- #}
     </div>
 </main>
+<script>
+</script>

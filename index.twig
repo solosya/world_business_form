@@ -8,8 +8,9 @@
 {% endmacro %}
 
 
-{{this.registerJs("HomeController.listing();")}}
-{% set limit = 12 %}
+{{this.registerJs("CardController();")}}
+
+{% set limit = 8 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
@@ -31,7 +32,7 @@
             "gallery": {
                 "feed": "",
                 "link": "",
-                "limit": 8,
+                "limit": 12,
                 "id" : ""
             }
         }
@@ -72,8 +73,23 @@
             </div><!-- .swiper-container-->
         </section><!-- .featured-slider-->
         {% endif %}
-
-
+{# 
+        <section class="sponsors">
+            <div class="container justify_children">
+                <div class="row">
+                    <div class="hidden-xs hidden-sm">
+                     <a href="http://wbfsydney.com"><img width="728" height="90" src="{{networkData.templatePath}}/static/images/banners/human_728x90.gif?ver=1"></a>
+                    </div>
+                    <div class="hidden-md hidden-lg hidden-xs">
+                        <a href="http://wbfsydney.com"><img width="468" height="60" src="{{networkData.templatePath}}/static/images/banners/human_468x60.gif?ver=1"></a>
+                    </div>
+                    <div class="hidden-md hidden-lg hidden-sm">
+                        <a href="http://wbfsydney.com"><img width="320" height="50" src="{{networkData.templatePath}}/static/images/banners/human_320x50.gif?ver=1"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+ #}
         <section class="home-page-content">
             <div class="container">
                 
@@ -168,13 +184,37 @@
                                 {% endfor %}
                             </div>
                         {% endif %}
+
+                        {% if sections['gallery'].feed.articles|length > 8 %}
+                            <div class="row gutter-20">
+                                {% for i in 8..11 %}
+                                    {% if sections['gallery'].feed.articles[i] %}                                                                
+                                        {{this.render('partials/_single-article.twig', {article: sections['gallery'].feed.articles[i], swap: 'false', containerClass: 'col-xs-6 col-md-3 card-sm'}) | raw}}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
 
+                <section class="sponsors">
+                    <div class="container justify_children">
+                        <div class="row">
+                            <div class="hidden-xs hidden-sm">
+                             <a href="http://publish.aap.com.au"><img width="728" height="90" src="{{networkData.templatePath}}/static/images/banners/publish_728x90.gif?ver=1"></a>
+                            </div>
+                            <div class="hidden-md hidden-lg hidden-xs">
+                                <a href="http://publish.aap.com.au"><img width="468" height="60" src="{{networkData.templatePath}}/static/images/banners/publish_468x60.gif?ver=1"></a>
+                            </div>
+                            <div class="hidden-md hidden-lg hidden-sm">
+                                <a href="hhttp://publish.aap.com.au"><img width="320" height="50" src="{{networkData.templatePath}}/static/images/banners/publish_320x50.gif?ver=1"></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
 
-
-                {{ this.render('partials/ajaxarticles.twig', {
+{#                 {{ this.render('partials/ajaxarticles.twig', {
                     limit: sections['gallery'].limit,
                     non_pinned: articlesArr.existingNonPinnedCount, 
                     articles: sections['gallery'].feed,
@@ -182,7 +222,7 @@
                     container:"galleryAjaxArticles",
                     blogid: sections['gallery'].id
                 }) | raw }}
-
+ #}
                 {% endif %}
 
         </section><!-- .home-page-content-->
@@ -226,7 +266,7 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <h2>Supporting Partners</h2>
+                                <h2>Media Partners</h2>
                                 <div class="row">
                                      <div class="col-xs-5 col-sm-4">
                                         <img width="131" height="25" vspace="10" hspace="5" src="{{networkData.templatePath}}/static/images/sponsor_logos/huffington-post.png?ver=1">
@@ -256,6 +296,7 @@
                             </div>
                         </div>
                         <div class="cold-sm-12">
+                            <h2>Supporting Partners</h2>
                             <div class="row">
                                 <div class="col-xs-5 col-sm-4  justify_children">
                                     <img width="131" height="38" vspace="5" hspace="5" src="{{networkData.templatePath}}/static/images/sponsor_logos/am-cham.png?ver=1">
@@ -329,7 +370,7 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <h2>Supporting Partners</h2>
+                                <h2>Media Partners</h2>
                                 <div class="row">
                                      <div class="col-md-12 col-lg-12 justify_children">
                                         <img width="131" height="25" vspace="10" hspace="5" src="{{networkData.templatePath}}/static/images/sponsor_logos/huffington-post.png?ver=1">
@@ -345,6 +386,7 @@
 
                         <div class="row">
                             <div class="cold-sm-12 col-md-12">
+                                <h2>Supporting Partners</h2>
                                 <div class="row">
                                     <div class="col-md-12 col-lg-12 justify_children">
                                         <img width="131" height="38" vspace="10" src="{{networkData.templatePath}}/static/images/sponsor_logos/am-cham.png?ver=1">

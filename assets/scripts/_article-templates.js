@@ -1,6 +1,14 @@
 /**
  * Handlebar Article templates for listing
  */
+var screenArticles_1 = 
+'<div class="row half-height top-row">\
+    {¡{content:1-2}¡}\
+</div>\
+<div class="row half-height bottom-row">\
+    {¡{content:3-5}¡}\
+</div>\
+';
 
 var systemCardTemplate = 
 '<div class="{{containerClass}} "> \
