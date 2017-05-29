@@ -4,8 +4,7 @@
 {{ set(this, 'title', blogInfo.title) }}
 
 
-{{this.registerJs("HomeController.listing();")}}
-{{this.registerJs("HomeController.blog();")}}
+{{this.registerJs("CardController().screen();")}}
 
 {% set limit = 20 %}
 
@@ -32,9 +31,9 @@
             <div id="ajaxArticles" 
                  data-offset="0"
                  data-blogid="{{blogid}}"
-                 data-articlecount="10"
-                 data-containerclass="screen-card card-lg-screen col-sm-12"
-                 data-existing-nonpinned-count="{{non_pinned}}"
+                 data-articlecount="1"
+                 data-containerclass="screen-card card-sm-screen col-sm-6"
+                 data-existing-nonpinned-count=""
                  class="col-sm-12 full-height">
 
 
@@ -48,6 +47,7 @@
 
             <a class="loadMoreArticles" 
                 data-container="ajaxArticles"
+                data-limit="2"
                 href="#">Load more articles</a>
 
 
@@ -56,5 +56,4 @@
     </div>
 </main>
 <script>
-    {{this.registerJs("HomeController.screen();")}}
 </script>

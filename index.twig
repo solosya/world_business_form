@@ -8,8 +8,9 @@
 {% endmacro %}
 
 
-{{this.registerJs("HomeController.listing();")}}
-{% set limit = 12 %}
+{{this.registerJs("CardController();")}}
+
+{% set limit = 8 %}
 
 {% set articlesArr = _Blog.getBlogFeed({'limit': limit, 'offset': 0}) %}
 {% set articles = articlesArr.articles %}
