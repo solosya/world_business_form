@@ -20,6 +20,8 @@ Card.prototype.renderScreenCards = function(options, data)
     }
     container.empty().append(html);
 
+    $('.two-card-logo').toggle();
+
     $(".card p, .card h1").dotdotdot();
             
     $('.video-player').videoPlayer();
@@ -47,18 +49,20 @@ Card.prototype.screen = function()
             {
                 style: "screen-card card-sm-screen col-sm-6",
                 limit: 2,
+                logo: "small-logo"
             }, 
             {
                 style: "screen-card card-lg-screen col-sm-12",
-                limit: 1
+                limit: 1,
+                logo: "large-logo"
+
             }],
         'container': $( '#'+btn.data('container') ),
         'currentScreen': currentScreen,
         'count': 20
     };
 
-    setInterval ( function() {
-
+    var run = function() {
         var numberOfScreens = options.screens.length;
         currentScreen++;
         if (currentScreen > numberOfScreens) {
@@ -89,8 +93,11 @@ Card.prototype.screen = function()
                 self.renderScreenCards(options, data);
             }
         });
+    }
 
-    }, 5000 );  
+    run();
+
+    setInterval ( run, 5000 );  
 };
 
 Card.prototype.renderCard = function(card, cardClass)
@@ -406,6 +413,7 @@ Card.prototype.initDroppable = function()
 
 Card.prototype.events = function() 
 {
+    console.log('events');
     var self = this;
 
     if(_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
