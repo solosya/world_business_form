@@ -27198,6 +27198,7 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
                 }                
             },
             error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus);
                 console.log(jqXHR.responseText);
                 if (opts.onError && typeof opts.onError === 'function') {
                     opts.onError(jqXHR, textStatus, errorThrown);
@@ -29189,17 +29190,18 @@ Card.prototype.screen = function()
         var screenOption = currentScreen-1;
         options.currentScreen = currentScreen;
 
+        console.log('grigidig');
         options.limit = options.screens[screenOption].limit;
         options.containerClass = options.screens[screenOption].style;
 
-        articleCount = articleCount + options.limit;
-        console.log(articleCount);
+        // articleCount = articleCount + options.limit;
+        console.log('Article Count: ', articleCount);
         if (articleCount >= options.count) {
             articleCount = 0;
         }
 
         options.offset = articleCount;
-        options.nonpinned = articleCount -1;
+        options.nonpinned = articleCount;
 
         console.log(options);
         $.fn.Ajax_LoadBlogArticles(options).done(function(data) {
@@ -29209,6 +29211,7 @@ Card.prototype.screen = function()
                 articleCount = 0;
                 return;
             }
+            articleCount = articleCount + data.articles.length;
 
             if (data.success == 1) {
                 self.renderScreenCards(options, data);

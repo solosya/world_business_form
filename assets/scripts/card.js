@@ -72,6 +72,7 @@ Card.prototype.screen = function()
         var screenOption = currentScreen-1;
         options.currentScreen = currentScreen;
 
+        console.log('grigidig');
         options.limit = options.screens[screenOption].limit;
         options.containerClass = options.screens[screenOption].style;
 

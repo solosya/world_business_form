@@ -21051,17 +21051,19 @@ Card.prototype.screen = function()
         var screenOption = currentScreen-1;
         options.currentScreen = currentScreen;
 
+        console.log('grigidig');
         options.limit = options.screens[screenOption].limit;
         options.containerClass = options.screens[screenOption].style;
-        options.nonpinned = -1;
 
-        articleCount = articleCount + options.limit;
-        console.log(articleCount);
+        // articleCount = articleCount + options.limit;
+        console.log('Article Count: ', articleCount);
         if (articleCount >= options.count) {
             articleCount = 0;
         }
 
         options.offset = articleCount;
+        options.nonpinned = articleCount;
+
         console.log(options);
         $.fn.Ajax_LoadBlogArticles(options).done(function(data) {
             console.log(data);
@@ -21070,6 +21072,7 @@ Card.prototype.screen = function()
                 articleCount = 0;
                 return;
             }
+            articleCount = articleCount + data.articles.length;
 
             if (data.success == 1) {
                 self.renderScreenCards(options, data);
