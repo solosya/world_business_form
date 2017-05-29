@@ -99,6 +99,39 @@
             }
         }
 
+        &.social.withImage__content {
+            .content {
+                >p {
+                    display:none;
+                }
+            }
+        }
+
+
+        // &.social.without__image {
+        //     .content {
+        //         padding-top:87px;
+        //         height:100%;
+        //         @media screen and (max-width: $mobile-break){
+        //             padding-top:10px;
+        //         }
+
+        //         h2 {
+        //             font-size: rem(17);
+        //             font-weight:bold;
+        //             max-height:52px;
+        //         }
+
+        //         > p {
+        //             font-size: rem(13);
+        //             display: block;
+        //             max-height:100px;
+        //             margin-bottom: 18px;
+        //         }
+
+
+        //     }
+        // }
 
         &.facebook{
             .category {

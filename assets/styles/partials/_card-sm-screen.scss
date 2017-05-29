@@ -109,6 +109,7 @@
         }
 
 
+
         &.article.without__image {
             .content {
                 padding-top:52px;
@@ -201,8 +202,9 @@
                     z-index:1;
 
                     > p {
-                        min-height:85px;
-                        color:white;
+                        display:none;
+                        // min-height:85px;
+                        // color:white;
                     }
                     time {
                         color: #dadada;
@@ -214,7 +216,10 @@
 
                 .content {
                     background:transparent;
-                    
+                    padding-top: 52px;
+                    height:100%;
+                    position:relative;
+
                     @media screen and (max-width: $mobile-break){
                         height: 116px;
                         padding-top: 20px;                
@@ -222,7 +227,10 @@
 
             
 
-                    > p {   
+                    > p { 
+                        margin-top:100px;
+                        width: 70%;
+                        font-size:rem(50);
                         min-height:85px;
                         color:white;
                     }
@@ -254,18 +262,18 @@
 
         &.twitter{
 
-            figure {
-                &:before {
-                  content: '';
-                  position: absolute;
-                  top: 0;
-                  bottom: 0;
-                  width: 100%;
-                  opacity: 0.6;
-                  background-color: #00A4CD;
-                  z-index: 1;
-                }
-            }
+            // figure {
+            //     &:before {
+            //       content: '';
+            //       position: absolute;
+            //       top: 0;
+            //       bottom: 0;
+            //       width: 100%;
+            //       opacity: 0.6;
+            //       background-color: #00A4CD;
+            //       z-index: 1;
+            //     }
+            // }
 
             .content {
                 .author {

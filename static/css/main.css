@@ -11185,17 +11185,22 @@ body.screen {
       background: transparent;
       z-index: 1; }
       .card-sm-screen a.card.social.facebook.withImage__content .content > p, .card-sm-screen a.card.social.twitter.withImage__content .content > p, .card-sm-screen a.card.social.instagram.withImage__content .content > p {
-        min-height: 85px;
-        color: white; }
+        display: none; }
       .card-sm-screen a.card.social.facebook.withImage__content .content time, .card-sm-screen a.card.social.twitter.withImage__content .content time, .card-sm-screen a.card.social.instagram.withImage__content .content time {
         color: #dadada; }
     .card-sm-screen a.card.social.without__image .content {
-      background: transparent; }
+      background: transparent;
+      padding-top: 52px;
+      height: 100%;
+      position: relative; }
       @media screen and (max-width: 620px) {
         .card-sm-screen a.card.social.without__image .content {
           height: 116px;
           padding-top: 20px; } }
       .card-sm-screen a.card.social.without__image .content > p {
+        margin-top: 100px;
+        width: 70%;
+        font-size: 5rem;
         min-height: 85px;
         color: white; }
     .card-sm-screen a.card.facebook .category:before {
@@ -11209,15 +11214,6 @@ body.screen {
       background-repeat: no-repeat;
       display: block;
       margin-bottom: 0; }
-    .card-sm-screen a.card.twitter figure:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 100%;
-      opacity: 0.6;
-      background-color: #00A4CD;
-      z-index: 1; }
     .card-sm-screen a.card.twitter .content .author {
       position: absolute;
       bottom: 0;
@@ -11562,6 +11558,8 @@ body.screen {
           font-style: italic;
           font-family: "PT Serif", "Times New Roman", Times, serif;
           color: #dadada; }
+    .card-lg-screen a.card.social.withImage__content .content > p {
+      display: none; }
     .card-lg-screen a.card.facebook .category {
       order: 2;
       visibility: hidden; }

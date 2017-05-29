@@ -97,7 +97,7 @@ Card.prototype.screen = function()
 
     run();
 
-    setInterval ( run, 5000 );  
+    // setInterval ( run, 5000 );  
 };
 
 Card.prototype.renderCard = function(card, cardClass)
