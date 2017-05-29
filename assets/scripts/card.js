@@ -82,7 +82,7 @@ Card.prototype.screen = function()
         }
 
         options.nonpinned = articleCount;
-        options.offset = articleCount;
+        options.offset = articleCount -1;
         console.log(options);
         $.fn.Ajax_LoadBlogArticles(options).done(function(data) {
             console.log(data);
