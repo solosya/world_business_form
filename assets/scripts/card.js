@@ -74,7 +74,6 @@ Card.prototype.screen = function()
 
         options.limit = options.screens[screenOption].limit;
         options.containerClass = options.screens[screenOption].style;
-        options.nonpinned = -1;
 
         articleCount = articleCount + options.limit;
         console.log(articleCount);
@@ -82,6 +81,7 @@ Card.prototype.screen = function()
             articleCount = 0;
         }
 
+        options.nonpinned = articleCount;
         options.offset = articleCount;
         console.log(options);
         $.fn.Ajax_LoadBlogArticles(options).done(function(data) {
