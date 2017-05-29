@@ -21042,6 +21042,7 @@ Card.prototype.screen = function()
     };
 
     var run = function() {
+        console.log('running');
         var numberOfScreens = options.screens.length;
         currentScreen++;
         if (currentScreen > numberOfScreens) {
@@ -21052,18 +21053,20 @@ Card.prototype.screen = function()
 
         options.limit = options.screens[screenOption].limit;
         options.containerClass = options.screens[screenOption].style;
-
+        options.nonpinned = -1;
 
         articleCount = articleCount + options.limit;
+        console.log(articleCount);
         if (articleCount >= options.count) {
             articleCount = 0;
         }
 
         options.offset = articleCount;
-
+        console.log(options);
         $.fn.Ajax_LoadBlogArticles(options).done(function(data) {
             console.log(data);
             if (data.articles.length == 0 ) {
+                console.log('setting article count to zero');
                 articleCount = 0;
                 return;
             }
@@ -21075,8 +21078,8 @@ Card.prototype.screen = function()
     }
 
     run();
-
-    // setInterval ( run, 5000 );  
+    console.log('setting interval');
+    setInterval ( run, 5000 );  
 };
 
 Card.prototype.renderCard = function(card, cardClass)
@@ -21424,10 +21427,13 @@ Card.prototype.events = function()
 
         btn.html("Please wait...");
         
+        var container = $('#'+btn.data('container'));
+
         var options = {
             'limit': btn.data('limit'),
             'containerClass': btn.data('container'),
-            'container': $('#'+btn.data('container'))
+            'container': container,
+            'nonpinned' : parseInt(container.data('existing-nonpinned-count'))
         };
 
         $.fn.Ajax_LoadBlogArticles(options).done(function(data) {

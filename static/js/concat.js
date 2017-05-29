@@ -29216,7 +29216,7 @@ Card.prototype.screen = function()
     }
 
     run();
-
+    console.log('setting interval');
     setInterval ( run, 5000 );  
 };
 
