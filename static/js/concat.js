@@ -27153,51 +27153,64 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
         var defaults = {
             'limit': 20,
             'containerClass': 'ajaxArticles',
-            'blogid': null,
+            'onSuccess' : function(){},
+            'onError' : function(){},
+            'beforeSend' : function(){},
+            'onComplete' : function(){}
         };
-
-
+        
         var opts = $.extend( {}, defaults, options );
+        console.log(opts);
 
-        if (options.offset) {
-            var offset = options.offset;
+        if (opts.container) {
+            var container = opts.container;
         } else {
-            var offset = parseInt($('#'+opts.containerClass).data('offset'));
-            if(isNaN(offset) || offset < 0) {
-                offset = opts.limit;
-            }
+            var container = $('#'+opts.containerClass);
+        }
+        var offset = parseInt(container.data('offset'));
+        console.log(offset);
+        if(isNaN(offset) || offset < 0) {
+            offset = opts.limit;
         }
         
-
-        var existingNonPinnedCount = parseInt($('#'+opts.containerClass).data('existing-nonpinned-count'));
+        var existingNonPinnedCount = parseInt(container.data('existing-nonpinned-count'));
         if(isNaN(existingNonPinnedCount)) {
             existingNonPinnedCount = -1;
         }
         
-        $('#'+opts.containerClass).data('offset', (offset + opts.limit));
+        container.data('offset', (offset + opts.limit));
         
         var csrfToken = $('meta[name="csrf-token"]').attr("content");
         
         var dateFormat = 'SHORT';
-
-        var requestData = {
-            offset: offset, 
-            limit: opts.limit, 
-            existingNonPinnedCount: existingNonPinnedCount,
-            _csrf: csrfToken, 
-            dateFormat: dateFormat,
-        };
-
-        if (opts.blogid) {
-            requestData['blogid'] = opts.blogid;
-        }
-
-        console.log(requestData);
+        console.log({offset: offset, limit: opts.limit, existingNonPinnedCount: existingNonPinnedCount, _csrf: csrfToken, dateFormat: dateFormat});
         return $.ajax({
             type: 'post',
             url: _appJsConfig.baseHttpPath + '/home/load-articles',
             dataType: 'json',
-            data: requestData
+            data: {offset: offset, limit: opts.limit, existingNonPinnedCount: existingNonPinnedCount, _csrf: csrfToken, dateFormat: dateFormat},
+            success: function (data, textStatus, jqXHR) {
+                console.log(data);
+                if (opts.onSuccess && typeof opts.onSuccess === 'function') {
+                    opts.onSuccess(data, textStatus, jqXHR);
+                }                
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR.responseText);
+                if (opts.onError && typeof opts.onError === 'function') {
+                    opts.onError(jqXHR, textStatus, errorThrown);
+                }
+            },
+            beforeSend: function (jqXHR, settings) {
+                if (opts.beforeSend && typeof opts.beforeSend === 'function') {
+                    opts.beforeSend(jqXHR, settings);
+                }
+            },
+            complete: function (jqXHR, textStatus) {
+                if (opts.onComplete && typeof opts.onComplete === 'function') {
+                    opts.onComplete(jqXHR, textStatus);
+                }
+            }
         });        
     };
 (function($) {
@@ -29100,44 +29113,6 @@ AuthController.ResetPassword = (function ($) {
     };
 
 }(jQuery));
-var BlogController = function() {
-    return new Blog();
-}
-
-var Blog = function () 
-{
-	this.events();
-}
-Blog.prototype.events = function() 
-{
-	//attach follow blog
-	$('a.followBlog').followBlog({
-	    'onSuccess': function(data, obj){
-	        var message = ($(obj).data('status') === 'follow') ? 'Unfollow' : 'Follow';
-	        $.fn.General_ShowNotification({message: message + " blog(s) successfully."});   
-	    },
-	    'beforeSend': function(obj){
-	        $(obj).html("Please wait...");
-	    },
-	    'onComplete': function(obj){
-	        ($(obj).data('status') === 'follow') ? $(obj).html("Follow +") : $(obj).html("Following -");
-	    }
-	});
-	
-	//attach follow user
-	$('a.followUser').followUser({
-	    'onSuccess': function(data, obj){
-	        var message = ($(obj).data('status') === 'follow') ? 'Unfollow' : 'Follow';
-	        $.fn.General_ShowNotification({message: message + " user(s) successfully."});   
-	    },
-	    'beforeSend': function(obj){
-	        $(obj).html("Please wait...");
-	    },
-	    'onComplete': function(obj){
-	        ($(obj).data('status') === 'follow') ? $(obj).html("Follow +") : $(obj).html("Following -");
-	    }
-	});
-};
 var CardController = function() {
     return new Card();
 }
@@ -29237,7 +29212,7 @@ Card.prototype.screen = function()
 
     run();
 
-    setInterval ( run, 5000 );  
+    // setInterval ( run, 5000 );  
 };
 
 Card.prototype.renderCard = function(card, cardClass)
