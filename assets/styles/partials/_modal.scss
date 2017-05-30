@@ -3,9 +3,9 @@
 .modal {
 	z-index:9999;
 	background:rgba(darken($white, 100%), 0.75) none repeat scroll 0 0;
-}
-.modal {
 	text-align:center;
+	height:100%;
+
 }
 .modal-backdrop.in {
 	@include opacity(0.95);
