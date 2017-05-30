@@ -2654,7 +2654,7 @@ select[multiple].input-lg,
 
 .navbar-brand {
   float: left;
-  padding: 12px;
+  padding: 28px 15px;
   font-size: 13px;
   line-height: 14px;
   height: 70px; }
@@ -2662,8 +2662,6 @@ select[multiple].input-lg,
     text-decoration: none; }
   .navbar-brand > img {
     display: block; }
-  .navbar-brand > img.text-logo {
-    margin-top: 12px; }
   @media (min-width: 768px) {
     .navbar > .container .navbar-brand, .login-page .navbar > .container .navbar-brand, .navbar > .profile__container .navbar-brand,
     .navbar > .container-fluid .navbar-brand {
@@ -6410,12 +6408,6 @@ body.no_profile .profile_overlay {
   /* IE 9 */
   transform: translate(0, 0); }
 
-.modal:before {
-  content: " ";
-  height: 100%;
-  display: inline-block;
-  vertical-align: middle; }
-
 .modal-dialog {
   text-align: left;
   display: inline-block;
@@ -6447,7 +6439,12 @@ body.no_profile .profile_overlay {
   -webkit-box-shadow: 0 8px 35px 8px rgba(0, 0, 0, 0.9);
   -moz-box-shadow: 0 8px 35px 8px rgba(0, 0, 0, 0.9);
   -ms-box-shadow: 0 8px 35px 8px rgba(0, 0, 0, 0.9);
-  box-shadow: 0 8px 35px 8px rgba(0, 0, 0, 0.9); }
+  box-shadow: 0 8px 35px 8px rgba(0, 0, 0, 0.9);
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  max-height: 100%;
+  overflow: scroll; }
 
 /*  */
 /* Modal Close */
@@ -6563,6 +6560,130 @@ body.no_profile .profile_overlay {
       width: 100%; }
     .modal-body .login-page .tab-content {
       padding: 35px; }
+
+.close__lg-modal {
+  display: none; }
+
+.close__sm-modal {
+  display: inline;
+  background-color: #000;
+  border: none; }
+
+.social-modal__content {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-image: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  max-width: none; }
+
+.social-modal__content.no_image {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  height: auto;
+  border-radius: 8px;
+  position: relative; }
+
+.social-modal__image_wrap {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.social-modal__image img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+  display: inline-block;
+  -webkit-box-shadow: 0 0 64px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 64px 0 rgba(0, 0, 0, 0.5); }
+
+.social-modal__channel {
+  font-size: 11.988px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: .8px;
+  color: rgba(32, 32, 32, 0.8);
+  text-transform: uppercase;
+  color: #ff9c26; }
+
+.social-modal__content {
+  text-align: left; }
+
+.social-modal__overflow {
+  overflow-y: auto; }
+  .social-modal__overflow a {
+    color: #384362;
+    text-decoration: none;
+    outline: 0;
+    -webkit-transition: color .4s,background-color .4s,border-color .4s;
+    transition: color .4s,background-color .4s,border-color .4s;
+    border: none; }
+
+.social-modal__text {
+  font-size: 29.88px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.3px;
+  color: #000;
+  margin: 30px auto;
+  text-align: left;
+  word-break: normal;
+  word-wrap: break-word;
+  overflow: hidden;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap; }
+
+.social-modal__content.no_image .social-modal__text {
+  width: 100%; }
+
+.social-modal__content .social-modal__text {
+  width: 100%; }
+
+.social-modal__text {
+  width: 270px; }
+
+.social-icon_wrap--colored {
+  height: 20px;
+  font-size: 20px;
+  margin-bottom: 40px; }
+  .social-icon_wrap--colored a {
+    margin-right: 7px; }
+
+.social-user__author {
+  font-size: 20px; }
 
 #AjaxModal .modal-body {
   padding: 0px; }
