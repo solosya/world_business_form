@@ -20778,7 +20778,7 @@ var socialPostPopupTemplate =
                                 '<div class="social-modal__image_wrap">'+
                                         '{{#if hasMediaVideo}}'+
                                                 '<div class="social-modal__video-wrap">'+
-                                                        '<iframe style="min-height:360px;" src="{{media.videoUrl}}" frameborder="0" allowfullscreen></iframe>'+
+                                                        '<iframe style="min-height:360px;width:100%;" src="{{media.videoUrl}}" frameborder="0" allowfullscreen></iframe>'+
                                                 '</div>'+
                                         '{{else}}'+
                                                 '<div class="social-modal__image" style="background-image: url(\'{{media.path}}\');" >'+
@@ -21182,12 +21182,10 @@ Card.prototype.bindSocialPostPopup = function()
     $(document).on('click', 'article.socialarticle', function (e) {
         e.preventDefault();
         // e.stopPropogation();
-        console.log("moo");
         var blogGuid = $(this).parent().data('blog-guid');
         var postGuid = $(this).parent().data('guid');
 
         if (!isScialRequestSent) {
-                    console.log("moo moo");
 
             var csrfToken = $('meta[name="csrf-token"]').attr("content");
             $.ajax({
@@ -21196,7 +21194,6 @@ Card.prototype.bindSocialPostPopup = function()
                 dataType: 'json',
                 data: {blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken},
                 success: function (data, textStatus, jqXHR) {
-                    console.log("moo success");
                     data.hasMediaVideo = false;
                     if (data.media['type'] === 'video') {
                         data.hasMediaVideo = true;
