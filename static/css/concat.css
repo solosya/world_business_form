@@ -11328,9 +11328,8 @@ body.screen {
           height: 116px;
           padding-top: 20px; } }
       .card-sm-screen a.card.social.without__image .content > p {
-        margin-top: 100px;
-        width: 70%;
-        font-size: 5rem;
+        width: 90%;
+        font-size: 6vh;
         min-height: 85px;
         color: white; }
     .card-sm-screen a.card.facebook .category:before {
