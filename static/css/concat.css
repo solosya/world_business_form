@@ -2997,10 +2997,9 @@ select[multiple].input-lg,
   outline: 0; }
 
 .modal-backdrop {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
   left: 0;
   z-index: 1040;
   background-color: #000; }
@@ -6445,7 +6444,10 @@ body.no_profile .profile_overlay {
   top: 50%;
   transform: translateY(-50%);
   max-height: 100%;
-  overflow: scroll; }
+  overflow: scroll;
+  width: 80%;
+  left: 10%;
+  padding: 20px; }
 
 /*  */
 /* Modal Close */
@@ -6566,6 +6568,9 @@ body.no_profile .profile_overlay {
   display: none; }
 
 .close__sm-modal {
+  right: 0;
+  position: absolute;
+  top: 0;
   display: inline;
   background-color: #000;
   border: none; }
@@ -6594,15 +6599,13 @@ body.no_profile .profile_overlay {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  max-width: none; }
-
-.social-modal__content {
-  width: 100%;
+  max-width: none;
   max-width: 600px;
   margin: auto;
   height: auto;
   border-radius: 8px;
-  position: relative; }
+  position: relative;
+  text-align: left; }
 
 .social-modal__image_wrap {
   height: 100%;
@@ -6637,9 +6640,6 @@ body.no_profile .profile_overlay {
   color: rgba(32, 32, 32, 0.8);
   text-transform: uppercase;
   color: #ff9c26; }
-
-.social-modal__content {
-  text-align: left; }
 
 .social-modal__overflow {
   overflow-y: auto; }
@@ -6685,6 +6685,9 @@ body.no_profile .profile_overlay {
 
 .social-user__author {
   font-size: 20px; }
+
+.social-modal__video-wrap {
+  width: 100%; }
 
 #AjaxModal .modal-body {
   padding: 0px; }
