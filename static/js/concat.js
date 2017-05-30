@@ -28715,13 +28715,13 @@ var socialPostPopupTemplate =
             '<div class="close__text">esc</div>'+
         '</span>'+
     '</button>'+
-    
+    '<button type="button" class="close close__sm-modal" data-dismiss="modal" aria-label="Close">'+
+        '<span aria-hidden="true">'+
+                '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Close</title><g stroke="#FFF" stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M17.803 2L2 17.803M2.08 2.08l15.803 15.803"/></g></svg>'+
+        '</span>'+
+    '</button>'+
+
     '<div class="social-modal__content {{blog.title}} {{#unless hasMedia}} no_image {{/unless}}">'+
-                    '<button type="button" class="close close__sm-modal" data-dismiss="modal" aria-label="Close">'+
-                            '<span aria-hidden="true">'+
-                                    '<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Close</title><g stroke="#FFF" stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round"><path d="M17.803 2L2 17.803M2.08 2.08l15.803 15.803"/></g></svg>'+
-                            '</span>'+
-                    '</button>'+
                     '<div class="social-modal__channel social-modal__channel--technology ">{{blog.title}}</div>'+
                     '<div class="social-modal__overflow">'+
 
@@ -28730,9 +28730,7 @@ var socialPostPopupTemplate =
                                 '<div class="social-modal__image_wrap">'+
                                         '{{#if hasMediaVideo}}'+
                                                 '<div class="social-modal__video-wrap">'+
-                                                        '<div>'+
-                                                                '<iframe style="min-height:360px; min-width:640px;" src="{{media.videoUrl}}" frameborder="0" allowfullscreen></iframe>'+
-                                                        '</div>'+
+                                                        '<iframe style="min-height:360px;width:100%;" src="{{media.videoUrl}}" frameborder="0" allowfullscreen></iframe>'+
                                                 '</div>'+
                                         '{{else}}'+
                                                 '<div class="social-modal__image" style="background-image: url(\'{{media.path}}\');" >'+
@@ -29136,12 +29134,10 @@ Card.prototype.bindSocialPostPopup = function()
     $(document).on('click', 'article.socialarticle', function (e) {
         e.preventDefault();
         // e.stopPropogation();
-        console.log("moo");
         var blogGuid = $(this).parent().data('blog-guid');
         var postGuid = $(this).parent().data('guid');
 
         if (!isScialRequestSent) {
-                    console.log("moo moo");
 
             var csrfToken = $('meta[name="csrf-token"]').attr("content");
             $.ajax({
@@ -29150,7 +29146,6 @@ Card.prototype.bindSocialPostPopup = function()
                 dataType: 'json',
                 data: {blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken},
                 success: function (data, textStatus, jqXHR) {
-                    console.log("moo success");
                     data.hasMediaVideo = false;
                     if (data.media['type'] === 'video') {
                         data.hasMediaVideo = true;
