@@ -238,6 +238,7 @@ Card.prototype.bindSocialPostPopup = function()
         var postGuid = $(this).parent().data('guid');
 
         if (!isScialRequestSent) {
+
             var csrfToken = $('meta[name="csrf-token"]').attr("content");
             $.ajax({
                 type: 'POST',
