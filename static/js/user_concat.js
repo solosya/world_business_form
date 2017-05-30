@@ -21405,11 +21405,13 @@ Card.prototype.events = function()
         var container = $('#'+btn.data('container'));
 
         var options = {
-            'limit': btn.data('limit'),
-            'containerClass': btn.data('container'),
+            'offset': container.data('offset'),
+            'containerClass': container.data('containerclass'),
             'container': container,
-            'nonpinned' : parseInt(container.data('existing-nonpinned-count'))
+            'nonpinned' : container.data('offset')
         };
+
+        console.log(options);
 
         $.fn.Ajax_LoadBlogArticles(options).done(function(data) {
             console.log(data);
