@@ -48,17 +48,18 @@ Card.prototype.screen = function()
     var options = {
         'screens' : [
         {
+            style: "screen-card card-lg-screen col-sm-12",
+            limit: 1,
+            logo: "large-logo"
+
+        },
+
+        {
             style: "screen-card card-sm-screen col-sm-6",
             limit: 2,
             logo: "small-logo"
-        }, 
+        } 
 
-            {
-                style: "screen-card card-lg-screen col-sm-12",
-                limit: 1,
-                logo: "large-logo"
-
-            },
         ],
         'container': $( '#'+btn.data('container') ),
         'currentScreen': currentScreen,
