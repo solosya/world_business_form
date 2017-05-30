@@ -21018,6 +21018,7 @@ Card.prototype.screen = function()
     var self = this;
 
     var btn = $('.loadMoreArticles');
+    var pageRefreshInterval = 60000 * 5;
 
     var currentScreen = 0;
     var articleCount = 0;
@@ -21043,7 +21044,9 @@ Card.prototype.screen = function()
     };
 
     var run = function() {
-        // console.log('running');
+        console.log('running screen');
+
+                            // 1 minute * amount of minutes
         var numberOfScreens = options.screens.length;
         currentScreen++;
         if (currentScreen > numberOfScreens) {
@@ -21082,8 +21085,12 @@ Card.prototype.screen = function()
     }
 
     run();
-    // console.log('setting interval');
-    setInterval ( run, 5000 );  
+
+    setInterval( run, 10000 ); 
+    setInterval( function() {
+        location.reload(false);
+    } , pageRefreshInterval );
+ 
 };
 
 Card.prototype.renderCard = function(card, cardClass)
