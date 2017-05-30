@@ -7800,7 +7800,7 @@ span.leadsentence {
       font-style: italic;
       font-size: 1.2rem;
       font-family: "PT Serif", "Times New Roman", Times, serif;
-      color: #333333;
+      color: #333;
       padding: 0;
       border: 0;
       line-height: 1; }
@@ -10397,7 +10397,7 @@ body.screen {
         padding-bottom: 10px;
         font-size: 1.2rem;
         line-height: 1;
-        color: #979797; }
+        color: #333; }
   .card.social .content > p {
     display: block;
     font-family: "adelle-sans", Helvetica, Arial, sans-serif; }
@@ -11015,7 +11015,7 @@ body.screen {
           font-size: 1.2rem;
           padding: 0;
           border: 0;
-          color: #333333; }
+          color: #333; }
           @media screen and (max-width: 620px) {
             .card-sm a.card > article > .content > time {
               color: #6c6c6c;
@@ -11048,7 +11048,7 @@ body.screen {
         margin-top: 0;
         margin-bottom: 8px; }
       .card-sm a.card.social .content time {
-        color: #979797; }
+        color: #333; }
       .card-sm a.card.social .content > p {
         display: block;
         font-size: 1.8em; }
@@ -11609,7 +11609,7 @@ body.screen {
         font-style: italic;
         font-family: "PT Serif", "Times New Roman", Times, serif;
         order: 2;
-        color: #979797;
+        color: inherit;
         margin-bottom: 47px; }
         @media screen and (max-width: 620px) {
           .card-lg a.card > article > .content > time {
