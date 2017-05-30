@@ -2999,10 +2999,9 @@ select[multiple].input-lg,
   outline: 0; }
 
 .modal-backdrop {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
   left: 0;
   z-index: 1040;
   background-color: #000; }
@@ -6645,7 +6644,8 @@ body.no_profile .profile_overlay {
   color: #ff9c26; }
 
 .social-modal__overflow {
-  overflow-y: auto; }
+  overflow-y: auto;
+  width: 100%; }
   .social-modal__overflow a {
     color: #384362;
     text-decoration: none;
