@@ -21181,12 +21181,11 @@ Card.prototype.renderReadingTime = function (time)
 Card.prototype.bindSocialPostPopup = function()
 {
     var isScialRequestSent = false;
-    $(document).on('click', 'a.social.card', function (e) {
+    $(document).on('click', 'article.socialarticle', function (e) {
         e.preventDefault();
-        e.stopPropogation();
-        
-        var blogGuid = $(this).data('blog-guid');
-        var postGuid = $(this).data('guid');
+        // e.stopPropogation();
+        var blogGuid = $(this).parent().data('blog-guid');
+        var postGuid = $(this).parent().data('guid');
 
         if (!isScialRequestSent) {
             var csrfToken = $('meta[name="csrf-token"]').attr("content");
@@ -21210,7 +21209,7 @@ Card.prototype.bindSocialPostPopup = function()
 
                     var articleTemplate = Handlebars.compile(socialPostPopupTemplate);
                     var article = articleTemplate(data);
-                    $('.modal .modal-content').html(article);
+                    $('.modal').html(article);
                     //$('body').modalmanager('loading');
                     setTimeout(function () {
                         $('.modal').modal('show');
@@ -21395,7 +21394,7 @@ Card.prototype.events = function()
         $(".articleMenu, .socialMenu").delay(2000).fadeIn(500);
     }  
 
-
+    self.bindSocialPostPopup();
 
     $('.loadMoreArticles').on('click', function(e){
         e.preventDefault();
