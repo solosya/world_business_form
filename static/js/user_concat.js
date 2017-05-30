@@ -21184,10 +21184,13 @@ Card.prototype.bindSocialPostPopup = function()
     $(document).on('click', 'article.socialarticle', function (e) {
         e.preventDefault();
         // e.stopPropogation();
+        console.log("moo");
         var blogGuid = $(this).parent().data('blog-guid');
         var postGuid = $(this).parent().data('guid');
 
         if (!isScialRequestSent) {
+                    console.log("moo moo");
+
             var csrfToken = $('meta[name="csrf-token"]').attr("content");
             $.ajax({
                 type: 'POST',
@@ -21195,6 +21198,7 @@ Card.prototype.bindSocialPostPopup = function()
                 dataType: 'json',
                 data: {blog_guid: blogGuid, guid: postGuid, _csrf: csrfToken},
                 success: function (data, textStatus, jqXHR) {
+                    console.log("moo success");
                     data.hasMediaVideo = false;
                     if (data.media['type'] === 'video') {
                         data.hasMediaVideo = true;
