@@ -9,7 +9,7 @@
 
     a.card {
 
-        height:91%;
+        height:85%;
 
 
         > article {
@@ -286,6 +286,11 @@
                         color:#dadada;
                         font-size: rem(15);
                         display:block;
+                        &:before {
+                            content: '@';
+                        }
+
+
                     }
                 }
                 time {

@@ -20,7 +20,7 @@ Card.prototype.renderScreenCards = function(options, data)
     }
     container.empty().append(html);
 
-    $('.two-card-logo').toggle();
+    // $('.two-card-logo').toggle();
 
     $(".card p, .card h1").dotdotdot();
             
@@ -46,24 +46,26 @@ Card.prototype.screen = function()
 
     var options = {
         'screens' : [
-            {
-                style: "screen-card card-sm-screen col-sm-6",
-                limit: 2,
-                logo: "small-logo"
-            }, 
+        {
+            style: "screen-card card-sm-screen col-sm-6",
+            limit: 2,
+            logo: "small-logo"
+        }, 
+
             {
                 style: "screen-card card-lg-screen col-sm-12",
                 limit: 1,
                 logo: "large-logo"
 
-            }],
+            },
+        ],
         'container': $( '#'+btn.data('container') ),
         'currentScreen': currentScreen,
         'count': 20
     };
 
     var run = function() {
-        console.log('running');
+        // console.log('running');
         var numberOfScreens = options.screens.length;
         currentScreen++;
         if (currentScreen > numberOfScreens) {
@@ -72,12 +74,12 @@ Card.prototype.screen = function()
         var screenOption = currentScreen-1;
         options.currentScreen = currentScreen;
 
-        console.log('grigidig');
+        // console.log('grigidig');
         options.limit = options.screens[screenOption].limit;
         options.containerClass = options.screens[screenOption].style;
 
         // articleCount = articleCount + options.limit;
-        console.log('Article Count: ', articleCount);
+        // console.log('Article Count: ', articleCount);
         if (articleCount >= options.count) {
             articleCount = 0;
         }
@@ -85,11 +87,11 @@ Card.prototype.screen = function()
         options.offset = articleCount;
         options.nonpinned = articleCount;
 
-        console.log(options);
+        // console.log(options);
         $.fn.Ajax_LoadBlogArticles(options).done(function(data) {
-            console.log(data);
+            // console.log(data);
             if (data.articles.length == 0 ) {
-                console.log('setting article count to zero');
+                // console.log('setting article count to zero');
                 articleCount = 0;
                 return;
             }
@@ -102,7 +104,7 @@ Card.prototype.screen = function()
     }
 
     run();
-    console.log('setting interval');
+    // console.log('setting interval');
     setInterval ( run, 5000 );  
 };
 

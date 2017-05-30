@@ -64,12 +64,11 @@ var socialCardTemplate =  '<div class="{{containerClass}}">' +
                                     data-social="1"\
                                     data-article-image="{{{social.media.path}}}"\
                                     data-article-text="{{social.content}}">\
-                                    {{#if social.hasMedia}}\
                                     <article class="">\
-                                    \
-                                        <figure class="{{videoClass}}">\
-                                            <img class="img-responsive" src="{{social.media.path}}" style="background-image:url(https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=450&h=250)">\
-                                        </figure>\
+                                        {{#if social.hasMedia}}\
+                                            <figure class="{{videoClass}}">\
+                                                <img class="img-responsive" src="{{social.media.path}}" style="background-image:url(https://placeholdit.imgix.net/~text?txtsize=33&txt=Loading&w=450&h=250)">\
+                                            </figure>\
                                         {{/if}}\
                                         \
                                         <div class="content">\
