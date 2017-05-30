@@ -2654,7 +2654,7 @@ select[multiple].input-lg,
 
 .navbar-brand {
   float: left;
-  padding: 12px;
+  padding: 28px 15px;
   font-size: 13px;
   line-height: 14px;
   height: 70px; }
@@ -2662,8 +2662,6 @@ select[multiple].input-lg,
     text-decoration: none; }
   .navbar-brand > img {
     display: block; }
-  .navbar-brand > img.text-logo {
-    margin-top: 12px; }
   @media (min-width: 768px) {
     .navbar > .container .navbar-brand, .login-page .navbar > .container .navbar-brand, .navbar > .profile__container .navbar-brand,
     .navbar > .container-fluid .navbar-brand {
@@ -2999,9 +2997,10 @@ select[multiple].input-lg,
   outline: 0; }
 
 .modal-backdrop {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
+  bottom: 0;
   left: 0;
   z-index: 1040;
   background-color: #000; }
@@ -7806,7 +7805,7 @@ span.leadsentence {
       font-style: italic;
       font-size: 1.2rem;
       font-family: "PT Serif", "Times New Roman", Times, serif;
-      color: #333;
+      color: #979797;
       padding: 0;
       border: 0;
       line-height: 1; }
@@ -10403,7 +10402,7 @@ body.screen {
         padding-bottom: 10px;
         font-size: 1.2rem;
         line-height: 1;
-        color: #333; }
+        color: #979797; }
   .card.social .content > p {
     display: block;
     font-family: "adelle-sans", Helvetica, Arial, sans-serif; }
@@ -11021,7 +11020,7 @@ body.screen {
           font-size: 1.2rem;
           padding: 0;
           border: 0;
-          color: #333; }
+          color: #979797; }
           @media screen and (max-width: 620px) {
             .card-sm a.card > article > .content > time {
               color: #6c6c6c;
@@ -11054,7 +11053,7 @@ body.screen {
         margin-top: 0;
         margin-bottom: 8px; }
       .card-sm a.card.social .content time {
-        color: #333; }
+        color: #979797; }
       .card-sm a.card.social .content > p {
         display: block;
         font-size: 1.8em; }
