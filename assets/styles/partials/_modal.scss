@@ -58,12 +58,14 @@
 	@include box-shadow(0 8px 35px 8px rgba(darken($white, 100%), 0.9));
 	position: relative;
 	top: 50%;
-	transform: translateY(-50%);
-	max-height:100%;
-	overflow: scroll;
 	width: 80%;
-	left: 10%;
+	left:50%;
+	transform: translateY(-50%) translateX(-50%);
+	max-height:100%;
+	overflow: auto;
 	padding: 20px;
+	border-radius:6px;
+	max-width:666px;
 }
 
 

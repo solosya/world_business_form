@@ -138,7 +138,7 @@ var socialPostPopupTemplate =
                         '</div>'+
     '{{/if}}'+
 
-                    '<a href="{{url}}" target="_blank"><div class="social-modal__text">“<br>{{content}}</div></a>'+
+                    '<a href="{{url}}" target="_blank"><div class="social-modal__text"><br>{{{content}}}</div></a>'+
                     '</div>'+
                     '<div class="social-user">'+
                         '<span class="social-user__image" style="background-image: url(\'{{user.media.path}}\'); height: 56px; width: 56px; background-size: cover; display: inline-block; border-radius: 50%;"></span>'+
@@ -165,9 +165,6 @@ var socialPostPopupTemplate =
                                     '</svg>'+
                                     ' Share'+
                                     '<div class="share-popup" style="right: -166px;">'+
-                                        '<div class="share-popup__title-wrap">'+
-                                            '<img class="share-popup__close" src="{{templatePath}}/static/images/icons/close-small.svg" alt="">'+
-                                        '</div>'+
                                         '<input type="text" name="share-link" value="{{url}}" readonly class="share-popup__share-link share-link">'+
                                         '<div class="share-popup__social-wrap">'+
                                             '<div class="social-icon_wrap--colored">'+
