@@ -28731,7 +28731,7 @@ var socialPostPopupTemplate =
                                         '{{#if hasMediaVideo}}'+
                                                 '<div class="social-modal__video-wrap">'+
                                                         '<div>'+
-                                                                '<iframe src="{{media.videoUrl}}" frameborder="0" allowfullscreen></iframe>'+
+                                                                '<iframe style="min-height:360px; min-width:640px;" src="{{media.videoUrl}}" frameborder="0" allowfullscreen></iframe>'+
                                                         '</div>'+
                                                 '</div>'+
                                         '{{else}}'+
