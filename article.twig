@@ -147,7 +147,7 @@
                             <section class="row">
                                 <h2>You might also like</h2>
 
-                                {% set popularArticles = _Article.getPopularArticles({ limit: 4, excludeArticleId : article.id }) %}
+                                {% set popularArticles = _Article.getPopularArticles({ limit: 4, excludeArticleIds : article.id }) %}
                                 {% if popularArticles|length > 0 %}
                                     {% for article in popularArticles %}
                                         {{this.render('partials/_single-article.twig', {article: article, containerClass: 'col-sm-6 col-md-3 card-sm s110x110'}) | raw}}

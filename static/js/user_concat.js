@@ -21444,7 +21444,8 @@ Card.prototype.events = function()
             'offset': container.data('offset'),
             'containerClass': container.data('containerclass'),
             'container': container,
-            'nonpinned' : container.data('offset')
+            'nonpinned' : container.data('offset'),
+            'blog_guid' : container.data('blogid')
         };
 
         console.log(options);

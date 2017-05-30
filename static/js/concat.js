@@ -27188,11 +27188,25 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
         
         var dateFormat = 'SHORT';
         console.log({offset: offset, limit: opts.limit, existingNonPinnedCount: existingNonPinnedCount, _csrf: csrfToken, dateFormat: dateFormat});
+        
+        var requestData = { 
+            offset: offset, 
+            limit: opts.limit, 
+            existingNonPinnedCount: existingNonPinnedCount, 
+            _csrf: csrfToken, 
+            dateFormat: dateFormat
+        };
+        if (options.blog_guid) {
+            requestData['blog_guid'] = options.blogid;
+        }
+
+        console.log(requestData);
+
         return $.ajax({
             type: 'post',
             url: _appJsConfig.baseHttpPath + '/home/load-articles',
             dataType: 'json',
-            data: {offset: offset, limit: opts.limit, existingNonPinnedCount: existingNonPinnedCount, _csrf: csrfToken, dateFormat: dateFormat},
+            data: requestData,
             success: function (data, textStatus, jqXHR) {
                 console.log(data);
                 if (opts.onSuccess && typeof opts.onSuccess === 'function') {
@@ -29583,7 +29597,8 @@ Card.prototype.events = function()
             'offset': container.data('offset'),
             'containerClass': container.data('containerclass'),
             'container': container,
-            'nonpinned' : container.data('offset')
+            'nonpinned' : container.data('offset'),
+            'blog_guid' : container.data('blogid')
         };
 
         console.log(options);

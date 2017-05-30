@@ -10110,6 +10110,12 @@ body.screen {
     position: absolute;
     bottom: 15px;
     right: 20px; }
+    body.screen .two-card-logo > p {
+      vertical-align: bottom;
+      margin-bottom: 33px;
+      font-size: 1.6rem;
+      display: inline-block;
+      color: #fff; }
 
 .top-row {
   padding-bottom: 13px; }

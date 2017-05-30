@@ -29,6 +29,14 @@ body.screen {
     position:absolute;
     bottom:15px;
     right:20px;
+
+    >p {
+      vertical-align:bottom;
+      margin-bottom: 33px;
+      font-size: rem(16);
+      display:inline-block;
+      color:#fff;
+    }
   }
 
 }

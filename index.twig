@@ -45,7 +45,7 @@
                     (key) : {
                         'feed': _Blog.getBlogFeed({'limit': value['limit'], 'offset': 0, 'blogid':blog.guid}),
                         'link' : blog.link,
-                        'id' : blog.id
+                        'id' : blog.guid
                         }
                     }) %}
             {% endif %}
@@ -197,6 +197,22 @@
                     </div>
                 </div>
 
+
+                {#                 {{ this.render('partials/ajaxarticles.twig', {
+                                    limit: sections['gallery'].limit,
+                                    non_pinned: articlesArr.existingNonPinnedCount, 
+                                    articles: sections['gallery'].feed,
+                                    card_style: "col-sm-3 card-sm",
+                                    container:"galleryAjaxArticles",
+                                    blogid: sections['gallery'].id
+                                }) | raw }}
+
+                 #}                
+
+                
+                {% endif %}
+                
+
                 <section class="sponsors">
                     <div class="container justify_children">
                         <div class="row">
@@ -214,16 +230,6 @@
                 </section>
 
 
-{#                 {{ this.render('partials/ajaxarticles.twig', {
-                    limit: sections['gallery'].limit,
-                    non_pinned: articlesArr.existingNonPinnedCount, 
-                    articles: sections['gallery'].feed,
-                    card_style: "col-sm-3 card-sm",
-                    container:"galleryAjaxArticles",
-                    blogid: sections['gallery'].id
-                }) | raw }}
- #}
-                {% endif %}
 
         </section><!-- .home-page-content-->
 
