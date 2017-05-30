@@ -29158,9 +29158,9 @@ Card.prototype.renderScreenCards = function(options, data)
     $('.video-player').videoPlayer();
     
     //Lazyload implement
-    $("div.lazyload").lazyload({
-        effect: "fadeIn"
-    });
+    // $("div.lazyload").lazyload({
+    //     effect: "fadeIn"
+    // });
     // if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {
     //     self.events();
     // }
