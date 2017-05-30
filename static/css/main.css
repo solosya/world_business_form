@@ -11701,7 +11701,7 @@ body.screen {
         .card-lg-screen a.card.social.without__image .content {
           padding-top: 10px; } }
       .card-lg-screen a.card.social.without__image .content > p {
-        font-size: 7rem;
+        font-size: 7.5vh;
         color: #fff;
         display: block;
         width: 100%;
