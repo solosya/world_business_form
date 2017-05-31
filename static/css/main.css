@@ -7321,6 +7321,9 @@ ul.search-sub-menu {
   ul.search-sub-menu.active {
     margin-top: 0; }
 
+.searchPage {
+  margin-top: 100px; }
+
 .search-icon {
   background-image: url(../images/search.svg);
   background-repeat: no-repeat;
