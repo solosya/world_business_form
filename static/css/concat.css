@@ -7296,7 +7296,7 @@ ul.menu > li > ul.sub-menu.breaking-news-menu > li > ul.sub-sub-menu > li {
   min-height: 0; }
 
 body {
-  overflow: scroll;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   background: rgba(151, 151, 151, 0.15); }
   @media screen and (max-width: 768px) {
