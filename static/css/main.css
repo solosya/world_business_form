@@ -7322,7 +7322,9 @@ ul.search-sub-menu {
     margin-top: 0; }
 
 .searchPage {
-  margin-top: 100px; }
+  margin-top: 50px; }
+  .searchPage h1 {
+    margin-bottom: 50px; }
 
 .search-icon {
   background-image: url(../images/search.svg);
