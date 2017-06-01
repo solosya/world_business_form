@@ -372,7 +372,7 @@ HomeController.Listing = (function ($) {
                         $('.video-player').videoPlayer();
                         
                         //Lazyload implement
-                        $("div.lazyload").lazyload({
+                        $("img.lazyload").lazyload({
                             effect: "fadeIn"
                         });
                         if (_appJsConfig.isUserLoggedIn === 1 && _appJsConfig.userHasBlogAccess === 1) {

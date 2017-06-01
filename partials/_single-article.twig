@@ -66,11 +66,7 @@
             <article class="">
                 {% if (article.hasMedia == 'TRUE' or article.hasPreviewMedia == 'TRUE') and imageSuppress == 'false' %}
                     <figure class="{{figureClass}}">
-                        {% if lazyload == false %}
-                            <img class="img-responsive" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
-                        {% else %}
-                            <img class="img-responsive lazyload" data-original="{{articleImg}}" src="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
-                        {%endif%}
+                        <img class="img-responsive lazyload" data-original="{{articleImg}}"  {% if articleImg is not empty %} style="background-image:url('{{placeholder}}');" {%endif%}>
                     </figure>
                 {% endif %}
 
