@@ -56,26 +56,17 @@
                             </div><!-- .card-group-->
                         {% endif %}
 
+
+
                         {% if articles|length >= limit %}
-                            <div class="">
-                                <div class="ajaxArticles clearfix"
-                                     data-offset="{{limit}}"
-                                     data-containerclass="card-rec"
-                                     data-existing-nonpinned-count="{{articlesArr.existingNonPinnedCount}}">
-                                 </div>
-                                <a class="loadMoreArticles" href="#">LOAD MORE</a>
-                            </div>
-
-                            {% set noDataCls = 'hide' %}
-                            {% if articles|length == 0 %}
-                                {% set noDataCls = '' %}
-                             {% endif %}
-                            <div class="row text-center has-margin-bottom-20 has-margin-top-20 {{noDataCls}} NoArticlesMsg">
-                                <p class="no-data text-center">No articles found.</p>  
-                            </div>
+                            {{ this.render('partials/ajaxarticles.twig', {
+                                limit: limit, 
+                                non_pinned: articlesArr.existingNonPinnedCount, 
+                                articles: articles,
+                                card_style: "card-rec",
+                                container:"ajaxArticles"
+                            }) | raw }}
                         {% endif %}
-
-
 
 
                     </div><!-- .col-sm-8-->
