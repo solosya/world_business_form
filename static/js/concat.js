@@ -27162,7 +27162,6 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
         };
         
         var opts = $.extend( {}, defaults, options );
-        // console.log(opts);
 
         if (opts.container) {
             var container = opts.container;
@@ -27187,7 +27186,6 @@ var extend = function(child, parent) { for (var key in parent) { if (hasProp.cal
         var csrfToken = $('meta[name="csrf-token"]').attr("content");
         
         var dateFormat = 'SHORT';
-        console.log({offset: offset, limit: opts.limit, existingNonPinnedCount: existingNonPinnedCount, _csrf: csrfToken, dateFormat: dateFormat});
         
         var requestData = { 
             offset: offset, 
