@@ -171,7 +171,24 @@ $('document').ready(function() {
             $.get( 'http://submit.pagemasters.com.au/wobi/submit.php?email='+encodeURI(email)+'&name='+encodeURI(name)+'&lastname='+encodeURI(lastname)+'&wantsemail='+encodeURI(wantsmail) );
 
             $('#streamform').html(
-                "<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe width='640' height='360' src='https://secure.metacdn.com/r/j/bekzoqlva/wbfs/embed' frameborder='0' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen> </iframe></div>"
+                // "<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe width='640' height='360' src='https://secure.metacdn.com/r/j/bekzoqlva/wbfs/embed' frameborder='0' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen> </iframe></div>"
+
+                '        <article class="article-main">\
+            <div class="article_content">\
+              <div data-oembed-url="https://youtu.be/LAPnU3bgQXY">\
+                  <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.2493%;">\
+                    <iframe allowfullscreen="" scrolling="no" src="https://www.youtube.com/embed/LAPnU3bgQXY?rel=0&amp;showinfo=0&amp;controls=2" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" tabindex="-1">\
+                    </iframe>\
+                  </div>\
+              </div>\
+              <br><br>\
+              <div data-oembed-url="https://youtu.be/HGVMtW9EJXI">\
+                <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.2493%;">\
+                  <iframe allowfullscreen="" scrolling="no" src="https://www.youtube.com/embed/HGVMtW9EJXI?rel=0&amp;showinfo=0&amp;controls=2" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" tabindex="-1">\
+                  </iframe>\
+                </div>\
+              </div>\
+            </div>'
             );
 
             $('#streamformfooter').html(
