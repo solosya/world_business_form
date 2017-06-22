@@ -129,7 +129,7 @@
                                 </div><!--content-block-top-->
 
                                 <div class="article_content">
-                                    <p>{{ article.content | preg_replace('/^<p>/', '<p class="lead">') | raw }}</p>
+                                    <p>{{ article.content | preg_replace('/^<p>/', '<p class="lead">') | _resizeImages({"width":750}) | raw }}</p>
                                 </div><!-- .content-->
                             </div><!-- .content-->
 
