@@ -2654,7 +2654,7 @@ select[multiple].input-lg,
 
 .navbar-brand {
   float: left;
-  padding: 28px 15px;
+  padding: 12px;
   font-size: 13px;
   line-height: 14px;
   height: 70px; }
@@ -2662,6 +2662,8 @@ select[multiple].input-lg,
     text-decoration: none; }
   .navbar-brand > img {
     display: block; }
+  .navbar-brand > img.text-logo {
+    margin-top: 12px; }
   @media (min-width: 768px) {
     .navbar > .container .navbar-brand, .login-page .navbar > .container .navbar-brand, .navbar > .profile__container .navbar-brand,
     .navbar > .container-fluid .navbar-brand {
@@ -9763,9 +9765,9 @@ body.article {
   line-height: 60px;
   height: 100%; }
 
-.channel .section {
+.channel .section, .section .section {
   padding-top: 50px; }
-  .channel .section > h2 {
+  .channel .section > h2, .section .section > h2 {
     letter-spacing: 1px;
     font-style: italic;
     opacity: 0.6;
@@ -9774,7 +9776,7 @@ body.article {
     padding: 0;
     padding-bottom: 5px;
     margin: 0; }
-  .channel .section > h1 {
+  .channel .section > h1, .section .section > h1 {
     letter-spacing: 3px;
     font-size: 2.6rem;
     font-family: "adelle-sans", Helvetica, Arial, sans-serif;
@@ -9782,59 +9784,59 @@ body.article {
     margin: 0;
     margin-bottom: 26px; }
 
-.channel .follow-box {
+.channel .follow-box, .section .follow-box {
   position: relative;
   text-align: right; }
   @media screen and (max-width: 768px) {
-    .channel .follow-box {
+    .channel .follow-box, .section .follow-box {
       text-align: left;
       padding-bottom: 20px; } }
 
-.channel .follow {
+.channel .follow, .section .follow {
   font-size: 1.4em;
   margin-top: 30px;
   padding-top: 10px;
   height: 40px;
   width: 180px; }
   @media screen and (max-width: 768px) {
-    .channel .follow {
+    .channel .follow, .section .follow {
       margin-top: 15px; } }
 
-.channel .featured-slider {
+.channel .featured-slider, .section .featured-slider {
   margin-bottom: 70px; }
   @media screen and (max-width: 620px) {
-    .channel .featured-slider {
+    .channel .featured-slider, .section .featured-slider {
       margin-bottom: 35px; } }
-  .channel .featured-slider.channel a.card {
+  .channel .featured-slider.channel a.card, .section .featured-slider.channel a.card {
     height: 440px; }
     @media screen and (max-width: 768px) {
-      .channel .featured-slider.channel a.card {
+      .channel .featured-slider.channel a.card, .section .featured-slider.channel a.card {
         height: auto; } }
-    .channel .featured-slider.channel a.card figure {
+    .channel .featured-slider.channel a.card figure, .section .featured-slider.channel a.card figure {
       width: 60%;
       max-width: 60%; }
       @media screen and (max-width: 768px) {
-        .channel .featured-slider.channel a.card figure {
+        .channel .featured-slider.channel a.card figure, .section .featured-slider.channel a.card figure {
           width: auto;
           max-width: 60%; } }
-    .channel .featured-slider.channel a.card .content {
+    .channel .featured-slider.channel a.card .content, .section .featured-slider.channel a.card .content {
       padding: 70px 15px 10px 31px; }
       @media screen and (min-width: 768px) and (max-width: 1200px) {
-        .channel .featured-slider.channel a.card .content h2 {
+        .channel .featured-slider.channel a.card .content h2, .section .featured-slider.channel a.card .content h2 {
           font-size: 3.5em !important; } }
 
-.channel .section-sidepanel-news {
+.channel .section-sidepanel-news, .section .section-sidepanel-news {
   padding-left: 15px; }
   @media screen and (max-width: 620px) {
-    .channel .section-sidepanel-news {
+    .channel .section-sidepanel-news, .section .section-sidepanel-news {
       padding-left: 0; } }
-  .channel .section-sidepanel-news a.card .content {
+  .channel .section-sidepanel-news a.card .content, .section .section-sidepanel-news a.card .content {
     height: auto;
     display: block; }
-    .channel .section-sidepanel-news a.card .content h2 {
+    .channel .section-sidepanel-news a.card .content h2, .section .section-sidepanel-news a.card .content h2 {
       margin: 15px 0;
       font-size: 2.6em; }
-    .channel .section-sidepanel-news a.card .content time {
+    .channel .section-sidepanel-news a.card .content time, .section .section-sidepanel-news a.card .content time {
       position: static;
       margin-top: 13px;
       float: right;
@@ -9846,24 +9848,24 @@ body.article {
       border-left: solid 1px #dadada;
       color: #6c6c6c; }
       @media screen and (max-width: 768px) {
-        .channel .section-sidepanel-news a.card .content time {
+        .channel .section-sidepanel-news a.card .content time, .section .section-sidepanel-news a.card .content time {
           float: none;
           border: none;
           padding: 0; } }
-    .channel .section-sidepanel-news a.card .content .author {
+    .channel .section-sidepanel-news a.card .content .author, .section .section-sidepanel-news a.card .content .author {
       display: block;
       padding-top: 10px;
       border-top: solid 1px #dadada; }
-      .channel .section-sidepanel-news a.card .content .author:after {
+      .channel .section-sidepanel-news a.card .content .author:after, .section .section-sidepanel-news a.card .content .author:after {
         content: ".";
         visibility: hidden;
         display: block;
         height: 0;
         clear: both; }
       @media screen and (max-width: 768px) {
-        .channel .section-sidepanel-news a.card .content .author {
+        .channel .section-sidepanel-news a.card .content .author, .section .section-sidepanel-news a.card .content .author {
           display: none; } }
-      .channel .section-sidepanel-news a.card .content .author p {
+      .channel .section-sidepanel-news a.card .content .author p, .section .section-sidepanel-news a.card .content .author p {
         display: block; }
 
 body.channel.about .email {
