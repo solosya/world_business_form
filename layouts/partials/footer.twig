@@ -1,4 +1,5 @@
-<!--footer-->
+{% set menuItems = _Menu.get({'menuType': 'footer'}) %}
+
 <footer class="site-footer">
     <div class="footer-top">
         <div class="container">        
@@ -35,7 +36,7 @@
                 <div class="col-sm-12 contact visible-xs-block">
                     <div class="section-links-mobile">
                         <ul>
-                            {% set menuItems = blog.blogFooterMenu %}
+
                             {% for i, parentItem in menuItems %}
                                 {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
@@ -73,7 +74,7 @@
                 <div class="col-sm-9 hidden-xs">
                     <div class="section-links">
                         <ul>
-                            {% set menuItems = blog.blogFooterMenu %}
+
                             {% for i, parentItem in menuItems %}
                                 {% set activeClass = (parentItem.link == _AppHelper.getServerUrl()) ? 'active' : ''%}
                                 {% set externalClass = (parentItem.isExternal) ? 'external-link' : '' %}
